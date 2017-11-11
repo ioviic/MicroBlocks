@@ -1,5 +1,5 @@
-import App from '../App'
-import Block from "./Block";
+import App from '../App';
+import Block from './Block';
 
 export default class SDK {
 

@@ -11,7 +11,7 @@ export default class Block {
     show(selector)
     {
         const node = document.querySelector(selector);
-        ReactDOM.render(this.getBlock(), document.getElementById('root'));
+        ReactDOM.render(this.getBlock(), node);
     }
 
     getBlock() {
