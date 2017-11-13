@@ -1,8 +1,9 @@
 import './index.css';
-import SDK from './SDK/SDK';
+import Packer from './SDK/Packer';
 import registerServiceWorker from './registerServiceWorker';
 
-const sdk = new SDK();
+const packer = new Packer();
+const SDK = packer.startSDK();
+SDK.placeBlock('App', '#root');
 
-sdk.placeBlock('App', '#root');
 registerServiceWorker();

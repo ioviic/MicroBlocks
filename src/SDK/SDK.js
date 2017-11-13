@@ -1,10 +1,10 @@
 import App from '../App';
-import Block from './Block';
+import Block from "./Block";
 
 export default class SDK {
 
 
-    constructor(){
+    constructor() {
         this.blocks = [];
         this.blocks.push(new Block('App', App));
     }
