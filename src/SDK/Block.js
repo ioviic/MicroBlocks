@@ -19,8 +19,8 @@ export default class Block {
     }
 
     getBlock(){
-        const Brick = this.block;
-        return (<Brick />);
+        const Block = this.block;
+        return (<Block />);
     }
 
 }
