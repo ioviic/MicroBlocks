@@ -1,21 +1,26 @@
+// @flow
 import * as ReactDOM from 'react-dom';
-import * as React from 'react';
+import React, { Component } from 'react';
+import type { Element, Node } from 'react';
+import BlockPortal from './BlockPortal';
 
 export default class Block {
+    name: string;
+    block: Node;
 
-    constructor(name: string, element: JSX.Element) {
+    constructor(name: string, element: Node) {
         this.name = name;
         this.block = element;
     }
 
-    show(selector) {
+    show(selector: string) {
         const node = document.querySelector(selector);
-        ReactDOM.render(this.getBlock(), node);
+        node && ReactDOM.render(this.getBlock(), node);
     }
 
-    getBlock() {
-        const Block = this.block;
-
-        return (<Block />);
+    getBlock(){
+        const Brick = this.block;
+        return (<Brick />);
     }
+
 }
