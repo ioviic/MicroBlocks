@@ -17,8 +17,8 @@ export default class Block {
         node && ReactDOM.render(this.HOC(this.block), node);
     }
 
-    HOC = (InnerComponent: ComponentType<any>): Element<any> => {
-        return <InnerComponent/>
+    HOC = (Block: ComponentType<any>): Element<any> => {
+        return <Block/>
     };
 }
 

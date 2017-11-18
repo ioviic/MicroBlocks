@@ -15,4 +15,10 @@ export default class SDK {
                         });
         block && block.show(selector);
     }
+
+    getBlocks() : string[] {
+        return this.blocks.map((block) => {
+            return block.name;
+        });
+    }
 }

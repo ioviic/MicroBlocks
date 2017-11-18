@@ -4,6 +4,8 @@ import registerServiceWorker from './registerServiceWorker';
 
 const packer = new Packer();
 const SDK = packer.startSDK();
-SDK.placeBlock('App', '#root');
+console.log(SDK.getBlocks());
+const appBlocks = SDK.getBlocks()[0];
+SDK.placeBlock(appBlocks, '#root');
 
 registerServiceWorker();
