@@ -12,9 +12,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eslint": "eslint src/**/*.js src/*.js",
+    "flow": "flow",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "eslint": "^4.11.0"
+    "eslint": "^4.11.0",
+    "flow-bin": "^0.59.0"
   }
 }
