@@ -1,26 +1,24 @@
 // @flow
 import * as ReactDOM from 'react-dom';
-import React, { Component } from 'react';
-import type { Element, Node } from 'react';
-import BlockPortal from './BlockPortal';
+import * as React from 'react';
+import type { Element, ComponentType } from 'react';
 
 export default class Block {
     name: string;
-    block: Node;
+    block: ComponentType<any>;
 
-    constructor(name: string, element: Node) {
+    constructor(name: string, element: ComponentType<any>) {
         this.name = name;
         this.block = element;
     }
 
     show(selector: string) {
         const node = document.querySelector(selector);
-        node && ReactDOM.render(this.getBlock(), node);
+        node && ReactDOM.render(this.HOC(this.block), node);
     }
 
-    getBlock(){
-        const Block = this.block;
-        return (<Block />);
-    }
-
+    HOC = (InnerComponent: ComponentType<any>): Element<any> => {
+        return <InnerComponent/>
+    };
 }
+
