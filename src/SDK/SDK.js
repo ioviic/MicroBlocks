@@ -1,5 +1,5 @@
 // @flow
-import App from '../App';
+import App from '../app/blocks/app/App';
 import Block from './Block';
 
 export default class SDK {
