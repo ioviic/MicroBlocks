@@ -1,7 +1,9 @@
+/* eslint import/no-webpack-loader-syntax: off */
 // @flow
 import SDK from './SDK';
 import fs from 'fs';
 
+// import test from 'block-loader';
 export default class Packer {
     SDK: SDK;
     constructor(){
@@ -14,9 +16,11 @@ export default class Packer {
     }
 
     getBlockMetaFiles(){
-        fs.readdir('./',(err, files) => {
-            console.log(files);
-        });
+        const grabBlocks = require('block-loader!');
+        console.log(grabBlocks);
+        // fs.readdir('./',(err, files) => {
+        //     console.log(test());
+        // });
     }
 
 }

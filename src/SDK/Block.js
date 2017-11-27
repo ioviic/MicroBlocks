@@ -18,7 +18,7 @@ export default class Block {
     }
 
     HOC = (Block: ComponentType<any>): Element<any> => {
-        return <Block/>
+        return <Block/>;
     };
 }
 
