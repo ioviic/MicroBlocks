@@ -1,13 +1,18 @@
 /* eslint import/no-webpack-loader-syntax: off */
 // @flow
-import SDK from './SDK';
-import fs from 'fs';
+import SDK from '../SDK/SDK';
+// $FlowFixMe
+import grabBlocks from 'block-loader!';
 
-// import test from 'block-loader';
 export default class Packer {
     SDK: SDK;
+
     constructor(){
-        this.SDK = new SDK();
+        this.SDK = new SDK(grabBlocks);
+    }
+
+    buildSdk() {
+        this.SDK.build();
     }
 
     startSDK() {
@@ -16,11 +21,7 @@ export default class Packer {
     }
 
     getBlockMetaFiles(){
-        const grabBlocks = require('block-loader!');
         console.log(grabBlocks);
-        // fs.readdir('./',(err, files) => {
-        //     console.log(test());
-        // });
     }
 
 }

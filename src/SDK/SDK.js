@@ -1,18 +1,31 @@
 // @flow
-import App from '../app/blocks/app/App';
 import Block from './Block';
+import BlockPromise from './BlockPromise';
 
 export default class SDK {
-    blocks: Block[];
-    constructor() {
+    blocks: BlockPromise[];
+    blocksInfo: [];
+    constructor(blocksMeta: any) {
         this.blocks = [];
-        this.blocks.push(new Block('App', App));
+        this.blocksInfo = blocksMeta;
+    }
+
+    build() {
+        this.blocks = this.blocksInfo.map((item) =>{
+            const promise = item.com.then((w) => {
+                const component = w.default;
+                return new Block(item.name, component);
+            });
+            return new BlockPromise(item.name, promise);
+        });
     }
 
     placeBlock(blockName: string, selector: string){
-        const block = this.blocks.find( (item) => {
-                            return item.name === blockName;
-                        });
+        const block = this.blocks
+            .find( (item) => {
+                return item.name === blockName;
+            });
+
         block && block.show(selector);
     }
 

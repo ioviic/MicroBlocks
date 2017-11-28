@@ -69,7 +69,7 @@ module.exports = {
   },
     resolveLoader: {
         alias: {
-            'block-loader': require.resolve('./block-loader'),
+            'block-loader': require.resolve('../src/packer/block-loader'),
         }
     },
   resolve: {

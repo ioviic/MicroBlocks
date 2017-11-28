@@ -1,1 +1,7 @@
-import from '
+let path = require('path');
+
+module.exports = {
+    type: "Block",
+    name: "App",
+    path: path.join(__dirname, "App"),
+};
