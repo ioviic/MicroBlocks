@@ -73,6 +73,11 @@ module.exports = {
         .relative(paths.appSrc, info.absoluteResourcePath)
         .replace(/\\/g, '/'),
   },
+  resolveLoader: {
+        alias: {
+            'block-loader': require.resolve('../src/packer/block-loader'),
+        }
+    },
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.
     // We placed these paths second because we want `node_modules` to "win"
@@ -128,6 +133,12 @@ module.exports = {
         ],
         include: paths.appSrc,
       },
+      {
+            test: /\.bmf/,
+            enforce: 'pre',
+            loaders: 'block-loader',
+            exclude: path.resolve(__dirname, 'node_modules')
+        },
       {
         // "oneOf" will traverse all following loaders until one will
         // match the requirements. When no loader matches it will fall
