@@ -12,6 +12,6 @@ before_deploy:
   - cd build
 deploy:
   provider: azure_web_apps
-  on: feature/Base-functionality
+  on: develop
   skip_cleanup: true
   verbose: true  
