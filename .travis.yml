@@ -13,5 +13,4 @@ before_deploy:
 deploy:
   provider: azure_web_apps
   on: develop
-  skip_cleanup: true
-  verbose: true  
+  skip_cleanup: true 
