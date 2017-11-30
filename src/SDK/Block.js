@@ -14,11 +14,11 @@ export default class Block {
 
     show(selector: string) {
         const node = document.querySelector(selector);
-        node && ReactDOM.render(this.HOC(this.block), node);
+        node && ReactDOM.render(this.hoc(this.block), node);
     }
 
-    HOC = (InnerComponent: ComponentType<any>): Element<any> => {
-        return <InnerComponent/>
+    hoc = (Block: ComponentType<any>): Element<any> => {
+        return <Block/>;
     };
 }
 
