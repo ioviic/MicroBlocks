@@ -2,6 +2,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import type { Element, ComponentType } from 'react';
+import ConfigurationProvider from '../configurations/ConfigurationProvider';
 
 export default class Block {
     name: string;
@@ -18,7 +19,11 @@ export default class Block {
     }
 
     hoc = (Block: ComponentType<any>): Element<any> => {
-        return <Block/>;
+        return (
+                <ConfigurationProvider configuration={ { test: 'test' } }>
+                    <Block />
+                </ConfigurationProvider>
+            );
     };
 }
 
