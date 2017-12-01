@@ -1,0 +1,1 @@
+// export necessary functionality regarding configurations
