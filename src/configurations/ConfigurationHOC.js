@@ -1,17 +1,18 @@
 // @flow
 import type { ComponentType } from 'react';
+import { PropTypes } from 'prop-types';
 import React from 'react';
 
-function injectConfigs<Props: { }>(
-    Component: ComponentType<{ configuration: { test: string} } & Props>
-): ComponentType<Props> {
-    return class WrappedComponent extends React.Component<Props> {
+function injectConfigs<T>(
+    Component: ComponentType<{ configuration: { test: string} } & T>
+): ComponentType<T> {
+    return class WrappedComponent extends React.Component<T> {
 
         static contextTypes = {
-            configuration: {},
+            configuration: PropTypes.object.isRequired,
         };
 
-        render (){
+        render () {
             return <Component { ...this.props } configuration={ this.context.configuration } />;
         }
     };

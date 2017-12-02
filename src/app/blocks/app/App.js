@@ -1,13 +1,16 @@
 // @flow
 import React, { Component } from 'react';
-import type { ComponentType } from 'react';
+import injectConfigs from '../../../configurations/ConfigurationHOC';
 import logo from '../../../logo.svg';
 import './App.css';
-import injectConfigs from '../../../configurations/ConfigurationHOC';
-type config = { configuration: { test: string} };
+
 type Props = { };
 
-class App extends Component<Props & config> {
+type Configuration = {
+    configuration: { test: string }
+}
+
+export class App extends Component<Props & Configuration> {
   render() {
     return (
       <div className="App">
@@ -19,7 +22,7 @@ class App extends Component<Props & config> {
           To get started, edit <code>src/App.js</code> and save for reloading
         </p>
           <p className="App-intro">
-              To get started {this.props.configuration.test}
+              To get started { this.props.configuration.test }
           </p>
       </div>
     );
