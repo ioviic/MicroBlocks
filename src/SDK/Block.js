@@ -2,7 +2,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import type { Element, ComponentType } from 'react';
-import ConfigurationProvider from '../configurations/ConfigurationProvider';
+import { ConfigurationProvider } from '../configurations/index';
 
 export default class Block {
     name: string;

@@ -13,7 +13,6 @@ type Configuration = {
 
 export class App extends Component<Props & Configuration> {
   render() {
-      console.log(this.props.configuration.appTitle);
     return (
       <div className="App">
         <header className="App-header">

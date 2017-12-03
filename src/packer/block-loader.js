@@ -41,16 +41,18 @@ module.exports = function grabBlocks() {
                 let configPath = path.join(root, block.dir + '/config.json');
 
                 const options = Object.assign(
-                    {configFile: configPath},
+                    { configFile: configPath },
                     process.env
                 );
 
+                // $FlowFixMe
                 let configContent = require(options.configFile);
 
-                if(configContent.block['name'] === block.name) {
+                if (configContent.block['name'] === block.name) {
                     return true;
                 } else {
-                    console.error('\x1b[31m', 'Add Configuration for \"' + block.name + '\" Block in config.json', '\x1b[37m')
+                    console.error('\x1b[31m', 'Add Configuration for \"' + block.name + '\" Block in config.json', '\x1b[37m');
+                    return false;
                 }
             })
             .map( function(block) {
@@ -58,15 +60,16 @@ module.exports = function grabBlocks() {
                 let configPath = path.join(root, block.dir + '/config.json');
 
                 const options = Object.assign(
-                    {configFile: configPath},
+                    { configFile: configPath },
                     process.env
                 );
 
+                // $FlowFixMe
                 let configContent = require(options.configFile);
 
                 return Object.assign(
                     block,
-                    {configurations: configContent.block['configurations']}
+                    { configurations: configContent.block['configurations'] }
                 );
             });
     }

@@ -7,7 +7,7 @@ type Props = {
     children?: Node
 };
 
-class ConfigurationProvider extends Component<Props> {
+export class ConfigurationProvider extends Component<Props> {
     static childContextTypes = {
         configuration: PropTypes.object.isRequired,
     };
