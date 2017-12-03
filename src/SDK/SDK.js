@@ -14,7 +14,7 @@ export default class SDK {
         this.blocks = this.blocksInfo.map((item) =>{
             const promise = item.com.then((w) => {
                 const component = w.default;
-                return new Block(item.name, component);
+                return new Block(item.name, component, item.configurations);
             });
             return new BlockPromise(item.name, promise);
         });

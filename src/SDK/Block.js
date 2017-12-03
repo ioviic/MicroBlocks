@@ -2,14 +2,17 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import type { Element, ComponentType } from 'react';
+import { ConfigurationProvider } from '../configurations/index';
 
 export default class Block {
     name: string;
     block: ComponentType<any>;
+    configurations: any;
 
-    constructor(name: string, element: ComponentType<any>) {
+    constructor(name: string, element: ComponentType<any>, configuration: any) {
         this.name = name;
         this.block = element;
+        this.configurations = configuration;
     }
 
     show(selector: string) {
@@ -18,7 +21,11 @@ export default class Block {
     }
 
     hoc = (Block: ComponentType<any>): Element<any> => {
-        return <Block/>;
+        return (
+                <ConfigurationProvider configuration = { JSON.parse(this.configurations) }>
+                    <Block />
+                </ConfigurationProvider>
+            );
     };
 }
 

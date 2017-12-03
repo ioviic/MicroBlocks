@@ -1,8 +1,17 @@
+// @flow
 import React, { Component } from 'react';
+import injectConfigs from '../../../configurations/ConfigurationHOC';
 import logo from '../../../logo.svg';
 import './App.css';
+import AppConfig from './AppConfig';
 
-class App extends Component {
+type Props = { };
+
+type Configuration = {
+    configuration: AppConfig
+}
+
+export class App extends Component<Props & Configuration> {
   render() {
     return (
       <div className="App">
@@ -13,10 +22,13 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save for reloading
         </p>
+          <p className="App-intro">
+              To get started { this.props.configuration.appTitle }
+          </p>
       </div>
     );
   }
 }
 
-export default App;
+export default injectConfigs(App);
 

@@ -1,0 +1,9 @@
+{
+  "block": {
+    "name": "App",
+    "configurations": {
+      "appTitle": "Hello from the other side",
+      "appSubTitle": "Hello World"
+    }
+  }
+}
