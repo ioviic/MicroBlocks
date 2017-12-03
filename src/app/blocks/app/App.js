@@ -3,15 +3,17 @@ import React, { Component } from 'react';
 import injectConfigs from '../../../configurations/ConfigurationHOC';
 import logo from '../../../logo.svg';
 import './App.css';
+import AppConfig from './AppConfig';
 
 type Props = { };
 
 type Configuration = {
-    configuration: { test: string }
+    configuration: AppConfig
 }
 
 export class App extends Component<Props & Configuration> {
   render() {
+      console.log(this.props.configuration.appTitle);
     return (
       <div className="App">
         <header className="App-header">
@@ -22,7 +24,7 @@ export class App extends Component<Props & Configuration> {
           To get started, edit <code>src/App.js</code> and save for reloading
         </p>
           <p className="App-intro">
-              To get started { this.props.configuration.test }
+              To get started { this.props.configuration.appTitle }
           </p>
       </div>
     );

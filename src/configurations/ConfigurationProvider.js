@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import type { Node } from 'react';
 import { PropTypes } from 'prop-types';
 type Props = {
-    configuration: {test: string},
+    configuration: any,
     children?: Node
 };
 
@@ -13,7 +13,7 @@ class ConfigurationProvider extends Component<Props> {
     };
 
     getChildContext() {
-        return { configuration:{ test: 'test' } };
+        return { configuration: this.props.configuration };
     }
     render() {
         return <div>{ this.props.children }</div>;

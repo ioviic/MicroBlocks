@@ -7,10 +7,12 @@ import ConfigurationProvider from '../configurations/ConfigurationProvider';
 export default class Block {
     name: string;
     block: ComponentType<any>;
+    configurations: any;
 
-    constructor(name: string, element: ComponentType<any>) {
+    constructor(name: string, element: ComponentType<any>, configuration: any) {
         this.name = name;
         this.block = element;
+        this.configurations = configuration;
     }
 
     show(selector: string) {
@@ -20,7 +22,7 @@ export default class Block {
 
     hoc = (Block: ComponentType<any>): Element<any> => {
         return (
-                <ConfigurationProvider configuration={ { test: 'test' } }>
+                <ConfigurationProvider configuration = { JSON.parse(this.configurations) }>
                     <Block />
                 </ConfigurationProvider>
             );
