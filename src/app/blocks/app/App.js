@@ -4,6 +4,7 @@ import injectConfigs from '../../../configurations/ConfigurationHOC';
 import logo from '../../../logo.svg';
 import './App.css';
 import AppConfig from './AppConfig';
+import locale from './localizations/translations';
 
 type Props = { };
 
@@ -24,6 +25,10 @@ export class App extends Component<Props & Configuration> {
         </p>
           <p className="App-intro">
               To get started { this.props.configuration.appTitle }
+          </p>
+
+          <p className="App-intro">
+              locale.id: {locale.hello.defaultMessage}
           </p>
       </div>
     );

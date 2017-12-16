@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import type { Element, ComponentType } from 'react';
 import { ConfigurationProvider } from '../configurations/index';
+import { IntlProvider } from 'react-intl';
 
 export default class Block {
     name: string;
@@ -23,7 +24,9 @@ export default class Block {
     hoc = (Block: ComponentType<any>): Element<any> => {
         return (
                 <ConfigurationProvider configuration = { JSON.parse(this.configurations) }>
-                    <Block />
+                    <IntlProvider locale={'en'}>
+                        <Block />
+                    </IntlProvider>
                 </ConfigurationProvider>
             );
     };
