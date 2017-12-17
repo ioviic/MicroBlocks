@@ -5,6 +5,7 @@ import logo from '../../../logo.svg';
 import './App.css';
 import AppConfig from './AppConfig';
 import locale from './localizations/translations';
+import { FormattedMessage } from 'react-intl';
 
 type Props = { };
 
@@ -28,7 +29,8 @@ export class App extends Component<Props & Configuration> {
           </p>
 
           <p className="App-intro">
-              locale.id: {locale.hello.defaultMessage}
+              locale.id:
+              <FormattedMessage id={locale.hello.id} defaultMessage={locale.hello.defaultMessage} />
           </p>
       </div>
     );
