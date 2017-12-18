@@ -74,8 +74,30 @@ module.exports = function grabBlocks() {
             });
     }
 
+    function grabBlockTranslations(){
+
+        return blocksInfo.map(
+            function(block) {
+                let translationsPath = path.join(root, block.dir + '/localizations/translations.json');
+
+                const options = Object.assign(
+                    { translationsFile: translationsPath },
+                    process.env
+                );
+
+                // $FlowFixMe
+                let translationsContent = require(options.translationsFile);
+
+                return Object.assign(
+                    block,
+                    { translations: translationsContent }
+                );
+            });
+    }
+
     grabBlocksInfo(blocksDirectory);
     grabBlockConfig();
+    grabBlockTranslations();
 
     return 'module.exports=['+
         blocksInfo.map((block) => '{' +
@@ -83,6 +105,7 @@ module.exports = function grabBlocks() {
             "root:'" + block.root + "'," +
             "type:'" + block.type + "'," +
             "dir:'" + block.dir + "'," +
+            "messages: '"+JSON.stringify(block.translations)+"'," +
             "configurations:'"+JSON.stringify(block.configurations)+"'," +
             'com:System.import(' + block.com + '),' +
             '}')

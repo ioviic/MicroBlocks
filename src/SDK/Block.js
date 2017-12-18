@@ -3,16 +3,19 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import type { Element, ComponentType } from 'react';
 import { ConfigurationProvider } from '../configurations/index';
+import { IntlProvider } from 'react-intl';
 
 export default class Block {
     name: string;
     block: ComponentType<any>;
     configurations: any;
+    translations: any;
 
-    constructor(name: string, element: ComponentType<any>, configuration: any) {
+    constructor(name: string, element: ComponentType<any>, configuration: any, translations: any) {
         this.name = name;
         this.block = element;
         this.configurations = configuration;
+        this.translations = translations;
     }
 
     show(selector: string) {
@@ -23,7 +26,9 @@ export default class Block {
     hoc = (Block: ComponentType<any>): Element<any> => {
         return (
                 <ConfigurationProvider configuration = { JSON.parse(this.configurations) }>
-                    <Block />
+                    <IntlProvider locale={'en'} messages={this.translations['en']}>
+                        <Block />
+                    </IntlProvider>
                 </ConfigurationProvider>
             );
     };
