@@ -19,17 +19,17 @@ export class App extends Component<Props & Configuration> {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Welcome to React lessons</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save for reloading
-        </p>
+        //<p className="App-intro">
+          //To get started, edit <code>src/App.js</code> and save for reloading
+        //</p>
           <p className="App-intro">
-              To get started { this.props.configuration.appTitle }
+              Opening soon: { this.props.configuration.appTitle }
           </p>
 
           <p className="App-intro">
-              locale.id:
+              Stay in touch: 
               <FormattedMessage id={locale.hello.id} defaultMessage={locale.hello.defaultMessage} />
           </p>
       </div>
