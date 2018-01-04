@@ -29,7 +29,7 @@ export class App extends Component<Props & Configuration> {
           </p>
 
           <p className="App-intro">
-              Stay in touch: 
+              Stay in touch:
               <FormattedMessage id={locale.hello.id} defaultMessage={locale.hello.defaultMessage} />
           </p>
       </div>
