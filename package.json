@@ -56,7 +56,9 @@
   },
   "devDependencies": {
     "eslint": "^4.11.0",
-    "flow-bin": "^0.59.0"
+    "flow-bin": "^0.59.0",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5"
   },
   "jest": {
     "collectCoverageFrom": [

@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import injectConfigs from '../../../configurations/ConfigurationHOC';
 import logo from '../../../logo.svg';
-import './App.css';
 import AppConfig from './AppConfig';
 import locale from './localizations/translations';
 import { FormattedMessage } from 'react-intl';
@@ -15,6 +14,7 @@ import {
 } from './actions';
 
 import type { State } from '../../../stateManagement/types/state';
+import styles from '../../customization/styles/App.less';
 
 type Props = {
     counter: number,
@@ -30,20 +30,20 @@ type Configuration = {
 export class App extends Component<Props & Configuration> {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React lessons</h1>
+      <div className={styles.App}>
+        <header className={styles.AppHeader}>
+          <img src={logo} className={styles.AppLogo} alt="logo" />
+          <h1 className={styles.AppTitle}>Welcome to React lessons</h1>
         </header>
-          <p className="App-intro">
+          <p className={styles.AppIntro}>
               Opening soon: { this.props.configuration.appTitle }
           </p>
 
-          <p className="App-intro">
+          <p className={styles.AppIntro}>
               Stay in touch:
               <FormattedMessage id={locale.hello.id} defaultMessage={locale.hello.defaultMessage} />
           </p>
-          <p className="App-intro">
+          <p className={styles.AppIntro}>
               Counter: { this.props.counter }
           </p>
 
