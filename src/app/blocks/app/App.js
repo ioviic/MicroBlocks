@@ -6,7 +6,6 @@ import './App.css';
 import AppConfig from './AppConfig';
 import locale from './localizations/translations';
 import { FormattedMessage } from 'react-intl';
-
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
@@ -15,7 +14,7 @@ import {
     incrementIfEven,
 } from './actions';
 
-import type { State } from './types/state';
+import type { State } from '../../../stateManagement/types/state';
 
 type Props = {
     counter: number,

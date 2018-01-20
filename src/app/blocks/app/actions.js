@@ -1,5 +1,5 @@
-import type { Action } from './types/actions';
-import type { Dispatch, GetState } from './types/store';
+import type { Action } from '../../../stateManagement/types/actionsTypes';
+import type { Dispatch, GetState } from '../../../stateManagement/types/store';
 
 export let increment = (amount: number = 1): Action => {
     return {

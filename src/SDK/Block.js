@@ -5,7 +5,7 @@ import type { Element, ComponentType } from 'react';
 import { ConfigurationProvider } from '../configurations/index';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
-import configureStore from '../app/blocks/app/store/createStore';
+import configureStore from '../stateManagement/store/createStore';
 
 export default class Block {
     name: string;

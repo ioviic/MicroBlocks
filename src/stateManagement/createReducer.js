@@ -1,6 +1,6 @@
 /* @flow */
 
-import type { Action, ActionType } from './types/actions';
+import type { Action, ActionType } from './types/actionsTypes';
 
 type Reducer<S, A: Action> =(S, A) => S;
 

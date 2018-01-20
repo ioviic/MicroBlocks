@@ -1,6 +1,6 @@
 // @flow
 import { combineReducers } from 'redux';
-import counter from './reducer';
+import counter from '../app/blocks/app/reducer';
 
 const reducers = {
     counter

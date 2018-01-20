@@ -1,10 +1,10 @@
 // @flow
 
 import { createStore, applyMiddleware, compose } from 'redux';
-import rootReducer from '../reducers';
-
-import type { Store } from '../types/store';
 import thunk from 'redux-thunk';
+import rootReducer from '../index';
+import type { Store } from '../types/store';
+
 const enhancer = compose(applyMiddleware(thunk));
 
 export default function configureStore(): Store {

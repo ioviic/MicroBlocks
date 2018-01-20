@@ -1,7 +1,7 @@
 // @flow
 
-import createReducer from '../createReducer';
-import type { Action } from '../types/actions';
+import createReducer from '../../../stateManagement/createReducer';
+import type { Action } from '../../../stateManagement/types/actionsTypes';
 
 type State = number;
 

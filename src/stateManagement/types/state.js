@@ -1,6 +1,6 @@
 // @flow
 
-import type { Reducers } from '../reducers';
+import type { Reducers } from '../index';
 
 type $ExtractFunctionReturn = <V>(v: ( ...args: any) => V) =>V;
 
