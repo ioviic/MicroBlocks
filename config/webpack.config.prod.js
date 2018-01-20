@@ -216,6 +216,12 @@ module.exports = {
                         ],
                       },
                     },
+                      {
+                          loader: require.resolve('less-loader'),
+                          options: {
+                              paths: [path.resolve(__dirname, 'src/app/customization/styles')]
+                          }
+                      },
                   ],
                 },
                 extractTextPluginOptions
