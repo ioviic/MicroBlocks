@@ -7,7 +7,22 @@ import AppConfig from './AppConfig';
 import locale from './localizations/translations';
 import { FormattedMessage } from 'react-intl';
 
-type Props = { };
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {
+    increment,
+    decrement,
+    incrementIfEven,
+} from './actions';
+
+import type { State } from './types/state';
+
+type Props = {
+    counter: number,
+    increment: (amount: number) => mixed,
+    decrement: (amount: number) => mixed,
+    incrementIfEven: (amount: number) => mixed,
+};
 
 type Configuration = {
     configuration: AppConfig
@@ -29,10 +44,39 @@ export class App extends Component<Props & Configuration> {
               Stay in touch:
               <FormattedMessage id={locale.hello.id} defaultMessage={locale.hello.defaultMessage} />
           </p>
+          <p className="App-intro">
+              Counter: { this.props.counter }
+          </p>
+
+              <button key="increment" onClick={() => this.props.increment(1)}>
+                  +
+              </button>
+              <button key="decrement" onClick={() => this.props.decrement(1)}>
+                  -
+              </button>
+              <button
+                  key="incrementIfEven"
+                  onClick={() => this.props.incrementIfEven(1)}
+              >
+                  % 2 ? +
+              </button>
       </div>
     );
   }
 }
 
-export default injectConfigs(App);
+const mapStateToProps = ({ counter }: State) => ({
+    counter,
+});
 
+const mapDispatchToProps = (dispatch: *) =>
+    bindActionCreators(
+        {
+            increment,
+            decrement,
+            incrementIfEven,
+        },
+        dispatch
+    );
+
+export default connect(mapStateToProps, mapDispatchToProps)(injectConfigs(App));
