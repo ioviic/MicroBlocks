@@ -182,9 +182,11 @@ module.exports = {
                     {
                       loader: require.resolve('css-loader'),
                       options: {
-                        importLoaders: 1,
                         minimize: true,
-                        sourceMap: shouldUseSourceMap,
+                          importLoaders: 1,
+                          sourceMap: true,
+                          modules: true,
+                          localIdentName: '[path]___[name]__[local]___[hash:base64:5]'
                       },
                     },
                     {
