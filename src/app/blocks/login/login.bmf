@@ -1,0 +1,7 @@
+let path = require('path');
+
+module.exports = {
+    type: "Block",
+    name: "Login",
+    path: path.join(__dirname, "Login"),
+};

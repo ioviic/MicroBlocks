@@ -1,9 +1,10 @@
 // @flow
 import { combineReducers } from 'redux';
-import counter from '../app/blocks/app/reducer';
+import app from '../app/blocks/app/reducer';
+import login from '../app/blocks/login/reducer';
 
 const reducers = {
-    counter
+    app, login
 };
 
 export type Reducers = typeof reducers;

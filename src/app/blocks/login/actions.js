@@ -17,9 +17,9 @@ export let decrement = (amount: number = 1): Action => {
 
 export let incrementIfEven = (amount: number = 1): Action => {
     return (dispatch: Dispatch, getState: GetState) => {
-        const { app } = getState();
+        const { login } = getState();
 
-        if (app % 2 === 0) {
+        if (login % 2 === 0) {
             dispatch(increment(amount));
         }
     };
