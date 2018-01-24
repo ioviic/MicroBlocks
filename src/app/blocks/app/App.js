@@ -31,7 +31,7 @@ type Configuration = {
 export class App extends Component<Props & Configuration> {
   render() {
     return (
-      <div className={styles.App}>
+      <div className={`${styles.App} ui container`}>
         <header className={styles.AppHeader}>
           <img src={logo} className={styles.AppLogo} alt="logo" />
           <h1 className={styles.AppTitle}>Welcome to React lessons</h1>
