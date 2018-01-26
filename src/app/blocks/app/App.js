@@ -61,9 +61,6 @@ export class App extends Component<Props & Configuration> {
                   % 2 ? +
               </button>
             </div>
-          <div id="Login">
-
-          </div>
       </div>
     );
   }

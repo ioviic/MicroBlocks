@@ -3,13 +3,13 @@ import React, { Component } from 'react';
 import injectConfigs from '../../../configurations/ConfigurationHOC';
 
 // $FlowFixMe
-// import styles from '../../customization/styles/App.less';
+import styles from '../../customization/styles/Login.less';
 import { Form, Button } from 'semantic-ui-react';
 import Validator from 'validator';
 import InlineError from './InlineError';
 import type { Configuration } from './Login';
 
-type FormData = {
+export type FormData = {
     email: string;
     password: string
 }
@@ -19,10 +19,6 @@ type LoginState = {
     loading: boolean;
     errors: FormData;
 }
-//
-// type Configuration = {
-//     configuration: LoginConfig
-// }
 
 type Props = {
     submit: (data: FormData) => void,
@@ -68,7 +64,7 @@ class LoginForm extends Component<Props & Configuration, LoginState> {
     render() {
         const { data, errors } = this.state;
         return (
-            <Form onSubmit={this.onSubmit}>
+            <Form className={ styles.login } onSubmit={this.onSubmit}>
                 <Form.Field error = {!!errors.email}>
                     <label htmlFor="email"> Email </label>
                     <input

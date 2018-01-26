@@ -5,22 +5,18 @@ import type { LoginConfig } from './LoginConfig';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
-    increment,
-    decrement,
-    incrementIfEven,
+    login,
 } from './actions';
 
 import LoginForm from './LoginForm';
 
 import type { State } from '../../../stateManagement/types/state';
+import type { FormData } from './LoginForm';
 // $FlowFixMe
-// import styles from '../../customization/styles/App.less';
+// import styles from '../../customization/styles/Login.less';
 
 type Props = {
-    login: number,
-    increment: (amount: number) => mixed,
-    decrement: (amount: number) => mixed,
-    incrementIfEven: (amount: number) => mixed,
+    login:(credentials: FormData) => mixed,
 };
 
 export type Configuration = {
@@ -29,7 +25,9 @@ export type Configuration = {
 
 class Login extends Component<Props & Configuration> {
 
-    onSubmit = (data) => console.log(data);
+    onSubmit = (data: FormData) => {
+        this.props.login(data);
+    };
 
   render() {
     return (
@@ -45,9 +43,7 @@ const mapStateToProps = ({ login }: State) => ({
 const mapDispatchToProps = (dispatch: *) =>
     bindActionCreators(
         {
-            increment,
-            decrement,
-            incrementIfEven,
+            login
         },
         dispatch
     );
