@@ -1,4 +1,4 @@
-import type { LoginAction, UserState } from '../../../stateManagement/types/actionsTypes';
+import type { LoginAction, UserState } from '../../../stateManagement/types/actionTypes';
 import type { Dispatch, GetState } from '../../../stateManagement/types/store';
 import api from '../../api/api';
 

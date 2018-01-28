@@ -1,7 +1,7 @@
 // @flow
 
 import createReducer from '../../../stateManagement/createReducer';
-import type { LoginAction, UserState } from '../../../stateManagement/types/actionsTypes';
+import type { LoginAction, UserState } from './actionTypes';
 
 const initialState: UserState = {
     email: '',

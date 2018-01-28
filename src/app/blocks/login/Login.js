@@ -12,7 +12,7 @@ import LoginForm from './LoginForm';
 
 import type { State } from '../../../stateManagement/types/state';
 import type { FormData } from './LoginForm';
-import type { UserState } from './../../../stateManagement/types/actionsTypes';
+import type { UserState } from './actionTypes';
 // $FlowFixMe
 // import styles from '../../customization/styles/Login.less';
 
