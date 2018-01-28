@@ -1,17 +1,15 @@
 // @flow
 
 import createReducer from '../../../stateManagement/createReducer';
-import type { Action } from '../../../stateManagement/types/actionsTypes';
+import type { LoginAction, UserState } from '../../../stateManagement/types/actionsTypes';
 
-type State = number;
-
-const initialState = 0;
+const initialState: UserState = {
+    email: '',
+    token: ''
+};
 
 export default createReducer(initialState, {
-    INCREMENT_COUNTER: (state: State, action: Action) => {
-        return state + action.payload;
-    },
-    DECREMENT_COUNTER: (state: State, action: Action) => {
-        return state - action.payload;
+    USER_LOGGED_IN: (state: UserState, action: LoginAction) => {
+        return action.payload;
     }
 });

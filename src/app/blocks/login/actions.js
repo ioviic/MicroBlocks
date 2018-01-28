@@ -1,17 +1,16 @@
-import type { Action } from '../../../stateManagement/types/actionsTypes';
+import type { LoginAction, UserState } from '../../../stateManagement/types/actionsTypes';
 import type { Dispatch, GetState } from '../../../stateManagement/types/store';
-import api from '../api';
+import api from '../../api/api';
 
-
-export let userLoggedIn = (user: User): Action => {
+export let userLoggedIn = (user: UserState): LoginAction => {
     return {
-        type: 'SHOW_USER',
+        type: 'USER_LOGGED_IN',
         payload: user
     };
 };
 
-export const login = (credentials): Action => {
+export const loginAction = (credentials): any => {
     return (dispatch: Dispatch, getState: GetState) => {
-        api.user.login(credentials).then(user => dispatch(userLoggedIn(user)));
+        return api.user.login(credentials).then(user => dispatch(userLoggedIn(user)));
     };
 };

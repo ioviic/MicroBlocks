@@ -4,92 +4,105 @@ import injectConfigs from '../../../configurations/ConfigurationHOC';
 
 // $FlowFixMe
 import styles from '../../customization/styles/Login.less';
-import { Form, Button } from 'semantic-ui-react';
+import { Form, Button, Message } from 'semantic-ui-react';
 import Validator from 'validator';
 import InlineError from './InlineError';
 import type { Configuration } from './Login';
 
 export type FormData = {
-    email: string;
-    password: string
+  email: string;
+  password: string
 }
 
 type LoginState = {
-    data: FormData;
-    loading: boolean;
-    errors: FormData;
+  data: FormData;
+  loading: boolean;
+  errors: FormData & {global: string};
 }
 
 type Props = {
-    submit: (data: FormData) => void,
+  submit: (data: FormData) => any,
 };
 
 class LoginForm extends Component<Props & Configuration, LoginState> {
-    state: LoginState= {
-        data: {
-            email: '',
-            password: ''
-        },
-        loading: false,
-        errors: {
-            email: '',
-            password: ''
-        }
-    };
-
-    onChange = (e: *) => this.setState({ data: { ...this.state.data, [e.target.name]: e.target.value } });
-
-    onSubmit = () => {
-        const errors = this.validate(this.state.data);
-        this.setState({ errors });
-
-        if (Object.keys(errors).length === 0){
-            this.props.submit(this.state.data);
-        }
-    };
-
-    validate = (data: FormData) => {
-        const errors = {};
-        if (!Validator.isEmail(data.email)) {
-            errors.email = 'Invalid email.';
-        }
-
-        if (!data.password) {
-            errors.password = 'Cant be blank';
-        }
-
-        return errors;
-    };
-
-    render() {
-        const { data, errors } = this.state;
-        return (
-            <Form className={ styles.login } onSubmit={this.onSubmit}>
-                <Form.Field error = {!!errors.email}>
-                    <label htmlFor="email"> Email </label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={data.email}
-                        onChange={this.onChange}
-                    />
-                    { errors.email && <InlineError error = { errors.email } /> }
-                </Form.Field>
-                <Form.Field error = {!!errors.password}>
-                    <label htmlFor="password"> Password </label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        value={data.password}
-                        onChange={this.onChange}/>
-                    { errors.password && <InlineError error = { errors.password } /> }
-                </Form.Field>
-                <Button primary> Login </Button>
-            </Form>
-        );
+  state: LoginState = {
+    data: {
+      email: '',
+      password: ''
+    },
+    loading: false,
+    errors: {
+      email: '',
+      password: '',
+      global: ''
     }
+  }
+
+  onChange = (e: *) => this.setState({ data: { ...this.state.data, [e.target.name]: e.target.value } })
+
+  onSubmit = () => {
+    const errors = this.validate(this.state.data);
+    this.setState({ errors });
+
+    if (!errors.email && !errors.password) {
+      this.setState({ loading: true });
+      this.props.submit(this.state.data)
+        .then(res => {
+          this.setState({ loading: false });
+        })
+        .catch(err => {
+          this.setState({ errors: { ...errors, global: err.response.data.errors.global }, loading: false } );
+        } );
+    }
+  }
+
+  validate = (data: FormData) => {
+    const errors = this.state.errors;
+    if (!Validator.isEmail(data.email)){
+      errors.email = 'Invalid email.';
+    }
+
+    if (!data.password){
+      errors.password = 'Cant be blank';
+    }
+
+    return errors;
+  }
+
+  render () {
+    const { data, errors, loading } = this.state;
+    return (
+      <Form className={styles.login} onSubmit={this.onSubmit} loading={loading}>
+        {errors.global &&
+          <Message negative>
+            <Message.Header>Something went wrong!</Message.Header>
+            <p>{ errors.global }</p>
+          </Message>}
+        <Form.Field error={!!errors.email}>
+          <label htmlFor="email"> Email </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={data.email}
+            onChange={this.onChange}
+          />
+          {errors.email && <InlineError error={errors.email}/>}
+        </Form.Field>
+        <Form.Field error={!!errors.password}>
+          <label htmlFor="password"> Password </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={data.password}
+            onChange={this.onChange}/>
+          {errors.password && <InlineError error={errors.password}/>}
+        </Form.Field>
+        <Button primary> Login </Button>
+      </Form>
+    );
+  }
 }
 
 export default injectConfigs(LoginForm);

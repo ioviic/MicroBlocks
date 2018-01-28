@@ -5,18 +5,20 @@ import type { LoginConfig } from './LoginConfig';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
-    login,
+    loginAction,
 } from './actions';
 
 import LoginForm from './LoginForm';
 
 import type { State } from '../../../stateManagement/types/state';
 import type { FormData } from './LoginForm';
+import type { UserState } from './../../../stateManagement/types/actionsTypes';
 // $FlowFixMe
 // import styles from '../../customization/styles/Login.less';
 
 type Props = {
-    login:(credentials: FormData) => mixed,
+  login: UserState,
+  loginAction:(credentials: FormData) => any,
 };
 
 export type Configuration = {
@@ -26,14 +28,14 @@ export type Configuration = {
 class Login extends Component<Props & Configuration> {
 
     onSubmit = (data: FormData) => {
-        this.props.login(data);
+        return this.props.loginAction(data);
     };
 
   render() {
     return (
-        <LoginForm submit={this.onSubmit} />
+      this.props.login.email ? <span> User: { this.props.login.email } </span> : <LoginForm submit={this.onSubmit} />
     );
-  }
+  };
 }
 
 const mapStateToProps = ({ login }: State) => ({
@@ -43,7 +45,7 @@ const mapStateToProps = ({ login }: State) => ({
 const mapDispatchToProps = (dispatch: *) =>
     bindActionCreators(
         {
-            login
+            loginAction
         },
         dispatch
     );
