@@ -47,9 +47,6 @@ class LoginForm extends Component<Props & Configuration, LoginState> {
     if (!errors.email && !errors.password) {
       this.setState({ loading: true });
       this.props.submit(this.state.data)
-        .then(res => {
-          this.setState({ loading: false });
-        })
         .catch(err => {
           this.setState({ errors: { ...errors, global: err.response.data.errors.global }, loading: false } );
         } );

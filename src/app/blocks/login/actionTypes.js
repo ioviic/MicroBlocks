@@ -8,4 +8,8 @@ export type UserLoggedInAction = {
   payload: UserState;
 }
 
-export type LoginAction = UserLoggedInAction;
+export type UserLoggedOutAction = {
+  type: 'USER_LOGGED_OUT';
+}
+
+export type LoginAction = UserLoggedInAction | UserLoggedOutAction;

@@ -8,3 +8,4 @@ export type ActionType =
     | 'INCREMENT_COUNTER'
     | 'DECREMENT_COUNTER'
     | 'USER_LOGGED_IN'
+    | 'USER_LOGGED_OUT'

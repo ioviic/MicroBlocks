@@ -9,7 +9,10 @@ const initialState: UserState = {
 };
 
 export default createReducer(initialState, {
-    USER_LOGGED_IN: (state: UserState, action: LoginAction) => {
-        return action.payload;
-    }
+  USER_LOGGED_IN: (state: UserState, action: LoginAction) => {
+      return action.payload;
+  },
+  USER_LOGGED_OUT: (state: UserState, action: LoginAction) => {
+    return initialState;
+  },
 });

@@ -5,7 +5,8 @@ import type { LoginConfig } from './LoginConfig';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
-    loginAction,
+  loginAction,
+  logoutAction
 } from './actions';
 
 import LoginForm from './LoginForm';
@@ -18,6 +19,7 @@ import type { UserState } from './actionTypes';
 
 type Props = {
   login: UserState,
+  logoutAction:() => any;
   loginAction:(credentials: FormData) => any,
 };
 
@@ -31,9 +33,15 @@ class Login extends Component<Props & Configuration> {
         return this.props.loginAction(data);
     };
 
+    logout = () => {
+      this.props.logoutAction();
+    }
+
   render() {
     return (
-      this.props.login.email ? <span> User: { this.props.login.email } </span> : <LoginForm submit={this.onSubmit} />
+      this.props.login.email
+        ? <button onClick={this.logout}> Logout User: { this.props.login.email } </button>
+        : <LoginForm submit={this.onSubmit} />
     );
   };
 }
@@ -45,7 +53,8 @@ const mapStateToProps = ({ login }: State) => ({
 const mapDispatchToProps = (dispatch: *) =>
     bindActionCreators(
         {
-            loginAction
+          loginAction,
+          logoutAction
         },
         dispatch
     );

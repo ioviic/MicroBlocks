@@ -7,6 +7,5 @@
 [lints]
 
 [options]
-module.name_mapper='^\(.*\)\.less$' -> '<PROJECT_ROOT>/CSSModule.js.flow'
 
 [strict]

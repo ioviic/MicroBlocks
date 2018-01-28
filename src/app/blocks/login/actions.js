@@ -8,9 +8,25 @@ export let userLoggedIn = (user: UserState): LoginAction => {
         payload: user
     };
 };
+export let userLoggedOut = (): LoginAction => {
+    return {
+        type: 'USER_LOGGED_OUT'
+    };
+};
 
 export const loginAction = (credentials): any => {
     return (dispatch: Dispatch, getState: GetState) => {
-        return api.user.login(credentials).then(user => dispatch(userLoggedIn(user)));
+        return api.user.login(credentials)
+          .then(user => {
+            localStorage.userJWT = user.token;
+            dispatch(userLoggedIn(user));
+          });
     };
+};
+
+export const logoutAction = () => {
+  return (dispatch: Dispatch, getState: GetState) => {
+      localStorage.removeItem('userJWT');
+      dispatch(userLoggedOut());
+  };
 };
