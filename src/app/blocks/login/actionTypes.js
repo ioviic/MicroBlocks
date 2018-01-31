@@ -12,4 +12,5 @@ export type UserLoggedOutAction = {
   type: 'USER_LOGGED_OUT';
 }
 
-export type LoginAction = UserLoggedInAction | UserLoggedOutAction;
+export type LoginAction = UserLoggedInAction | UserLoggedOutAction
+
