@@ -1,3 +1,5 @@
+// @flow
+
 export type UserState = {
   email: string;
   token: string;
@@ -13,4 +15,3 @@ export type UserLoggedOutAction = {
 }
 
 export type LoginAction = UserLoggedInAction | UserLoggedOutAction
-

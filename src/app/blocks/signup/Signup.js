@@ -1,47 +1,41 @@
 // @flow
 import React, { Component } from 'react';
 import injectConfigs from '../../../configurations/ConfigurationHOC';
-import type { LoginConfig } from './LoginConfig';
+import type { SignupConfig } from './SignupConfig';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
-  loginAction,
-  logoutAction
+  signupAction,
 } from './actions';
 
-import LoginForm from './LoginForm';
+import SignupForm from './SignupForm';
 
 import type { State } from '../../../stateManagement/types/state';
 import type { FormData } from './actions';
 import type { UserState } from './actionTypes';
 // $FlowFixMe
-// import styles from '../../customization/styles/Login.less';
+// import styles from '../../customization/styles/Signup.less';
 
 type Props = {
   login: UserState,
-  logoutAction:() => any;
-  loginAction:(credentials: FormData) => any,
+  signupAction:(credentials: FormData) => any,
 };
 
 export type Configuration = {
-    configuration: LoginConfig
+    configuration: SignupConfig
 }
 
-class Login extends Component<Props & Configuration> {
+class Signup extends Component<Props & Configuration> {
 
     onSubmit = (data: FormData) => {
-        return this.props.loginAction(data);
-    };
-
-    logout = () => {
-      this.props.logoutAction();
+        return this.props.signupAction(data);
     };
 
   render() {
     return (
       this.props.login.email
-        ? <button onClick={this.logout}> Logout User: { this.props.login.email } </button>
-        : <LoginForm submit={this.onSubmit} />
+        ? ''
+        : <SignupForm submit={this.onSubmit} />
     );
   };
 }
@@ -53,10 +47,9 @@ const mapStateToProps = ({ login }: State) => ({
 const mapDispatchToProps = (dispatch: *) =>
     bindActionCreators(
         {
-          loginAction,
-          logoutAction
+          signupAction,
         },
         dispatch
     );
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectConfigs(Login));
+export default connect(mapStateToProps, mapDispatchToProps)(injectConfigs(Signup));

@@ -1,7 +1,7 @@
 // @flow
 
 import createReducer from '../../../stateManagement/createReducer';
-import type { LoginAction, UserState } from './actionTypes';
+import type { UserLoggedInAction, UserState } from './actionTypes';
 
 const initialState: UserState = {
     email: '',
@@ -9,10 +9,10 @@ const initialState: UserState = {
 };
 
 export default createReducer(initialState, {
-  USER_LOGGED_IN: (state: UserState, action: LoginAction) => {
+  USER_LOGGED_IN: (state: UserState, action: UserLoggedInAction): UserState => {
       return action.payload;
   },
-  USER_LOGGED_OUT: (state: UserState, action: LoginAction) => {
+  USER_LOGGED_OUT: (): UserState => {
     return initialState;
   },
 });

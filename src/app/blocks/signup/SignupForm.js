@@ -3,14 +3,14 @@ import React, { Component } from 'react';
 import injectConfigs from '../../../configurations/ConfigurationHOC';
 
 // $FlowFixMe
-import styles from '../../customization/styles/Login.less';
+import styles from '../../customization/styles/Signup.less';
 import { Form, Button, Message } from 'semantic-ui-react';
 import Validator from 'validator';
 import InlineError from './InlineError';
-import type { Configuration } from './Login';
+import type { Configuration } from './Signup';
 import type { FormData } from './actions';
 
-type LoginState = {
+type SignupState = {
   data: FormData;
   loading: boolean;
   errors: FormData & {global: string};
@@ -20,8 +20,8 @@ type Props = {
   submit: (data: FormData) => any,
 };
 
-class LoginForm extends Component<Props & Configuration, LoginState> {
-  state: LoginState = {
+class SignupForm extends Component<Props & Configuration, SignupState> {
+  state: SignupState = {
     data: {
       email: '',
       password: ''
@@ -61,8 +61,8 @@ class LoginForm extends Component<Props & Configuration, LoginState> {
   render () {
     const { data, errors, loading } = this.state;
     return (
-      <Form className={styles.login} onSubmit={this.onSubmit} loading={loading}>
-        <h1> Login </h1>
+      <Form className={styles.signup} onSubmit={this.onSubmit} loading={loading}>
+        <h1> Signup </h1>
         {errors.global &&
           <Message negative>
             <Message.Header>Something went wrong!</Message.Header>
@@ -89,10 +89,10 @@ class LoginForm extends Component<Props & Configuration, LoginState> {
             onChange={this.onChange}/>
           {errors.password && <InlineError error={errors.password}/>}
         </Form.Field>
-        <Button primary> Login </Button>
+        <Button primary> Signup </Button>
       </Form>
     );
   }
 }
 
-export default injectConfigs(LoginForm);
+export default injectConfigs(SignupForm);

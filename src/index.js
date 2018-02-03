@@ -10,5 +10,7 @@ const appBlock = SDK.getBlocks()[0];
 SDK.placeBlock(appBlock, '#root');
 const loginBlock = SDK.getBlocks()[1];
 SDK.placeBlock(loginBlock, '#Login');
+const signupBlock = SDK.getBlocks()[2];
+SDK.placeBlock(signupBlock, '#Signup');
 
 registerServiceWorker();

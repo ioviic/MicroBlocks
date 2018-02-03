@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import type { Action, ActionType } from './types/actionTypes';
 
