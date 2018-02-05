@@ -44,7 +44,7 @@ class SignupForm extends Component<Props & Configuration, SignupState> {
       this.setState({ loading: true });
       this.props.submit(this.state.data)
         .catch(err => {
-          this.setState({ errors: { ...errors, global: err.response.data.errors.global }, loading: false } );
+          this.setState({ errors: err.response.data.errors, loading: false } );
         } );
     }
   };
