@@ -1,40 +1,44 @@
 // @flow
-import * as ReactDOM from 'react-dom';
-import * as React from 'react';
+import ReactDOM from 'react-dom';
+import React from 'react';
 import type { Element, ComponentType } from 'react';
 import { ConfigurationProvider } from '../configurations/index';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
-import configureStore from '../stateManagement/store/createStore';
 
-export default class Block {
+export class Block {
     name: string;
     block: ComponentType<any>;
     configurations: any;
     translations: any;
+    store: any;
 
-    constructor(name: string, element: ComponentType<any>, configuration: any, translations: any) {
+    constructor(name: string, element: ComponentType<any>, configuration: any, translations: any, store: any) {
         this.name = name;
         this.block = element;
         this.configurations = configuration;
         this.translations = translations;
+        this.store = store;
     }
 
     show(selector: string) {
         const node = document.querySelector(selector);
-        node && ReactDOM.render(this.hoc(this.block), node);
+        node && ReactDOM.render(this.wrapperHOC(), node);
     }
 
-    hoc = (Block: ComponentType<any>): Element<any> => {
-        return (
-                <ConfigurationProvider configuration = { JSON.parse(this.configurations) }>
-                    <Provider store={ configureStore() }>
-                        <IntlProvider locale={'en'} messages={this.translations['en']}>
-                            <Block />
-                        </IntlProvider>
-                    </Provider>
-                </ConfigurationProvider>
-            );
+    wrapperHOC = (): Element<any> => {
+      const Block= this.block;
+
+      return (
+        <ConfigurationProvider configuration = { JSON.parse(this.configurations) }>
+          <Provider store={ this.store }>
+            <IntlProvider locale={'en'} messages={this.translations['en']}>
+              <Block />
+            </IntlProvider>
+          </Provider>
+        </ConfigurationProvider>
+      );
     };
 }
 
+export default Block;

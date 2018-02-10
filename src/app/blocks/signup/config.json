@@ -1,0 +1,8 @@
+{
+  "block": {
+    "name": "Signup",
+    "configurations": {
+      "test": true
+    }
+  }
+}

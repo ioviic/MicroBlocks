@@ -2,10 +2,13 @@
 import Block from './Block';
 import BlockPromise from './BlockPromise';
 import { addLocales } from './locale';
+import configureStore from '../stateManagement/store/createStore';
 
-export default class SDK {
+export class SDK {
     blocks: BlockPromise[];
     blocksInfo: [];
+    store: {};
+
     constructor(blocksMeta: any) {
         this.blocks = [];
         this.blocksInfo = blocksMeta;
@@ -13,10 +16,11 @@ export default class SDK {
     }
 
     build() {
+        this.store = configureStore();
         this.blocks = this.blocksInfo.map((item) =>{
             const promise = item.com.then((w) => {
                 const component = w.default;
-                return new Block(item.name, component, item.configurations, JSON.parse(item.messages));
+                return new Block(item.name, component, item.configurations, JSON.parse(item.messages), this.store);
             });
             return new BlockPromise(item.name, promise);
         });
@@ -36,4 +40,18 @@ export default class SDK {
             return block.name;
         });
     }
+
+    getBlock(blockName: string): Promise<any> {
+
+      const block = this.blocks.find( (item) => {
+        return item.name === blockName;
+      });
+
+      (!block) && console.error('Cannot find Block: <' + blockName + '/> in SDK. Please make sure this block is added in MicroBlocks ecosystem');
+
+      return (block) ? block.promise() : Promise.reject({err: 'No Such Block'});
+    }
+
 }
+
+export default SDK;

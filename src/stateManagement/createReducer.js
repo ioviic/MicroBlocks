@@ -1,10 +1,10 @@
-/* @flow */
+// @flow
 
-import type { Action, ActionType } from './types/actionsTypes';
+import type { Action, ActionType } from './types/actionTypes';
 
 type Reducer<S, A: Action> =(S, A) => S;
 
-export default function createReducer<S, A: *>(
+export default function createReducer<S, A: Action>(
     initialState: S,
     handlers: { [key: ActionType]: Reducer<S, A>}
 ): Reducer<S, A> {

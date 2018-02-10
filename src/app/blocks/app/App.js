@@ -14,10 +14,11 @@ import {
 } from './actions';
 
 import type { State } from '../../../stateManagement/types/state';
+// $FlowFixMe
 import styles from '../../customization/styles/App.less';
 
 type Props = {
-    counter: number,
+    app: number,
     increment: (amount: number) => mixed,
     decrement: (amount: number) => mixed,
     incrementIfEven: (amount: number) => mixed,
@@ -30,7 +31,7 @@ type Configuration = {
 export class App extends Component<Props & Configuration> {
   render() {
     return (
-      <div className={styles.App}>
+      <div className={`${styles.App}`}>
         <header className={styles.AppHeader}>
           <img src={logo} className={styles.AppLogo} alt="logo" />
           <h1 className={styles.AppTitle}>Welcome to React lessons</h1>
@@ -44,9 +45,9 @@ export class App extends Component<Props & Configuration> {
               <FormattedMessage id={locale.hello.id} defaultMessage={locale.hello.defaultMessage} />
           </p>
           <p className={styles.AppIntro}>
-              Counter: { this.props.counter }
+              Counter: { this.props.app }
           </p>
-
+            <div>
               <button key="increment" onClick={() => this.props.increment(1)}>
                   +
               </button>
@@ -59,13 +60,14 @@ export class App extends Component<Props & Configuration> {
               >
                   % 2 ? +
               </button>
+            </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ counter }: State) => ({
-    counter,
+const mapStateToProps = ({ app }: State) => ({
+    app,
 });
 
 const mapDispatchToProps = (dispatch: *) =>
