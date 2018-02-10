@@ -15,7 +15,7 @@ module.exports = function grabBlocks() {
         fs.readdirSync(path.join(root,blocksPath))
             .map((test) => {
                 return path.join(blocksPath, test);
-            }).map(function(test) {
+            }).forEach(function(test) {
                 if ( fs.statSync(path.join(root, test)).isFile() ) {
                     if ( path.extname(test) === '.bmf'  ) {
                         // $FlowFixMe
@@ -51,7 +51,7 @@ module.exports = function grabBlocks() {
                 if (configContent.block['name'] === block.name) {
                     return true;
                 } else {
-                    console.error('\x1b[31m', 'Add Configuration for \"' + block.name + '\" Block in config.json', '\x1b[37m');
+                    console.error('\x1b[31m', 'Add Configuration for <' + block.name + ' /> Block in config.json', '\x1b[37m');
                     return false;
                 }
             })

@@ -1,6 +1,6 @@
 /* eslint import/no-webpack-loader-syntax: off */
 // @flow
-import SDK from '../SDK/SDK';
+import { SDK } from '../SDK/SDK';
 // $FlowFixMe
 import grabBlocks from 'block-loader!';
 
@@ -20,7 +20,7 @@ export default class Packer {
         return this.SDK;
     }
 
-    getBlockMetaFiles(){
+    static getBlockMetaFiles(){
         console.log(grabBlocks);
     }
 

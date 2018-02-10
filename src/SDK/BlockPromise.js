@@ -1,7 +1,7 @@
 // @flow
 import Block from './Block';
 
-export default class BlockPromise {
+class BlockPromise {
     name: string;
     blockPromise: Promise<any>;
     block: Block;
@@ -18,4 +18,10 @@ export default class BlockPromise {
             return block;
         });
     }
+
+    promise(): Promise<any>{
+      return this.blockPromise
+    }
 }
+
+export default BlockPromise;
