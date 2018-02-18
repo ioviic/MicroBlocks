@@ -59,7 +59,8 @@ const styles = theme => ({
     zIndex: 1,
   },
   wrapper:{
-    zIndex: 4
+    zIndex: 4,
+    color:'white',
   },
   drawerHeader: theme.mixins.toolbar,
   background: {

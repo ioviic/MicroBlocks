@@ -9,6 +9,25 @@ type Props = {
 };
 
 const styles = theme => ({
+  item:{
+    padding: '10px 15px',
+    width: '100%',
+    float: 'left'
+  },
+
+  itemLink:{
+    WebkitTransition: 'all 300ms linear',
+    MozTransition: 'all 300ms linear',
+    OTransition: 'all 300ms linear',
+    MsTransition: 'all 300ms linear',
+    transition: 'all 300ms linear',
+    padding: '10px 15px',
+    borderRadius: '3px',
+    '&:hover': {
+      backgroundColor: '#00acc1',
+      boxShadow: '0 12px 20px -10px rgba(0,188,212,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(0,188,212,.2)',
+    }
+  },
 
   itemText: {
     color: '#FFFFFF',
@@ -33,7 +52,7 @@ class SidebarLinks extends Component<Props> {
             if(prop.redirect) return null;
             return (
               <NavLink to={prop.path} className={classes.item} activeClassName="active" key={key}>
-                <ListItem button>
+                <ListItem button className={classes.itemLink}>
                   <ListItemIcon className={classes.itemIcon}>
                     <prop.icon />
                   </ListItemIcon>

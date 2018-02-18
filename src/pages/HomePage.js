@@ -23,13 +23,16 @@ const styles = theme => ({
     position: 'relative',
     float: 'right',
     maxHeight: '100%',
+  },
+  container:{
+    padding:'30px 15px'
   }
 });
 
 const appRoutes = [
   { path: "/login", sidebarName: "List", navbarName: "Table List", icon: DraftsIcon , component: LoginView },
   { path: "/dashboard", sidebarName: "List2", navbarName: "Table List", icon: DraftsIcon , component: DashboardView },
-  { redirect: true, path: "/", to: "/table", navbarName: "Redirect" }
+  { redirect: true, path: "/", to: "/dashboard", navbarName: "Redirect" }
 ];
 
 const switchRoutes = (<Switch>
@@ -51,7 +54,7 @@ class HomePage extends React.Component {
     const { classes } = this.props;
     return (
     <div className={classes.pageWrapper}>
-      <BlockComponent block='Sidebar' appRoutes/>
+      <BlockComponent block='Sidebar'/>
       <div className={classes.mainPanel} ref='mainPanel'>
         <div className={classes.content}>
           <div className={classes.container}>
