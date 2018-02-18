@@ -2,11 +2,11 @@
 import Packer from '../packer/Packer';
 
 let ecoSystem;
+const packer = new Packer();
 
 export const run = () =>{
   if (!ecoSystem)
   {
-    const packer = new Packer();
     packer.buildSdk();
     ecoSystem = packer.startSDK();
   }

@@ -52,6 +52,10 @@ export class SDK {
       return (block) ? block.promise() : Promise.reject({err: 'No Such Block'});
     }
 
+    getInitialState(){
+        return configureStore().getState();
+    }
+
 }
 
 export default SDK;
