@@ -4,7 +4,7 @@ import SidebarLinks from './SidebarLinks';
 import { Drawer } from 'material-ui';
 import DraftsIcon from 'material-ui-icons/Drafts';
 import { withStyles } from 'material-ui/styles';
-import { decrement, increment, incrementIfEven } from './actions';
+import { toggleHeader } from './actions';
 import { bindActionCreators } from 'redux';
 import type { State } from '../../../stateManagement/types/state';
 import { connect } from 'react-redux';
@@ -17,10 +17,8 @@ import image from '../../customization/sidebar-2.jpg';
 const drawerWidth = 240;
 
 type Props = {
-  app: number,
-  increment: (amount: number) => mixed,
-  decrement: (amount: number) => mixed,
-  incrementIfEven: (amount: number) => mixed,
+  sidebar: boolean,
+  toggleHeader: () => mixed,
   classes: any,
 };
 
@@ -116,7 +114,13 @@ class Sidebar extends Component<Props & Configuration> {
             anchor={'left'}>
 
             <div className={classes.wrapper}>
+              {this.props.sidebar &&  <h1> Header </h1>}
               <SidebarLinks routes={appRoutes}/>
+              <div>
+                <button key="increment" onClick={() => this.props.toggleHeader()}>
+                  Toggle Header
+                </button>
+              </div>
             </div>
 
             {image !== undefined && <div className={classes.background} style={{backgroundImage: "url("+image+")"}} />}
@@ -125,16 +129,14 @@ class Sidebar extends Component<Props & Configuration> {
     );
   }
 }
-const mapStateToProps = ({ app }: State) => ({
-  app,
+const mapStateToProps = ({ sidebar }: State) => ({
+  sidebar,
 });
 
 const mapDispatchToProps = (dispatch: *) =>
   bindActionCreators(
     {
-      increment,
-      decrement,
-      incrementIfEven,
+      toggleHeader,
     },
     dispatch
   );

@@ -1,26 +1,18 @@
 import type { AppAction } from '../../../stateManagement/types/actionTypes';
 import type { Dispatch, GetState } from '../../../stateManagement/types/store';
 
-export let increment = (amount: number = 1): AppAction => {
+export let showHeader = (show: boolean = true): AppAction => {
     return {
-        type: 'INCREMENT_COUNTER',
-        payload: amount
+        type: 'SIDEBAR_SHOW_HEADER',
+        payload: show
     };
 };
 
-export let decrement = (amount: number = 1): AppAction => {
-    return {
-        type: 'DECREMENT_COUNTER',
-        payload: amount
-    };
-};
-
-export let incrementIfEven = (amount: number = 1): AppAction => {
+export let toggleHeader = (show: boolean = true): AppAction => {
     return (dispatch: Dispatch, getState: GetState) => {
-        const { app } = getState();
 
-        if (app % 2 === 0) {
-            dispatch(increment(amount));
-        }
+        const { sidebar } = getState();
+
+        dispatch(showHeader(!sidebar));
     };
 };
