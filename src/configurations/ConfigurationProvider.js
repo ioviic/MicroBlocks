@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react';
+import { Component } from 'react';
 import type { Node } from 'react';
 import { PropTypes } from 'prop-types';
 type Props = {
@@ -15,6 +15,7 @@ export class ConfigurationProvider extends Component<Props> {
     getChildContext() {
         return { configuration: this.props.configuration };
     }
+
     render() {
         return this.props.children;
     }
