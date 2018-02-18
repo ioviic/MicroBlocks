@@ -13,6 +13,6 @@ export let toggleHeader = (show: boolean = true): AppAction => {
 
         const { sidebar } = getState();
 
-        dispatch(showHeader(!sidebar));
+        dispatch(showHeader(!sidebar.showHeader));
     };
 };

@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 import SidebarLinks from './SidebarLinks';
 
-import { Drawer } from 'material-ui';
-import DraftsIcon from 'material-ui-icons/Drafts';
-import { withStyles } from 'material-ui/styles';
 import { toggleHeader } from './actions';
-import { bindActionCreators } from 'redux';
 import type { State } from '../../../stateManagement/types/state';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import injectConfigs from '../../../configurations/ConfigurationHOC';
+
 import SidebarConfig from './SidebarConfig';
-import LoginView from '../../../pages/LoginView';
-import DashboardView from '../../../pages/DashboardView';
+import injectConfigs from '../../../configurations/ConfigurationHOC';
+
+import { Drawer } from 'material-ui';
+import { withStyles } from 'material-ui/styles';
 import image from '../../customization/sidebar-2.jpg';
 
 const drawerWidth = 240;
 
 type Props = {
-  sidebar: boolean,
+  sidebar: *,
   toggleHeader: () => mixed,
   classes: any,
 };
@@ -25,12 +24,6 @@ type Props = {
 type Configuration = {
   configuration: SidebarConfig
 }
-
-const appRoutes = [
-  { path: "/login", sidebarName: "List", navbarName: "Table List", icon: DraftsIcon , component: LoginView },
-  { path: "/dashboard", sidebarName: "List2", navbarName: "Table List", icon: DraftsIcon , component: DashboardView },
-  { redirect: true, path: "/", to: "/table", navbarName: "Redirect" }
-];
 
 const styles = theme => ({
   root: {
@@ -114,8 +107,8 @@ class Sidebar extends Component<Props & Configuration> {
             anchor={'left'}>
 
             <div className={classes.wrapper}>
-              {this.props.sidebar &&  <h1> Header </h1>}
-              <SidebarLinks routes={appRoutes}/>
+              {this.props.sidebar.showHeader &&  <h1> Header </h1>}
+              <SidebarLinks routes={this.props.sidebar.routes}/>
               <div>
                 <button key="increment" onClick={() => this.props.toggleHeader()}>
                   Toggle Header
