@@ -27,7 +27,7 @@ export class Block {
     }
 
     wrapperHOC = (): Element<any> => {
-      const Block= this.block;
+      const Block = this.block;
 
       return (
         <ConfigurationProvider configuration = { JSON.parse(this.configurations) }>

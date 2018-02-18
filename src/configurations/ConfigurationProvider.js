@@ -16,7 +16,7 @@ export class ConfigurationProvider extends Component<Props> {
         return { configuration: this.props.configuration };
     }
     render() {
-        return <div>{ this.props.children }</div>;
+        return this.props.children;
     }
 }
 
