@@ -12,29 +12,30 @@ type State = {
 }
 
 function Comp(block){
-  return <div>{block.component}</div>;
+  return block.component;
+}
+
+function Loading(){
+  return <h1>Loading</h1>;
 }
 
 export class BlockComponent extends Component<Props, State>{
   state = {
     loading: true,
-    component: null
+    component: <Loading/>
   };
 
   componentDidMount()
   {
     SDK.getBlock(this.props.block)
-      .then((bock) =>{
-        this.setState({component: bock.wrapperHOC(), loading: false})
+      .then((block) =>{
+        this.setState({component: block.wrapperHOC(), loading: false})
       });
   };
 
   render(){
     return (
-      <div>
-        {this.state.loading && <h1>Loading...</h1>}
-        {!this.state.loading && this.state.component && <Comp component={this.state.component}/>}
-      </div>
+        <Comp component={this.state.component}/>
     );
   }
 }
