@@ -9,7 +9,7 @@ class DashboardView extends React.Component {
 
     return (
       <div>
-        test page 2
+        Dashboard page;
       </div>
     );
   }

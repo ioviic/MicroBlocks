@@ -9,94 +9,30 @@ import { withStyles } from 'material-ui/styles/index';
 import LoginView from './LoginView';
 import DraftsIcon from 'material-ui-icons/Drafts';
 import DashboardView from './DashboardView';
+
+const drawerWidth = 240;
 const styles = theme => ({
+  pageWrapper:{
+    position: 'relative',
+    top: '0',
+    height: '100vh',
+  },
   mainPanel:{
-    backgroundColor: 'blue'
+    width: `calc(100% - ${drawerWidth}px)`,
+    overflow: 'auto',
+    position: 'relative',
+    float: 'right',
+    maxHeight: '100%',
+  },
+  container:{
+    padding:'30px 15px'
   }
-  // root: {
-  //   width: '100%',
-  //   height: 430,
-  //   // marginTop: theme.spacing.unit * 3,
-  //   overflow: 'hidden',
-  // },
-  // appFrame: {
-  //   position: 'relative',
-  //   display: 'flex',
-  //   width: '100%',
-  //   height: '100%',
-  // },
-  // appBar: {
-  //   position: 'absolute',
-  //   width: `calc(100% - ${drawerWidth}px)`,
-  // },
-  // 'appBar-left': {
-  //   marginLeft: drawerWidth,
-  // },
-  // 'appBar-right': {
-  //   marginRight: drawerWidth,
-  // },
-  // drawerPaper: {
-  //   border: 'none',
-  //   top: '0',
-  //   bottom: '0',
-  //   left: '0',
-  //   position: 'fixed',
-  //   height: '100%',
-  //   width: drawerWidth,
-  //   zIndex: 1,
-  // },
-  // wrapper:{
-  //   zIndex: 4
-  // },
-  // drawerHeader: theme.mixins.toolbar,
-  // itemText: {
-  //   color: '#FFFFFF',
-  //   h3:{
-  //     color:'#fffff'
-  //   }
-  // },
-  //
-  // itemIcon: {
-  //   color: 'rgba(255, 255, 255, 0.8)',
-  // },
-  // background: {
-  //   position: 'absolute',
-  //   zIndex: '1',
-  //   height: '100%',
-  //   width: '100%',
-  //   display: 'block',
-  //   top: '0',
-  //   left: '0',
-  //   backgroundSize: 'cover',
-  //   backgroundPosition: 'center center',
-  //   '&:after': {
-  //     position: 'absolute',
-  //     zIndex: '3',
-  //     width: '100%',
-  //     height: '100%',
-  //     content: '""',
-  //     display: 'block',
-  //     background: '#000',
-  //     opacity: '.8',
-  //   }
-  // },
-  // content: {
-  //   backgroundColor: theme.palette.background.default,
-  //   width: '100%',
-  //   padding: theme.spacing.unit * 3,
-  //   height: 'calc(100% - 56px)',
-  //   marginTop: 56,
-  //   [theme.breakpoints.up('sm')]: {
-  //     height: 'calc(100% - 64px)',
-  //     marginTop: 64,
-  //   },
-  // },
 });
 
 const appRoutes = [
   { path: "/login", sidebarName: "List", navbarName: "Table List", icon: DraftsIcon , component: LoginView },
   { path: "/dashboard", sidebarName: "List2", navbarName: "Table List", icon: DraftsIcon , component: DashboardView },
-  { redirect: true, path: "/", to: "/table", navbarName: "Redirect" }
+  { redirect: true, path: "/", to: "/dashboard", navbarName: "Redirect" }
 ];
 
 const switchRoutes = (<Switch>
@@ -117,8 +53,8 @@ class HomePage extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-    <div>
-      <BlockComponent block='Sidebar' appRoutes/>
+    <div className={classes.pageWrapper}>
+      <BlockComponent block='Sidebar'/>
       <div className={classes.mainPanel} ref='mainPanel'>
         <div className={classes.content}>
           <div className={classes.container}>
@@ -126,7 +62,8 @@ class HomePage extends React.Component {
           </div>
         </div>
       </div>
-    </div>)
+    </div>
+    )
   }
 }
 
