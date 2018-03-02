@@ -8,6 +8,7 @@ import {
 import { withStyles } from 'material-ui/styles/index';
 import LoginView from './LoginView';
 import DraftsIcon from 'material-ui-icons/Drafts';
+import {Grid} from 'material-ui';
 import DashboardView from './DashboardView';
 
 const drawerWidth = 240;
@@ -16,6 +17,7 @@ const styles = theme => ({
     position: 'relative',
     top: '0',
     height: '100vh',
+    backgroundColor: '#eee'
   },
   mainPanel:{
     width: `calc(100% - ${drawerWidth}px)`,
@@ -25,7 +27,7 @@ const styles = theme => ({
     maxHeight: '100%',
   },
   container:{
-    padding:'30px 15px'
+    padding:'30px 30px'
   }
 });
 
@@ -56,11 +58,13 @@ class HomePage extends React.Component {
     <div className={classes.pageWrapper}>
       <BlockComponent block='Sidebar'/>
       <div className={classes.mainPanel} ref='mainPanel'>
-        <div className={classes.content}>
-          <div className={classes.container}>
+        <Grid container>
+          {/*<div className={classes.container}>*/}
+            <Grid item xs={12}>
             {switchRoutes}
-          </div>
-        </div>
+            </Grid>
+          {/*</div>*/}
+        </Grid>
       </div>
     </div>
     )

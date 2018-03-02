@@ -2,6 +2,6 @@
 
 import React from 'react';
 
-const InlineError = ({ error }: any) => <span style={{ color:'#ae5856' }}>{error}</span>;
+const InlineError = ({ error }: any) => <span style={{ color:'#f44336' }}>{error}</span>;
 
 export default  InlineError;
