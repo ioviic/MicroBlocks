@@ -4,9 +4,7 @@ import injectConfigs from '../../../configurations/ConfigurationHOC';
 import {
   withStyles, Card, FormControl, InputLabel, Input,Button, Grid
 } from 'material-ui';
-import {
-  Clear, Check
-} from 'material-ui-icons';
+import { Clear } from 'material-ui-icons';
 // $FlowFixMe
 // import styles from '../../customization/styles/Login.less';
 // import { Form, Message } from 'semantic-ui-react';
@@ -35,6 +33,12 @@ const styles = theme => ({
     right: '0',
     top: '18px',
     color: '#f44336'
+  },
+  labelError:{
+    fontSize: '11px',
+    color: '#f44336',
+    float:'left',
+    width: '100%'
   },
 card: {
   display: 'inline-block',
@@ -95,7 +99,6 @@ class LoginForm extends Component<Props & Configuration, LoginState> {
   onSubmit = (e) => {
     e.preventDefault();
     const errors = this.validate(this.state.data);
-    debugger;
     this.setState({ errors });
 
     if (!errors.email && !errors.password) {
@@ -117,18 +120,14 @@ class LoginForm extends Component<Props & Configuration, LoginState> {
   };
 
   render () {
-    const { data, errors, loading } = this.state;
+    const { data, errors } = this.state;
     const { classes } = this.props;
     return (
       <Grid container className={classes.login}>
       <Card className={classes.card}>
       <form className={styles.login} onSubmit={this.onSubmit}>
         <h1> Login </h1>
-        {/*{errors.global &&*/}
-          {/*<Message negative>*/}
-            {/*<Message.Header>Something went wrong!</Message.Header>*/}
-            {/*<p>{ errors.global }</p>*/}
-          {/*</Message>}*/}
+        {errors.global && <InlineError className={classes.labelError} error={errors.global}/>}
 
         <FormControl error={errors.email}>
           <InputLabel>
@@ -145,8 +144,8 @@ class LoginForm extends Component<Props & Configuration, LoginState> {
             value={data.email}
             onChange={this.onChange}
           />
-          {errors.email && <Clear className={classes.labelClear + " " + classes.labelRootError}/>}
-          {errors.email && <InlineError error={errors.email}/>}
+          {errors.email && <Clear className={classes.labelClear}/>}
+          {errors.email && <InlineError className={classes.labelError} error={errors.email}/>}
         </FormControl>
         <br/>
         <FormControl error={errors.password}>
@@ -164,7 +163,7 @@ class LoginForm extends Component<Props & Configuration, LoginState> {
             value={data.password}
             onChange={this.onChange}
           />
-          {errors.password && <InlineError error={errors.password}/>}
+          {errors.password && <InlineError className={classes.labelError} error={errors.password}/>}
         </FormControl>
         <br/>
         <Button type="submit" className={classes.button} variant="raised" onClick={this.onSubmit}> Login </Button>
