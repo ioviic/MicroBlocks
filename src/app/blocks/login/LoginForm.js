@@ -129,7 +129,7 @@ class LoginForm extends Component<Props & Configuration, LoginState> {
         <h1> Login </h1>
         {errors.global && <InlineError className={classes.labelError} error={errors.global}/>}
 
-        <FormControl error={errors.email}>
+        <FormControl error={!!errors.email}>
           <InputLabel>
             {"Email"}
           </InputLabel>
@@ -148,7 +148,7 @@ class LoginForm extends Component<Props & Configuration, LoginState> {
           {errors.email && <InlineError className={classes.labelError} error={errors.email}/>}
         </FormControl>
         <br/>
-        <FormControl error={errors.password}>
+        <FormControl error={!!errors.password}>
           <InputLabel>
             {"Password"}
           </InputLabel>
