@@ -9,13 +9,14 @@ type Props = {
 };
 
 const styles = theme => ({
-  item:{
+  itemLink:{
     padding: '10px 15px',
-    width: '100%',
-    float: 'left'
+    display: 'block',
+    position: 'relative',
+    textDecoration: 'none'
   },
 
-  itemLink:{
+  item:{
     WebkitTransition: 'all 300ms linear',
     MozTransition: 'all 300ms linear',
     OTransition: 'all 300ms linear',
@@ -23,6 +24,7 @@ const styles = theme => ({
     transition: 'all 300ms linear',
     padding: '10px 15px',
     borderRadius: '3px',
+    width:'auto',
     '&:hover': {
       backgroundColor: '#00acc1',
       boxShadow: '0 12px 20px -10px rgba(0,188,212,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(0,188,212,.2)',
@@ -51,8 +53,8 @@ class SidebarLinks extends Component<Props> {
           routes.map((prop,key) => {
             if(prop.redirect) return null;
             return (
-              <NavLink to={prop.path} className={classes.item} activeClassName="active" key={key}>
-                <ListItem button className={classes.itemLink}>
+              <NavLink to={prop.path} className={classes.itemLink} activeClassName="active" key={key}>
+                <ListItem button className={classes.item}>
                   <ListItemIcon className={classes.itemIcon}>
                     <prop.icon />
                   </ListItemIcon>
