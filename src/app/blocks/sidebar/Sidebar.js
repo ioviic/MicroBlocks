@@ -26,28 +26,6 @@ type Configuration = {
 }
 
 const styles = theme => ({
-  root: {
-    width: '100%',
-    height: 430,
-    // marginTop: theme.spacing.unit * 3,
-    overflow: 'hidden',
-  },
-  appFrame: {
-    position: 'relative',
-    display: 'flex',
-    width: '100%',
-    height: '100%',
-  },
-  appBar: {
-    position: 'absolute',
-    width: `calc(100% - ${drawerWidth}px)`,
-  },
-  'appBar-left': {
-    marginLeft: drawerWidth,
-  },
-  'appBar-right': {
-    marginRight: drawerWidth,
-  },
   drawerPaper: {
     border: 'none',
     top: '0',
@@ -62,7 +40,6 @@ const styles = theme => ({
     zIndex: 4,
     color:'white',
   },
-  drawerHeader: theme.mixins.toolbar,
   background: {
     position: 'absolute',
     zIndex: '1',
@@ -83,18 +60,7 @@ const styles = theme => ({
       background: '#000',
       opacity: '.8',
     }
-  },
-  content: {
-    backgroundColor: theme.palette.background.default,
-    width: '100%',
-    padding: theme.spacing.unit * 3,
-    height: 'calc(100% - 56px)',
-    marginTop: 56,
-    [theme.breakpoints.up('sm')]: {
-      height: 'calc(100% - 64px)',
-      marginTop: 64,
-    },
-  },
+  }
 });
 
 class Sidebar extends Component<Props & Configuration> {
