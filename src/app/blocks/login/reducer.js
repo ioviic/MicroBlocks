@@ -8,7 +8,16 @@ const initialState: UserState = {
     token: ''
 };
 
-export default createReducer(initialState, {
+const token = () => {
+  if (global.localStorage.userJWT){
+    return global.localStorage.userJWT;
+  }
+  return '';
+};
+
+const startState: UserState = {...initialState, token: token()};
+
+export default createReducer(startState, {
   USER_LOGGED_IN: (state: UserState, action: UserLoggedInAction): UserState => {
       return action.payload;
   },

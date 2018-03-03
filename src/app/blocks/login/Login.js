@@ -42,8 +42,8 @@ class Login extends Component<Props & Configuration> {
 
   render() {
     return (
-      this.props.login.email
-        ? <Button onClick={this.logout}> Logout User: { this.props.login.email } </Button>
+      this.props.login.token
+        ? <Button onClick={this.logout} variant="raised"> Logout User </Button>
         : <LoginForm submit={this.onSubmit} />
     );
   };
