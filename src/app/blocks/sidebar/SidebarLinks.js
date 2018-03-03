@@ -3,46 +3,12 @@ import { List, ListItem, ListItemText, ListItemIcon} from 'material-ui';
 import { NavLink } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles/index';
 
+import { SideBarLinksStyles as styles} from '../../customization/styles/Sidebar';
+
 type Props = {
   routes: [],
   classes: any,
 };
-
-const styles = theme => ({
-  
-  itemLink:{
-    padding: '10px 15px',
-    display: 'block',
-    position: 'relative',
-    textDecoration: 'none'
-  },
-
-  item:{
-    WebkitTransition: 'all 300ms linear',
-    MozTransition: 'all 300ms linear',
-    OTransition: 'all 300ms linear',
-    MsTransition: 'all 300ms linear',
-    transition: 'all 300ms linear',
-    padding: '10px 15px',
-    borderRadius: '3px',
-    width:'auto',
-    '&:hover': {
-      backgroundColor: '#00acc1',
-      boxShadow: '0 12px 20px -10px rgba(0,188,212,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(0,188,212,.2)',
-    }
-  },
-
-  itemText: {
-    color: '#FFFFFF',
-    h3:{
-      color:'#fffff'
-    }
-  },
-
-  itemIcon: {
-    color: 'rgba(255, 255, 255, 0.8)',
-  },
-});
 
 class SidebarLinks extends Component<Props> {
   render() {

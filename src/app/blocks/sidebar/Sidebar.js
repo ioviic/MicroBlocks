@@ -12,9 +12,7 @@ import injectConfigs from '../../../configurations/ConfigurationHOC';
 import { Drawer } from 'material-ui';
 import { withStyles } from 'material-ui/styles';
 import image from '../../customization/sidebar-2.jpg';
-
-const drawerWidth = 240;
-
+import { SideBarStyles as styles } from '../../customization/styles/Sidebar';
 type Props = {
   sidebar: *,
   toggleHeader: () => mixed,
@@ -24,44 +22,6 @@ type Props = {
 type Configuration = {
   configuration: SidebarConfig
 }
-
-const styles = theme => ({
-  drawerPaper: {
-    border: 'none',
-    top: '0',
-    bottom: '0',
-    left: '0',
-    position: 'fixed',
-    height: '100%',
-    width: drawerWidth,
-    zIndex: 1,
-  },
-  wrapper:{
-    zIndex: 4,
-    color:'white',
-  },
-  background: {
-    position: 'absolute',
-    zIndex: '1',
-    height: '100%',
-    width: '100%',
-    display: 'block',
-    top: '0',
-    left: '0',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center center',
-    '&:after': {
-      position: 'absolute',
-      zIndex: '3',
-      width: '100%',
-      height: '100%',
-      content: '""',
-      display: 'block',
-      background: '#000',
-      opacity: '.8',
-    }
-  }
-});
 
 class Sidebar extends Component<Props & Configuration> {
   render() {
