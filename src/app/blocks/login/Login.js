@@ -4,13 +4,11 @@ import injectConfigs from '../../../configurations/ConfigurationHOC';
 import type { LoginConfig } from './LoginConfig';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Redirect } from 'react-router-dom';
 import {
   loginAction,
   logoutAction
 } from './actions';
-import {
-Button
-} from 'material-ui';
 
 import LoginForm from './LoginForm';
 
@@ -43,7 +41,8 @@ class Login extends Component<Props & Configuration> {
   render() {
     return (
       this.props.login.token
-        ? <Button onClick={this.logout} variant="raised"> Logout User </Button>
+        ? <Redirect to="/" />
+        // ? <Button onClick={this.logout} variant="raised"> Logout User </Button>
         : <LoginForm submit={this.onSubmit} />
     );
   };
