@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import SidebarConfig from './SidebarConfig';
 import injectConfigs from '../../../configurations/ConfigurationHOC';
 
-import { Drawer, Avatar, ButtonBase } from 'material-ui';
+import { Drawer, Avatar, ButtonBase, Menu, MenuItem } from 'material-ui';
 import image from '../../customization/sidebar-2.jpg';
 import { withStyles } from 'material-ui/styles';
 import { SideBarStyles as styles } from '../../customization/styles/Sidebar';
@@ -23,13 +23,31 @@ type Props = {
   classes: any,
 };
 
+type SidebarState = {
+  anchorEl: *;
+}
+
 type Configuration = {
   configuration: SidebarConfig
 }
 
-class Sidebar extends Component<Props & Configuration> {
+class Sidebar extends Component<Props & Configuration, SidebarState> {
+  state:SidebarState = {
+    anchorEl: null,
+  };
+
+  handleClick = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleLogoutClick = event => {
+    this.setState({ anchorEl: null});
+    this.props.logoutAction();
+  };
+
   render() {
     const { classes } = this.props;
+    const { anchorEl } = this.state;
 
     return (
           <Drawer
@@ -46,13 +64,34 @@ class Sidebar extends Component<Props & Configuration> {
                 </button>
               </div>
               {this.props.login.token &&
-                <ButtonBase className={classes.userChip} onClick={this.props.logoutAction}>
+                <div>
+                <ButtonBase className={classes.userChip} onClick={this.handleClick}>
                   <div className={classes.userInfo}>
                     <span className={classes.userName}>{this.props.login.email}</span>
                     <span className={classes.userEmail}>{this.props.login.email}</span>
                   </div>
                   <Avatar className={classes.userAvatar}>MB</Avatar>
                 </ButtonBase>
+                <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                open={!!anchorEl}
+                onClose={this.handleClose}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'right',
+                }}
+                transformOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                getContentAnchorEl={null}
+                >
+                <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                <MenuItem onClick={this.handleLogoutClick}>Logout</MenuItem>
+                </Menu>
+                </div>
               }
             </div>
 
