@@ -12,9 +12,7 @@ import injectConfigs from '../../../configurations/ConfigurationHOC';
 import { Drawer } from 'material-ui';
 import { withStyles } from 'material-ui/styles';
 import image from '../../customization/sidebar-2.jpg';
-
-const drawerWidth = 240;
-
+import { SideBarStyles as styles } from '../../customization/styles/Sidebar';
 type Props = {
   sidebar: *,
   toggleHeader: () => mixed,
@@ -24,78 +22,6 @@ type Props = {
 type Configuration = {
   configuration: SidebarConfig
 }
-
-const styles = theme => ({
-  root: {
-    width: '100%',
-    height: 430,
-    // marginTop: theme.spacing.unit * 3,
-    overflow: 'hidden',
-  },
-  appFrame: {
-    position: 'relative',
-    display: 'flex',
-    width: '100%',
-    height: '100%',
-  },
-  appBar: {
-    position: 'absolute',
-    width: `calc(100% - ${drawerWidth}px)`,
-  },
-  'appBar-left': {
-    marginLeft: drawerWidth,
-  },
-  'appBar-right': {
-    marginRight: drawerWidth,
-  },
-  drawerPaper: {
-    border: 'none',
-    top: '0',
-    bottom: '0',
-    left: '0',
-    position: 'fixed',
-    height: '100%',
-    width: drawerWidth,
-    zIndex: 1,
-  },
-  wrapper:{
-    zIndex: 4,
-    color:'white',
-  },
-  drawerHeader: theme.mixins.toolbar,
-  background: {
-    position: 'absolute',
-    zIndex: '1',
-    height: '100%',
-    width: '100%',
-    display: 'block',
-    top: '0',
-    left: '0',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center center',
-    '&:after': {
-      position: 'absolute',
-      zIndex: '3',
-      width: '100%',
-      height: '100%',
-      content: '""',
-      display: 'block',
-      background: '#000',
-      opacity: '.8',
-    }
-  },
-  content: {
-    backgroundColor: theme.palette.background.default,
-    width: '100%',
-    padding: theme.spacing.unit * 3,
-    height: 'calc(100% - 56px)',
-    marginTop: 56,
-    [theme.breakpoints.up('sm')]: {
-      height: 'calc(100% - 64px)',
-      marginTop: 64,
-    },
-  },
-});
 
 class Sidebar extends Component<Props & Configuration> {
   render() {
