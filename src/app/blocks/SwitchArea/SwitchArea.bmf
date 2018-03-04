@@ -1,0 +1,7 @@
+let path = require('path');
+
+module.exports = {
+    type: "Block",
+    name: "SwitchArea",
+    path: path.join(__dirname, "SwitchArea"),
+};
