@@ -11,8 +11,10 @@ import injectConfigs from '../../../configurations/ConfigurationHOC';
 
 import { Drawer } from 'material-ui';
 import { withStyles } from 'material-ui/styles';
+
 import image from '../../customization/sidebar-2.jpg';
 import { SideBarStyles as styles } from '../../customization/styles/Sidebar';
+
 type Props = {
   sidebar: *,
   toggleHeader: () => mixed,

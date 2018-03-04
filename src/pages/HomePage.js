@@ -12,6 +12,7 @@ import {Grid} from 'material-ui';
 import DashboardView from './DashboardView';
 
 const drawerWidth = 240;
+
 const styles = theme => ({
   pageWrapper:{
     position: 'relative',
