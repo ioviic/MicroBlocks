@@ -45,6 +45,10 @@ class Sidebar extends Component<Props & Configuration, SidebarState> {
     this.props.logoutAction();
   };
 
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
+
   render() {
     const { classes } = this.props;
     const { anchorEl } = this.state;
