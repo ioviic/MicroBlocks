@@ -1,0 +1,9 @@
+{
+  "block": {
+    "name": "App",
+    "configurations": {
+      "appTitle": "Starting on Feb 1",
+      "appSubTitle": "Hello World"
+    }
+  }
+}
