@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import SidebarConfig from './SidebarConfig';
 import injectConfigs from '../../../configurations/ConfigurationHOC';
 
+import { Redirect } from 'react-router-dom';
 import { Drawer, Avatar, ButtonBase, Menu, MenuItem } from 'material-ui';
 import image from '../../customization/sidebar-2.jpg';
 import { withStyles } from 'material-ui/styles';
@@ -25,6 +26,7 @@ type Props = {
 
 type SidebarState = {
   anchorEl: *;
+  redirect: boolean;
 }
 
 type Configuration = {
@@ -34,6 +36,7 @@ type Configuration = {
 class Sidebar extends Component<Props & Configuration, SidebarState> {
   state:SidebarState = {
     anchorEl: null,
+    redirect: false
   };
 
   handleClick = event => {
@@ -41,8 +44,8 @@ class Sidebar extends Component<Props & Configuration, SidebarState> {
   };
 
   handleLogoutClick = event => {
-    this.setState({ anchorEl: null});
     this.props.logoutAction();
+    this.setState({ anchorEl: null, redirect: true});
   };
 
   handleClose = () => {
@@ -51,7 +54,7 @@ class Sidebar extends Component<Props & Configuration, SidebarState> {
 
   render() {
     const { classes } = this.props;
-    const { anchorEl } = this.state;
+    const { anchorEl, redirect } = this.state;
 
     return (
           <Drawer
@@ -97,6 +100,7 @@ class Sidebar extends Component<Props & Configuration, SidebarState> {
                 </Menu>
                 </div>
               }
+              {!this.props.login.token && redirect && <Redirect to='/login'/>}
             </div>
 
             {image !== undefined && <div className={classes.background} style={{backgroundImage: "url("+image+")"}} />}

@@ -41,7 +41,7 @@ class Login extends Component<Props & Configuration> {
   render() {
     return (
       this.props.login.token
-        ? <Redirect to="/" />
+        ? <Redirect to="/dashboard" />
         // ? <Button onClick={this.logout} variant="raised"> Logout User </Button>
         : <LoginForm submit={this.onSubmit} />
     );
