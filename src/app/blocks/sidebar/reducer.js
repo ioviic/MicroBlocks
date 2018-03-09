@@ -5,7 +5,7 @@ import DraftsIcon from 'material-ui-icons/Drafts';
 const appRoutes = [
   { path: "/login", sidebarName: "Login", icon: DraftsIcon },
   { path: "/dashboard", sidebarName: "Dashboard", icon: DraftsIcon },
-  { redirect: true, path: "/", to: "/dashboard" }
+  { redirect: true, path: "/", to: "/login" }
 ];
 
 type State = {
