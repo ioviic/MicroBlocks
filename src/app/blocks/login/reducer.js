@@ -8,14 +8,17 @@ const initialState: UserState = {
     token: ''
 };
 
-const token = () => {
-  if (global.localStorage.userJWT){
-    return global.localStorage.userJWT;
-  }
-  return '';
+const localState = () => {
+  let token = (global.localStorage.userJWT) ? global.localStorage.userJWT : '';
+  let email = (global.localStorage.userEmail) ? global.localStorage.userEmail : '';
+
+  return {
+    token: token,
+    email: email
+  };
 };
 
-const startState: UserState = {...initialState, token: token()};
+const startState: UserState = localState();
 
 export default createReducer(startState, {
   USER_LOGGED_IN: (state: UserState, action: UserLoggedInAction): UserState => {

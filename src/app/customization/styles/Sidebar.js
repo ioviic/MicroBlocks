@@ -46,11 +46,12 @@ export const SideBarStyles = theme => ({
   },
   userInfo:{
     width: 'calc(100% - 40px)',
-    float: 'left'
+    float: 'left',
+    paddingTop: '3px'
   },
   userName:{
     float: 'left',
-    fontSize: '15px',
+    fontSize: '14px',
     whiteSpace: 'nowrap',
     width: '100%',
     overflow: 'hidden',
@@ -59,7 +60,7 @@ export const SideBarStyles = theme => ({
   },
   userEmail:{
     float: 'left',
-    fontSize: '12px',
+    fontSize: '11px',
     color: 'gray',
     whiteSpace: 'nowrap',
     width: '100%',

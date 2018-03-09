@@ -27,6 +27,7 @@ export const loginAction = (credentials: FormData ): any => {
     return api.user.login(credentials)
       .then(user => {
         global.localStorage.userJWT = user.token;
+        global.localStorage.userEmail = user.email;
         dispatch(userLoggedIn(user));
       });
   };
