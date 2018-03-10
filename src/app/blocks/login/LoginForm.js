@@ -79,27 +79,36 @@ class LoginForm extends Component<Props & Configuration, LoginState> {
           />
           <CardContent>
             <form className={styles.login} onSubmit={this.onSubmit}>
+              <Grid container spacing={24}>
               {errors.global && <InlineError className={classes.labelError} error={errors.global}/>}
-              <FormControl error={!!errors.email}>
-                <InputLabel>
-                  {"Email"}
-                </InputLabel>
-                <Input
-                  classes={{
-                    disabled: classes.disabled,
-                    underline: classes.underline,
-                  }}
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={data.email}
-                  onChange={this.onChange}
-                />
-                {errors.email && <Clear className={classes.labelClear}/>}
-                {errors.email && <InlineError className={classes.labelError} error={errors.email}/>}
-              </FormControl>
-              <br/>
-              <FormControl error={!!errors.password}>
+              <Grid item lg={4} md={6} sm={12}>
+                <FormControl
+                  error={!!errors.email}
+                  classes={{ root: classes.formControl }}
+                >
+                  <InputLabel>
+                    {"Email"}
+                  </InputLabel>
+                  <Input
+                    classes={{
+                      disabled: classes.disabled,
+                      underline: classes.underline,
+                    }}
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={data.email}
+                    onChange={this.onChange}
+                  />
+                  {errors.email && <Clear className={classes.labelClear}/>}
+                  {errors.email && <InlineError className={classes.labelError} error={errors.email}/>}
+                </FormControl>
+              </Grid>
+              <Grid  item lg={4} md={6} sm={12}>
+              <FormControl
+                error={!!errors.password}
+                classes={{ root: classes.formControl }}
+              >
                 <InputLabel>
                   {"Password"}
                 </InputLabel>
@@ -116,8 +125,11 @@ class LoginForm extends Component<Props & Configuration, LoginState> {
                 />
                 {errors.password && <InlineError className={classes.labelError} error={errors.password}/>}
               </FormControl>
-              <br/>
-              <Button type="submit" className={classes.button} variant="raised" onClick={this.onSubmit}> Login </Button>
+              </Grid>
+              <Grid item lg={4} md={6} sm={12}>
+                <Button type="submit" className={classes.button} variant="raised" onClick={this.onSubmit}> Login </Button>
+              </Grid>
+              </Grid>
             </form>
           </CardContent>
         </Card>
