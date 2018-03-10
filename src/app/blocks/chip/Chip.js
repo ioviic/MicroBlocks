@@ -1,18 +1,20 @@
 // @flow
 import React, { Component } from 'react';
+
 import injectConfigs from '../../../configurations/ConfigurationHOC';
 import ChipConfig from './ChipConfig';
+
+import type { State } from '../../../stateManagement/types/state';
+import { logoutAction } from '../login/actions';
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Redirect } from 'react-router-dom';
+
 import { Avatar, ButtonBase, Menu, MenuItem } from 'material-ui';
 
-import type { State } from '../../../stateManagement/types/state';
-// $FlowFixMe
-// import styles from '../../customization/styles/App.less';
-import { SideBarStyles as styles } from '../../customization/styles/Sidebar';
 import { withStyles } from 'material-ui/styles/index';
-import { logoutAction } from '../login/actions';
+import { ChipStyles as styles } from '../../customization/styles/Chip';
 
 type Props = {
   login: *,
@@ -68,15 +70,15 @@ export class Chip extends Component<Props & Configuration, ChipState> {
           open={!!anchorEl}
           onClose={this.handleClose}
           anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'right',
-          }}
+              vertical: 'bottom',
+              horizontal: 'right',
+            }}
           transformOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
-          }}
-          getContentAnchorEl={null}
-        >
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+          getContentAnchorEl={null}>
+
           {/*<MenuItem onClick={this.handleClose}>Profile</MenuItem>*/}
           {/*<MenuItem onClick={this.handleClose}>My account</MenuItem>*/}
           <MenuItem onClick={this.handleLogoutClick}>Logout</MenuItem>
