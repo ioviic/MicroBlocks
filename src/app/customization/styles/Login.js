@@ -12,6 +12,18 @@ const styles = theme => ({
     padding: '10px',
     background: '#fff',
   },
+  cardHeader: {
+    margin: '-20px 15px 0',
+    borderRadius: '3px',
+    padding: '15px',
+    backgroundColor: '#9c27b0'
+  },
+  cardTitle: {
+    color: '#FFF'
+  },
+  cardSubtitle: {
+    color: '#FFF'
+  },
   labelClear:{
     position: 'absolute',
     right: '0',

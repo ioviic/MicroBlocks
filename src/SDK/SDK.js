@@ -46,7 +46,6 @@ export class SDK {
       const block = this.blocks.find( (item) => {
         return item.name === blockName;
       });
-      debugger;
 
       (!block) && console.error('Cannot find Block: <' + blockName + '/> in SDK. Please make sure this block is added in MicroBlocks ecosystem');
 

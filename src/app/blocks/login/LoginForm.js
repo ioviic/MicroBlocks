@@ -2,12 +2,11 @@
 import React, { Component } from 'react';
 import injectConfigs from '../../../configurations/ConfigurationHOC';
 import {
-  withStyles, Card, FormControl, InputLabel, Input,Button, Grid
+  withStyles, Card, CardHeader, CardContent, FormControl, InputLabel, Input,Button, Grid
 } from 'material-ui';
 import { Clear } from 'material-ui-icons';
 // $FlowFixMe
 import styles from '../../customization/styles/Login.js';
-// import { Form, Message } from 'semantic-ui-react';
 import Validator from 'validator';
 import InlineError from './InlineError';
 import type { Configuration } from './Login';
@@ -69,49 +68,58 @@ class LoginForm extends Component<Props & Configuration, LoginState> {
     return (
       <Grid container className={classes.login}>
         <Card className={classes.card}>
-          <form className={styles.login} onSubmit={this.onSubmit}>
-          <h1> Login </h1>
-          {errors.global && <InlineError className={classes.labelError} error={errors.global}/>}
-
-          <FormControl error={!!errors.email}>
-            <InputLabel>
-              {"Email"}
-            </InputLabel>
-            <Input
-              classes={{
-                disabled: classes.disabled,
-                underline: classes.underline,
-              }}
-              type="email"
-              id="email"
-              name="email"
-              value={data.email}
-              onChange={this.onChange}
-            />
-            {errors.email && <Clear className={classes.labelClear}/>}
-            {errors.email && <InlineError className={classes.labelError} error={errors.email}/>}
-          </FormControl>
-          <br/>
-          <FormControl error={!!errors.password}>
-            <InputLabel>
-              {"Password"}
-            </InputLabel>
-            <Input
-              classes={{
-                disabled: classes.disabled,
-                underline: classes.underline,
-              }}
-              type="password"
-              id="password"
-              name="password"
-              value={data.password}
-              onChange={this.onChange}
-            />
-            {errors.password && <InlineError className={classes.labelError} error={errors.password}/>}
-          </FormControl>
-          <br/>
-          <Button type="submit" className={classes.button} variant="raised" onClick={this.onSubmit}> Login </Button>
-        </form>
+          <CardHeader
+            classes={{
+              root: classes.cardHeader,
+              title: classes.cardTitle,
+              subheader: classes.cardSubtitle,
+            }}
+            title={'Login'}
+            subheader={'Please insert you mail and password'}
+          />
+          <CardContent>
+            <form className={styles.login} onSubmit={this.onSubmit}>
+              {errors.global && <InlineError className={classes.labelError} error={errors.global}/>}
+              <FormControl error={!!errors.email}>
+                <InputLabel>
+                  {"Email"}
+                </InputLabel>
+                <Input
+                  classes={{
+                    disabled: classes.disabled,
+                    underline: classes.underline,
+                  }}
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={data.email}
+                  onChange={this.onChange}
+                />
+                {errors.email && <Clear className={classes.labelClear}/>}
+                {errors.email && <InlineError className={classes.labelError} error={errors.email}/>}
+              </FormControl>
+              <br/>
+              <FormControl error={!!errors.password}>
+                <InputLabel>
+                  {"Password"}
+                </InputLabel>
+                <Input
+                  classes={{
+                    disabled: classes.disabled,
+                    underline: classes.underline,
+                  }}
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={data.password}
+                  onChange={this.onChange}
+                />
+                {errors.password && <InlineError className={classes.labelError} error={errors.password}/>}
+              </FormControl>
+              <br/>
+              <Button type="submit" className={classes.button} variant="raised" onClick={this.onSubmit}> Login </Button>
+            </form>
+          </CardContent>
         </Card>
       </Grid>
     );
