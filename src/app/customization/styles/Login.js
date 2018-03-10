@@ -10,7 +10,23 @@ const styles = theme => ({
     borderRadius: '3px',
     color: 'rgba(0, 0, 0, 0.87)',
     padding: '10px',
+    marginTop: '10px',
     background: '#fff',
+  },
+  cardHeader: {
+    margin: '-20px 15px 0',
+    borderRadius: '3px',
+    padding: '15px',
+    backgroundColor: '#9c27b0'
+  },
+  cardTitle: {
+    color: '#FFF'
+  },
+  cardSubtitle: {
+    color: '#FFF'
+  },
+  formControl: {
+    width:'100%'
   },
   labelClear:{
     position: 'absolute',
@@ -25,6 +41,7 @@ const styles = theme => ({
     width: '100%'
   },
   button: {
+    width: '100%',
     color: '#FFFFFF',
     border: 'none',
     borderRadius: '3px',
