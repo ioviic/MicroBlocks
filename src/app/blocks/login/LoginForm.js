@@ -78,7 +78,7 @@ class LoginForm extends Component<Props & Configuration, LoginState> {
             subheader={'Please insert you mail and password'}
           />
           <CardContent>
-            <form className={styles.login} onSubmit={this.onSubmit}>
+            <form onSubmit={this.onSubmit}>
               <Grid container spacing={24}>
               {errors.global && <InlineError className={classes.labelError} error={errors.global}/>}
               <Grid item lg={4} md={6} sm={12}>
