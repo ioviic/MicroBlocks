@@ -27,6 +27,7 @@ export const loginAction = (credentials: FormData ): any => {
     return api.user.login(credentials)
       .then(user => {
         global.localStorage.userJWT = user.token;
+        global.localStorage.userEmail = user.email;
         dispatch(userLoggedIn(user));
       });
   };
@@ -35,6 +36,7 @@ export const loginAction = (credentials: FormData ): any => {
 export const logoutAction = () => {
   return (dispatch: Dispatch, getState: GetState) => {
     global.localStorage.removeItem('userJWT');
+    global.localStorage.removeItem('userEmail');
     dispatch(userLoggedOut());
   };
 };
