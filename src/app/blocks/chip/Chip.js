@@ -1,83 +1,106 @@
 // @flow
 import React, { Component } from 'react';
 import injectConfigs from '../../../configurations/ConfigurationHOC';
-import logo from '../../../logo.svg';
 import ChipConfig from './ChipConfig';
-import locale from './localizations/translations';
-import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {
-    increment,
-    decrement,
-    incrementIfEven,
-} from './actions';
+import { Redirect } from 'react-router-dom';
+import { Avatar, ButtonBase, Menu, MenuItem } from 'material-ui';
 
 import type { State } from '../../../stateManagement/types/state';
 // $FlowFixMe
-import styles from '../../customization/styles/App.less';
+// import styles from '../../customization/styles/App.less';
+import { SideBarStyles as styles } from '../../customization/styles/Sidebar';
+import { withStyles } from 'material-ui/styles/index';
+import { logoutAction } from '../login/actions';
 
 type Props = {
-    app: number,
-    increment: (amount: number) => mixed,
-    decrement: (amount: number) => mixed,
-    incrementIfEven: (amount: number) => mixed,
+  login: *,
+  classes: any,
+  logoutAction: () => mixed,
 };
 
 type Configuration = {
     configuration: ChipConfig
 }
 
-export class Chip extends Component<Props & Configuration> {
-  render() {
-    return (
-      <div className={`${styles.App}`}>
-        <header className={styles.AppHeader}>
-          <img src={logo} className={styles.AppLogo} alt="logo" />
-          <h1 className={styles.AppTitle}>Welcome to React lessons</h1>
-        </header>
-          <p className={styles.AppIntro}>
-              Opening soon: { this.props.configuration.appTitle }
-          </p>
+type ChipState = {
+  anchorEl: *;
+  redirect: boolean;
+}
 
-          <p className={styles.AppIntro}>
-              Stay in touch:
-              <FormattedMessage id={locale.hello.id} defaultMessage={locale.hello.defaultMessage} />
-          </p>
-          <p className={styles.AppIntro}>
-              Counter: { this.props.app }
-          </p>
-            <div>
-              <button key="increment" onClick={() => this.props.increment(1)}>
-                  +
-              </button>
-              <button key="decrement" onClick={() => this.props.decrement(1)}>
-                  -
-              </button>
-              <button
-                  key="incrementIfEven"
-                  onClick={() => this.props.incrementIfEven(1)}
-              >
-                  % 2 ? +
-              </button>
-            </div>
+export class Chip extends Component<Props & Configuration, ChipState> {
+  state:ChipState = {
+    anchorEl: null,
+    redirect: false
+  };
+
+  handleClick = (event: any) => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleLogoutClick = () => {
+    this.props.logoutAction();
+    this.setState({ anchorEl: null, redirect: true});
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
+
+  render() {
+    const { classes } = this.props;
+    const { anchorEl, redirect } = this.state;
+    return (
+      <div>
+      {this.props.login.token &&
+      <div>
+        <ButtonBase className={classes.userChip} onClick={this.handleClick}>
+          <div className={classes.userInfo}>
+            <span className={classes.userName}>{this.props.login.email}</span>
+            <span className={classes.userEmail}>{this.props.login.email}</span>
+          </div>
+          <Avatar className={classes.userAvatar}>MB</Avatar>
+        </ButtonBase>
+        <Menu
+          id="simple-menu"
+          anchorEl={anchorEl}
+          open={!!anchorEl}
+          onClose={this.handleClose}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}
+          transformOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          getContentAnchorEl={null}
+        >
+          {/*<MenuItem onClick={this.handleClose}>Profile</MenuItem>*/}
+          {/*<MenuItem onClick={this.handleClose}>My account</MenuItem>*/}
+          <MenuItem onClick={this.handleLogoutClick}>Logout</MenuItem>
+        </Menu>
+      </div>}
+      {!this.props.login.token && redirect && <Redirect to='/login'/>}
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ app }: State) => ({
-    app,
+const mapStateToProps = ({ login }: State) => ({
+    login,
 });
 
 const mapDispatchToProps = (dispatch: *) =>
     bindActionCreators(
         {
-            increment,
-            decrement,
-            incrementIfEven,
+          logoutAction
+            // increment,
+            // decrement,
+            // incrementIfEven,
         },
         dispatch
     );
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectConfigs(Chip));
+export default connect(mapStateToProps, mapDispatchToProps)(injectConfigs(withStyles(styles)(Chip)));
