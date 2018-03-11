@@ -35,7 +35,7 @@ export class Bar extends Component<Props & Configuration> {
             <MenuIcon />
           </IconButton>
           <Typography variant="title" color="inherit" className={classes.flex}>
-            Title
+            {/*Title*/}
           </Typography>
           <div className={classes.barChip}>
             <BlockComponent block='Chip' />
