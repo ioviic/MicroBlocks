@@ -11,8 +11,8 @@ import MenuIcon from 'material-ui-icons/Menu';
 import { withStyles } from 'material-ui/styles/index';
 import { BarStyles as styles } from '../../customization/styles/Bar';
 
-import locale from './localizations/translations';
-import { FormattedMessage } from 'react-intl';
+// import locale from './localizations/translations';
+// import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
