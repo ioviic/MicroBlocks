@@ -59,6 +59,7 @@ class HomePage extends React.Component {
       <BlockComponent block='Sidebar'/>
       <div className={classes.mainPanel} ref='mainPanel'>
         <Grid container>
+          <BlockComponent block='Bar'/>
           {/*<div className={classes.container}>*/}
             <Grid item xs={12}>
             {switchRoutes}

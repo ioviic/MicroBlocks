@@ -1,6 +1,6 @@
 import type { AppAction } from '../../../stateManagement/types/actionTypes';
 import type { Dispatch, GetState } from '../../../stateManagement/types/store';
-//
+
 // export let increment = (amount: number = 1): AppAction => {
 //     return {
 //         type: 'INCREMENT_COUNTER',

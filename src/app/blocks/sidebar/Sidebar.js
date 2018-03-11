@@ -45,8 +45,9 @@ class Sidebar extends Component<Props & Configuration> {
               Toggle Header
             </button>
           </div>
-
-          <BlockComponent block='Chip'/>
+          <div className={classes.sidebarChip}>
+            <BlockComponent block='Chip'/>
+          </div>
 
         </div>
 

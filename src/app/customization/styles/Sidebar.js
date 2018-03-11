@@ -36,6 +36,10 @@ export const SideBarStyles = theme => ({
       background: '#000',
       opacity: '.8',
     }
+  },
+  sidebarChip:{
+    position: 'absolute',
+    bottom: '20px'
   }
 });
 
