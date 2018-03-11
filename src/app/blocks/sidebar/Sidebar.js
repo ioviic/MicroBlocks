@@ -38,6 +38,7 @@ class Sidebar extends Component<Props & Configuration> {
         anchor={'left'}>
 
         <div className={classes.wrapper}>
+          {/*Get rid of this*/}
           {this.props.sidebar.showHeader &&  <h1> Header </h1>}
           <SidebarLinks routes={this.props.sidebar.routes}/>
           <div>
