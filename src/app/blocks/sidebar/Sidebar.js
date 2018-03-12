@@ -16,7 +16,7 @@ import { Drawer } from 'material-ui';
 import image from '../../customization/sidebar-2.jpg';
 import { withStyles } from 'material-ui/styles';
 import { SideBarStyles as styles } from '../../customization/styles/Sidebar';
-
+import logo from '../../../logo.svg';
 type Props = {
   sidebar: *,
   classes: any,
@@ -39,7 +39,15 @@ class Sidebar extends Component<Props & Configuration> {
 
         <div className={classes.wrapper}>
           {/*Get rid of this*/}
-          {this.props.sidebar.showHeader &&  <h1> Header </h1>}
+          {this.props.sidebar.showHeader &&
+          <div className={classes.logo}>
+            <a href="#" className={classes.logoLink}>
+              <div className={classes.logoImage}>
+                <img src={logo} alt="logo" className={classes.img}/>
+              </div>
+              Micro<b>Blocks</b>
+            </a>
+          </div>}
           <SidebarLinks routes={this.props.sidebar.routes}/>
           <div>
             <button key="increment" onClick={() => this.props.toggleHeader()}>
