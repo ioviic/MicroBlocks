@@ -38,10 +38,10 @@ class Sidebar extends Component<Props & Configuration> {
         anchor={'left'}>
 
         <div className={classes.wrapper}>
-          {/*Get rid of this*/}
+          {/*Extract this/header into different Block*/}
           {this.props.sidebar.showHeader &&
           <div className={classes.logo}>
-            <a href="#" className={classes.logoLink}>
+            <a href="/" className={classes.logoLink}>
               <div className={classes.logoImage}>
                 <img src={logo} alt="logo" className={classes.img}/>
               </div>
