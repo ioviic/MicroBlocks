@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import {
   withStyles, Card, CardHeader, CardContent, Grid, CardActions
 } from 'material-ui';
-// $FlowFixMe
-import styles from '../customization/styles/Login.js';
+
+import { StandardCardStyles as styles } from '../customization/styles/Components.js';
 
 type Props = {
   title: string,
@@ -19,25 +19,24 @@ class StandardCard extends Component<Props> {
   render () {
     const {title, subHeader, content, actions, classes } = this.props;
     return (
-      <Grid container className={classes.login}>
-        <Card className={classes.card}>
-          <CardHeader
-            classes={{
-              root: classes.cardHeader,
-              title: classes.cardTitle,
-              subheader: classes.cardSubtitle,
-            }}
-            title={title}
-            subheader={subHeader}
-          />
-          <CardContent>
-            {content}
-          </CardContent>
+      <Card className={classes.card}>
+        <CardHeader
+          classes={{
+            root: classes.cardHeader,
+            title: classes.cardTitle,
+            subheader: classes.cardSubtitle,
+          }}
+          title={title}
+          subheader={subHeader}
+        />
+        <CardContent>
+          {content}
+        </CardContent>
+        {actions &&
           <CardActions>
             {actions}
-          </CardActions>
-        </Card>
-      </Grid>
+          </CardActions>}
+      </Card>
     );
   }
 }
