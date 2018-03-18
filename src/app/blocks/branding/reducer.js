@@ -1,8 +1,8 @@
 // @flow
 import createReducer from '../../../stateManagement/createReducer';
-import type { AppAction } from './actionTypes';
+// import type { AppAction } from './actionTypes';
 
-type State = number;
+// type State = number;
 
 const initialState = 0;
 
