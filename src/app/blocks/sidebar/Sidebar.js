@@ -40,14 +40,8 @@ class Sidebar extends Component<Props & Configuration> {
         <div className={classes.wrapper}>
           {/*Extract this/header into different Block*/}
           {this.props.sidebar.showHeader &&
-          <div className={classes.logo}>
-            <a href="/" className={classes.logoLink}>
-              <div className={classes.logoImage}>
-                <img src={logo} alt="logo" className={classes.img}/>
-              </div>
-              Micro<b>Blocks</b>
-            </a>
-          </div>}
+            <BlockComponent block='Branding' />
+          }
           <SidebarLinks routes={this.props.sidebar.routes}/>
           <div>
             <button key="increment" onClick={() => this.props.toggleHeader()}>
