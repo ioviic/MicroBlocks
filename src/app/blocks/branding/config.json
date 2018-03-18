@@ -1,0 +1,9 @@
+{
+  "block": {
+    "name": "Branding",
+    "configurations": {
+      "BrandText": "MicroBlocks",
+      "BrandSubtext": ""
+    }
+  }
+}

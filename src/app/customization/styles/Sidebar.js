@@ -14,7 +14,8 @@ export const SideBarStyles = theme => ({
   wrapper:{
     zIndex: 4,
     color:'white',
-    height: '100%'
+    height: '100%',
+    fontSmoothingEnabled: 'antialiased'
   },
   background: {
     position: 'absolute',

@@ -38,7 +38,10 @@ class Sidebar extends Component<Props & Configuration> {
         anchor={'left'}>
 
         <div className={classes.wrapper}>
-          {this.props.sidebar.showHeader &&  <h1> Header </h1>}
+          {/*Extract this/header into different Block*/}
+          {this.props.sidebar.showHeader &&
+            <BlockComponent block='Branding' />
+          }
           <SidebarLinks routes={this.props.sidebar.routes}/>
           <div>
             <button key="increment" onClick={() => this.props.toggleHeader()}>
