@@ -35,7 +35,13 @@ export class Branding extends Component<Props & Configuration> {
           <div className={classes.logoImage}>
             <img src={logo} alt="logo" className={classes.img}/>
           </div>
-          Micro<b>Blocks</b>
+          <div className={classes.brandtext}>
+            {this.props.configuration.BrandText &&
+              <span className={classes.text}>{this.props.configuration.BrandText}</span>}
+
+            {this.props.configuration.BrandSubtext &&
+              <span className={classes.subtext}>{this.props.configuration.BrandSubtext}</span>}
+          </div>
         </a>
       </div>
     );
@@ -46,6 +52,6 @@ const mapStateToProps = ({ branding }: State) => ({
    branding,
 });
 
-const mapDispatchToProps = (dispatch: *) => {}; // use bindActionCreators() if needed
+const mapDispatchToProps = (dispatch: *) => ({}); // use bindActionCreators() if needed
 
 export default connect(mapStateToProps, mapDispatchToProps)(injectConfigs(withStyles(styles)(Branding)));

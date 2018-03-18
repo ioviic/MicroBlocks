@@ -14,6 +14,11 @@ export const BrandingStyles = theme => ({
       backgroundColor: 'rgba(180, 180, 180, 0.3)',
     }
   },
+  brandtext:{
+    display: "inline-block"
+  },
+  text:{},
+  subtext:{},
   logoLink: {
     textTransform: 'uppercase',
     padding: '5px 0',
