@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import {
-  withStyles, Card, CardHeader, CardContent, Grid, CardActions
+  withStyles, Card, CardHeader, CardContent, CardActions
 } from 'material-ui';
 
 import { StandardCardStyles as styles } from '../customization/styles/Components.js';
