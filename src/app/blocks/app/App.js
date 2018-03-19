@@ -34,10 +34,11 @@ type Configuration = {
 export class App extends Component<Props & Configuration> {
   render() {
     return (
-      <Grid container>
+      <Grid container spacing={24}>
+        <Grid item lg={6} md={6} sm={12}>
         <StandardCard
-          title={'Login'}
-          subHeader={'Please insert you mail and password'}
+          title={'Table 1'}
+          subHeader={'Check information bellow'}
 
           content={
             <TableList
@@ -52,6 +53,26 @@ export class App extends Component<Props & Configuration> {
           }
           actions={null}
         />
+        </Grid>
+        <Grid item lg={6} md={6} sm={12}>
+        <StandardCard
+          title={'Table 2'}
+          subHeader={'Check information bellow'}
+
+          content={
+            <TableList
+              headerTitles={['test', 'test2', 'test3', 'test4']}
+              tableRows={
+                [
+                  ['test', 'test2', 'test3', 'test4'],
+                  ['test', 'test2', 'test3', 'test4'],
+                  ['test', 'test2', 'test3', 'test4']
+                ]}
+            />
+          }
+          actions={null}
+        />
+        </Grid>
       </Grid>
     );
   }
