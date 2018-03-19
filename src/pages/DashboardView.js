@@ -1,5 +1,6 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
+import { BlockComponent } from '../SDK';
 
 const styles = theme => ({
 });
@@ -9,7 +10,7 @@ class DashboardView extends React.Component {
 
     return (
       <div>
-        Dashboard page;
+        <BlockComponent block='App' />
       </div>
     );
   }

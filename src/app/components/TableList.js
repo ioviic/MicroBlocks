@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import {withStyles, Table, TableBody, TableCell, TableHead, TableRow } from 'material-ui';
 
-import { StandardCardStyles as styles } from '../customization/styles/Components.js';
+import { TableStyles as styles } from '../customization/styles/Components.js';
 
 type Props = {
   headerTitles: Array<string> ,
@@ -16,7 +16,7 @@ class TableList extends Component<Props> {
   render () {
     const {headerTitles, tableRows, classes } = this.props;
     return (
-      <Table className={classes.card}>
+      <Table className={classes.table}>
         <TableHead>
           <TableRow>
             {
