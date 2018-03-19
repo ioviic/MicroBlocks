@@ -1,10 +1,10 @@
 // @flow
 import React, { Component } from 'react';
 import injectConfigs from '../../../configurations/ConfigurationHOC';
-import logo from '../../../logo.svg';
+// import logo from '../../../logo.svg';
 import AppConfig from './AppConfig';
-import locale from './localizations/translations';
-import { FormattedMessage } from 'react-intl';
+// import locale from './localizations/translations';
+// import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
@@ -15,7 +15,10 @@ import {
 
 import type { State } from '../../../stateManagement/types/state';
 // $FlowFixMe
-import styles from '../../customization/styles/App.less';
+// import styles from '../../customization/styles/App.less';
+import StandardCard from '../../components/StandardCard';
+import TableList   from '../../components/TableList';
+import { Grid } from 'material-ui';
 
 type Props = {
     app: number,
@@ -31,37 +34,46 @@ type Configuration = {
 export class App extends Component<Props & Configuration> {
   render() {
     return (
-      <div className={`${styles.App}`}>
-        <header className={styles.AppHeader}>
-          <img src={logo} className={styles.AppLogo} alt="logo" />
-          <h1 className={styles.AppTitle}>Welcome to React lessons</h1>
-        </header>
-          <p className={styles.AppIntro}>
-              Opening soon: { this.props.configuration.appTitle }
-          </p>
+      <Grid container spacing={24}>
+        <Grid item lg={6} md={6} sm={12}>
+        <StandardCard
+          title={'Table 1'}
+          subHeader={'Check information bellow'}
 
-          <p className={styles.AppIntro}>
-              Stay in touch:
-              <FormattedMessage id={locale.hello.id} defaultMessage={locale.hello.defaultMessage} />
-          </p>
-          <p className={styles.AppIntro}>
-              Counter: { this.props.app }
-          </p>
-            <div>
-              <button key="increment" onClick={() => this.props.increment(1)}>
-                  +
-              </button>
-              <button key="decrement" onClick={() => this.props.decrement(1)}>
-                  -
-              </button>
-              <button
-                  key="incrementIfEven"
-                  onClick={() => this.props.incrementIfEven(1)}
-              >
-                  % 2 ? +
-              </button>
-            </div>
-      </div>
+          content={
+            <TableList
+            headerTitles={['test', 'test2', 'test3', 'test4']}
+            tableRows={
+              [
+                ['test', 'test2', 'test3', 'test4'],
+                ['test', 'test2', 'test3', 'test4'],
+                ['test', 'test2', 'test3', 'test4']
+            ]}
+            />
+          }
+          actions={null}
+        />
+        </Grid>
+        <Grid item lg={6} md={6} sm={12}>
+        <StandardCard
+          title={'Table 2'}
+          subHeader={'Check information bellow'}
+
+          content={
+            <TableList
+              headerTitles={['test', 'test2', 'test3', 'test4']}
+              tableRows={
+                [
+                  ['test', 'test2', 'test3', 'test4'],
+                  ['test', 'test2', 'test3', 'test4'],
+                  ['test', 'test2', 'test3', 'test4']
+                ]}
+            />
+          }
+          actions={null}
+        />
+        </Grid>
+      </Grid>
     );
   }
 }

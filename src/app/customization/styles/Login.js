@@ -1,6 +1,6 @@
 const styles = theme => ({
   login:{
-    padding:'18px'
+    // padding:'18px'
   },
   formControl: {
     width:'100%'

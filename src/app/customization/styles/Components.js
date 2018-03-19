@@ -7,8 +7,13 @@ export const StandardCardStyles = theme => ({
     borderRadius: '3px',
     color: 'rgba(0, 0, 0, 0.87)',
     padding: '10px',
-    marginTop: '10px',
     background: '#fff',
+    margin:'18px',
+    marginTop:'26px'
+  },
+  plain: {
+    background: 'transparent',
+    boxShadow: 'none',
   },
   cardHeader: {
     margin: '-20px 15px 0',
@@ -22,4 +27,16 @@ export const StandardCardStyles = theme => ({
   cardSubtitle: {
     color: '#FFF'
   },
+});
+
+export const TableStyles = theme => ({
+  table:{
+    background: 'transparent'
+  },
+  headerCell:{
+    color: '#9c27b0',
+    fontSize: '1em'
+  },
+  tableRow:{},
+  tableCell:{}
 });
