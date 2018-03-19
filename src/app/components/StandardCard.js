@@ -11,15 +11,16 @@ type Props = {
   subHeader: string,
   content: any,
   actions: any,
+  plain: boolean, // make background transparent
   classes: any,
 };
 
 class StandardCard extends Component<Props> {
 
   render () {
-    const {title, subHeader, content, actions, classes } = this.props;
+    const {title, subHeader, content, actions, plain, classes } = this.props;
     return (
-      <Card className={classes.card}>
+      <Card className={classes.card + (plain ? " " + classes.plain:"")}>
         <CardHeader
           classes={{
             root: classes.cardHeader,

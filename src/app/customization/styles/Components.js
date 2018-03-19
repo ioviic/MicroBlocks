@@ -11,6 +11,10 @@ export const StandardCardStyles = theme => ({
     margin:'18px',
     marginTop:'26px'
   },
+  plain: {
+    background: 'transparent',
+    boxShadow: 'none',
+  },
   cardHeader: {
     margin: '-20px 15px 0',
     borderRadius: '3px',
