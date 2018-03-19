@@ -1,10 +1,10 @@
 // @flow
 import React, { Component } from 'react';
 import injectConfigs from '../../../configurations/ConfigurationHOC';
-import logo from '../../../logo.svg';
+// import logo from '../../../logo.svg';
 import AppConfig from './AppConfig';
-import locale from './localizations/translations';
-import { FormattedMessage } from 'react-intl';
+// import locale from './localizations/translations';
+// import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
@@ -15,7 +15,7 @@ import {
 
 import type { State } from '../../../stateManagement/types/state';
 // $FlowFixMe
-import styles from '../../customization/styles/App.less';
+// import styles from '../../customization/styles/App.less';
 import StandardCard from '../../components/StandardCard';
 import TableList   from '../../components/TableList';
 import { Grid } from 'material-ui';
