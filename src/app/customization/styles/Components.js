@@ -7,8 +7,9 @@ export const StandardCardStyles = theme => ({
     borderRadius: '3px',
     color: 'rgba(0, 0, 0, 0.87)',
     padding: '10px',
-    marginTop: '10px',
     background: '#fff',
+    margin:'18px',
+    marginTop:'26px'
   },
   cardHeader: {
     margin: '-20px 15px 0',
