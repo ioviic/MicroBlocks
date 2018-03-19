@@ -23,3 +23,15 @@ export const StandardCardStyles = theme => ({
     color: '#FFF'
   },
 });
+
+export const TableStyles = theme => ({
+  table:{
+    background: 'transparent'
+  },
+  headerCell:{
+    color: '#9c27b0',
+    fontSize: '1em'
+  },
+  tableRow:{},
+  tableCell:{}
+});
