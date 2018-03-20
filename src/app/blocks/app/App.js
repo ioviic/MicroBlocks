@@ -1,7 +1,6 @@
 // @flow
 import React, { Component } from 'react';
 import injectConfigs from '../../../configurations/ConfigurationHOC';
-// import logo from '../../../logo.svg';
 import AppConfig from './AppConfig';
 // import locale from './localizations/translations';
 // import { FormattedMessage } from 'react-intl';
