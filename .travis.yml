@@ -2,6 +2,8 @@ language: node_js
 node_js: "7"
 sudo: required
 dist: trusty
+git:
+   depth: 9999999
 install:
   - npm cache clean
   - npm install
