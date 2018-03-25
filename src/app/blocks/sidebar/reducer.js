@@ -2,6 +2,8 @@
 import createReducer from '../../../stateManagement/createReducer';
 import type { SidebarAction } from './actionTypes';
 import DraftsIcon from 'material-ui-icons/Drafts';
+
+//Get rid of this move this in different more meaningful place
 const appRoutes = [
   { path: "/login", sidebarName: "Login", icon: DraftsIcon },
   { path: "/dashboard", sidebarName: "Dashboard", icon: DraftsIcon },
