@@ -17,6 +17,7 @@ import type { State } from '../../../stateManagement/types/state';
 // import styles from '../../customization/styles/App.less';
 import StandardCard from '../../components/StandardCard';
 import TableList   from '../../components/TableList';
+import GridElement   from '../../components/GridElement';
 import { Grid } from 'material-ui';
 
 type Props = {
@@ -33,8 +34,8 @@ type Configuration = {
 export class App extends Component<Props & Configuration> {
   render() {
     return (
-      <Grid container spacing={24}>
-        <Grid item lg={6} md={6} sm={12}>
+      <Grid container>
+        <GridElement item lg={6} md={6} sm={12}>
         <StandardCard
           title={'Table 1'}
           subHeader={'Check information bellow'}
@@ -52,8 +53,8 @@ export class App extends Component<Props & Configuration> {
           }
           actions={null}
         />
-        </Grid>
-        <Grid item lg={6} md={6} sm={12}>
+        </GridElement>
+        <GridElement item lg={6} md={6} sm={12}>
         <StandardCard
           title={'Table 2'}
           subHeader={'Check information bellow'}
@@ -71,7 +72,7 @@ export class App extends Component<Props & Configuration> {
           }
           actions={null}
         />
-        </Grid>
+        </GridElement>
       </Grid>
     );
   }
