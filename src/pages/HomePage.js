@@ -21,7 +21,7 @@ const styles = theme => ({
   },
   mainPanel:{
     width: `calc(100% - ${drawerWidth}px)`,
-    overflow: 'hidden',
+    overflow: 'auto',
     position: 'relative',
     float: 'right',
     maxHeight: '100%',
