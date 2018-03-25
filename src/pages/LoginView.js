@@ -1,5 +1,6 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
+import { Grid } from 'material-ui';
 import { BlockComponent } from '../SDK';
 
 const styles = theme => ({ });
@@ -7,7 +8,11 @@ const styles = theme => ({ });
 class LoginView extends React.Component {
   render() {
     return (
-      <BlockComponent block='Login'/>
+      <Grid container>
+        <Grid item md={12}>
+          <BlockComponent block='Login'/>
+        </Grid>
+      </Grid>
     );
   }
 }
