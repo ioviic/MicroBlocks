@@ -29,12 +29,21 @@ export const StandardCardStyles = theme => ({
 
 export const TableStyles = theme => ({
   table:{
-    background: 'transparent'
+    marginBottom: '0',
+    width: '100%',
+    maxWidth: '100%',
+    backgroundColor: 'transparent',
+    borderSpacing: '0',
+    borderCollapse: 'collapse',
   },
   headerCell:{
     color: '#9c27b0',
     fontSize: '1em'
   },
   tableRow:{},
-  tableCell:{}
+  tableCell:{
+    lineHeight: '1.42857143',
+    padding: '12px 8px',
+    verticalAlign: 'middle',
+  }
 });

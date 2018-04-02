@@ -35,7 +35,7 @@ export class App extends Component<Props & Configuration> {
   render() {
     return (
       <Grid container>
-        <GridElement item lg={6} md={6} sm={12}>
+        <GridElement item lg={6} md={6} sm={12} xs={12}>
         <StandardCard
           title={'Table 1'}
           subHeader={'Check information bellow'}
@@ -54,7 +54,7 @@ export class App extends Component<Props & Configuration> {
           actions={null}
         />
         </GridElement>
-        <GridElement item lg={6} md={6} sm={12}>
+        <GridElement item lg={6} md={6} sm={12} xs={12}>
         <StandardCard
           title={'Table 2'}
           subHeader={'Check information bellow'}

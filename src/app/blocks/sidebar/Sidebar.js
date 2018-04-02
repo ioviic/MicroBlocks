@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import SidebarConfig from './SidebarConfig';
 import injectConfigs from '../../../configurations/ConfigurationHOC';
 
-import { Drawer } from 'material-ui';
+import { Drawer, Hidden } from 'material-ui';
 import image from '../../customization/sidebar-2.jpg';
 import { withStyles } from 'material-ui/styles';
 import { SideBarStyles as styles } from '../../customization/styles/Sidebar';
@@ -32,31 +32,62 @@ class Sidebar extends Component<Props & Configuration> {
     const { classes } = this.props;
 
     return (
-      <Drawer
-        variant="permanent"
-        classes={{ paper: classes.drawerPaper }}
-        anchor={'left'}>
+      <div>
+      <Hidden smDown>
+        <Drawer
+          variant="permanent"
+          classes={{ paper: classes.drawerPaper }}
+          anchor={'left'}>
 
-        <div className={classes.wrapper}>
-          {/*Extract this/header into different Block*/}
-          {this.props.sidebar.showHeader &&
+          <div className={classes.wrapper}>
+            {/*Extract this/header into different Block*/}
+            {this.props.sidebar.showHeader &&
             <BlockComponent block='Branding' />
-          }
-          <SidebarLinks routes={this.props.sidebar.routes}/>
-          <div>
-            <button key="increment" onClick={() => this.props.toggleHeader()}>
-              Toggle Header
-            </button>
+            }
+            <SidebarLinks routes={this.props.sidebar.routes}/>
+            <div>
+              <button key="increment" onClick={() => this.props.toggleHeader()}>
+                Toggle Header
+              </button>
+            </div>
+            <div className={classes.sidebarChip}>
+              <BlockComponent block='Chip'/>
+            </div>
+
           </div>
-          <div className={classes.sidebarChip}>
-            <BlockComponent block='Chip'/>
-          </div>
 
-        </div>
+          {image !== undefined && <div className={classes.background} style={{backgroundImage: "url("+image+")"}} />}
 
-        {image !== undefined && <div className={classes.background} style={{backgroundImage: "url("+image+")"}} />}
+        </Drawer>
+      </Hidden>
+        {/*<Hidden smDown>*/}
+          {/*<Drawer*/}
+            {/*variant="permanent"*/}
+            {/*classes={{ paper: classes.drawerPaper }}*/}
+            {/*anchor={'left'}>*/}
 
-      </Drawer>
+            {/*<div className={classes.wrapper}>*/}
+              {/*/!*Extract this/header into different Block*!/*/}
+              {/*{this.props.sidebar.showHeader &&*/}
+              {/*<BlockComponent block='Branding' />*/}
+              {/*}*/}
+              {/*<SidebarLinks routes={this.props.sidebar.routes}/>*/}
+              {/*<div>*/}
+                {/*<button key="increment" onClick={() => this.props.toggleHeader()}>*/}
+                  {/*Toggle Header*/}
+                {/*</button>*/}
+              {/*</div>*/}
+              {/*<div className={classes.sidebarChip}>*/}
+                {/*<BlockComponent block='Chip'/>*/}
+              {/*</div>*/}
+
+            {/*</div>*/}
+
+            {/*{image !== undefined && <div className={classes.background} style={{backgroundImage: "url("+image+")"}} />}*/}
+
+          {/*</Drawer>*/}
+        {/*</Hidden>*/}
+      </div>
     );
   }
 }

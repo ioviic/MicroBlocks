@@ -20,7 +20,10 @@ const styles = theme => ({
     backgroundColor: '#eee'
   },
   mainPanel:{
-    width: `calc(100% - ${drawerWidth}px)`,
+    [theme.breakpoints.up('md')]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+    },
+    width: '100%',
     overflow: 'auto',
     position: 'relative',
     float: 'right',
