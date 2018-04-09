@@ -4,4 +4,9 @@ export type SidebarShowHeaderAction = {
   payload: boolean;
 }
 
-export type SidebarAction = SidebarShowHeaderAction ;
+export type SidebarToggleAction = {
+  type: 'SIDEBAR_TOGGLE';
+  payload: boolean;
+}
+
+export type SidebarAction = SidebarShowHeaderAction | SidebarToggleAction ;
