@@ -10,6 +10,7 @@ import { AppBar, Toolbar, Typography, IconButton } from 'material-ui';
 import MenuIcon from 'material-ui-icons/Menu';
 import { withStyles } from 'material-ui/styles/index';
 import { BarStyles as styles } from '../../customization/styles/Bar';
+import { toggleSidebar } from '../sidebar/actions';
 
 // import locale from './localizations/translations';
 // import { FormattedMessage } from 'react-intl';
@@ -18,7 +19,8 @@ import { bindActionCreators } from 'redux';
 
 type Props = {
     app: number,
-    classes: any
+    classes: any,
+  toggleSidebar: () => mixed,
 };
 
 type Configuration = {
@@ -26,12 +28,17 @@ type Configuration = {
 }
 
 export class Bar extends Component<Props & Configuration> {
+
   render() {
     const { classes } = this.props;
     return (
       <AppBar position="static" color="default">
         <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+          <IconButton
+            className={classes.menuButton}
+            onClick={() => this.props.toggleSidebar()}
+            color="inherit"
+            aria-label="Menu">
             <MenuIcon />
           </IconButton>
           <Typography variant="title" color="inherit" className={classes.flex}>
@@ -52,7 +59,9 @@ const mapStateToProps = ({ app }: State) => ({
 
 const mapDispatchToProps = (dispatch: *) =>
     bindActionCreators(
-        { },
+        {
+          toggleSidebar
+        },
         dispatch
     );
 
