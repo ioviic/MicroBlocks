@@ -45,8 +45,8 @@ export class App extends Component<Props & Configuration> {
             headerTitles={['test', 'test2', 'test3', 'test4']}
             tableRows={
               [
-                ['test', 'test2', 'test3', 'test4'],
-                ['test', 'test2', 'test3', 'test4'],
+                ['test', 'test2-nbj-mk-njjbb knjkk hgh fcfct trtf', 'test3', 'test4'],
+                ['test', 'test2-lnb', 'test3', 'test4'],
                 ['test', 'test2', 'test3', 'test4']
             ]}
             />
