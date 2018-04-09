@@ -28,10 +28,22 @@ type Configuration = {
   configuration: SidebarConfig
 }
 
-class Sidebar extends Component<Props & Configuration> {
+type SidebarState = {
+  dock: boolean;
+}
+
+class Sidebar extends Component<Props & Configuration, SidebarState> {
+
+  state:SidebarState = {
+    dock: true
+  };
 
   handleDrawerToggle = () => {
     this.props.toggleSidebar()
+  };
+
+  dockSidebar = () =>{
+    this.setState({ dock: !this.state.dock });
   };
 
   render() {
@@ -42,7 +54,7 @@ class Sidebar extends Component<Props & Configuration> {
       <Hidden smDown>
         <Drawer
           variant="permanent"
-          classes={{ paper: classes.drawerPaper }}
+          classes={{ paper: classes.drawerPaper + (this.state.dock ? " " + classes.drawerPaperClose:"")}}
           anchor={'left'}
           open={false}
           >
@@ -54,7 +66,7 @@ class Sidebar extends Component<Props & Configuration> {
             }
             <SidebarLinks routes={this.props.sidebar.routes}/>
             <div>
-              <button key="increment" onClick={() => this.props.toggleHeader()}>
+              <button key="increment" onClick={this.dockSidebar}>
                 Toggle Header
               </button>
             </div>

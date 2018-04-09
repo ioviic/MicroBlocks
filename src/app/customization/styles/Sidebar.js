@@ -11,6 +11,18 @@ export const SideBarStyles = theme => ({
     width: drawerWidth,
     zIndex: 1,
   },
+  drawerPaperClose: {
+    overflowX: 'hidden',
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    // width: '20px !important',
+    width: theme.spacing.unit * 9,
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing.unit * 10,
+    },
+  },
   wrapper:{
     zIndex: 4,
     color:'white',
