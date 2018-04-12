@@ -42,7 +42,7 @@ class Sidebar extends Component<Props & Configuration, SidebarState> {
     this.props.toggleSidebar()
   };
 
-  dockSidebar = () =>{
+  dockSidebar = () => {
     this.setState({ dock: !this.state.dock });
   };
 
@@ -57,6 +57,8 @@ class Sidebar extends Component<Props & Configuration, SidebarState> {
           classes={{ paper: classes.drawerPaper + (this.state.dock ? " " + classes.drawerPaperClose:"")}}
           anchor={'left'}
           open={false}
+          onMouseEnter={this.dockSidebar}
+          onMouseLeave={this.dockSidebar}
           >
 
           <div className={classes.wrapper}>

@@ -10,13 +10,13 @@ export const SideBarStyles = theme => ({
     height: '100%',
     width: drawerWidth,
     zIndex: 1,
-  },
-  drawerPaperClose: {
-    overflowX: 'hidden',
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+  },
+  drawerPaperClose: {
+    overflowX: 'hidden',
     // width: '20px !important',
     width: theme.spacing.unit * 9,
     [theme.breakpoints.up('sm')]: {
@@ -71,7 +71,7 @@ export const SideBarLinksStyles = theme => ({
     OTransition: 'all 300ms linear',
     MsTransition: 'all 300ms linear',
     transition: 'all 300ms linear',
-    padding: '10px 15px',
+    padding: '10px 13px',
     borderRadius: '3px',
     width:'auto',
     '&:hover': {

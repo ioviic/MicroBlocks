@@ -41,6 +41,13 @@ export class Bar extends Component<Props & Configuration> {
             aria-label="Menu">
             <MenuIcon />
           </IconButton>
+          <IconButton
+            className={classes.menuButton}
+            onClick={() => this.props.toggleSidebar()}
+            color="inherit"
+            aria-label="Menu">
+            <MenuIcon />
+          </IconButton>
           <Typography variant="title" color="inherit" className={classes.flex}>
             {/*Title*/}
           </Typography>
