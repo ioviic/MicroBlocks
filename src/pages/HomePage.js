@@ -26,6 +26,16 @@ const styles = theme => ({
     width: '100%',
     overflow: 'auto',
     position: 'relative',
+    float: 'left',
+    maxHeight: '100%',
+  },
+  mainPanelBig:{
+    [theme.breakpoints.up('md')]: {
+      width: `calc(100% - 80px)`,
+    },
+    width: '100%',
+    overflow: 'auto',
+    position: 'relative',
     float: 'right',
     maxHeight: '100%',
   },
@@ -60,7 +70,7 @@ class HomePage extends React.Component {
     return (
     <div className={classes.pageWrapper}>
       <BlockComponent block='Sidebar'/>
-      <div className={classes.mainPanel} ref='mainPanel'>
+      <div className={classes.mainPanel +' '+ classes.mainPanelBig} ref='mainPanel'>
         <Grid container>
           <BlockComponent block='Bar'/>
           {/*<div className={classes.container}>*/}
