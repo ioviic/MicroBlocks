@@ -38,7 +38,7 @@ export class Bar extends Component<Props & Configuration> {
             {/*Title*/}
           </Typography>
           <div className={classes.barChip}>
-            <BlockComponent block='Chip' />
+            <BlockComponent blockName='Chip' />
           </div>
         </Toolbar>
       </AppBar>

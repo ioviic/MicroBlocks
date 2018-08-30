@@ -56,10 +56,10 @@ class HomePage extends React.Component {
     const { classes } = this.props;
     return (
     <div className={classes.pageWrapper}>
-      <BlockComponent block='Sidebar'/>
+      <BlockComponent blockName='Sidebar'/>
       <div className={classes.mainPanel} ref='mainPanel'>
         <Grid container>
-          <BlockComponent block='Bar'/>
+          <BlockComponent blockName='Bar'/>
           {/*<div className={classes.container}>*/}
             <Grid item xs={12}>
             {switchRoutes}

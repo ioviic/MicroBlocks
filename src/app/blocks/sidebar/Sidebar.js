@@ -40,7 +40,7 @@ class Sidebar extends Component<Props & Configuration> {
         <div className={classes.wrapper}>
           {/*Extract this/header into different Block*/}
           {this.props.sidebar.showHeader &&
-            <BlockComponent block='Branding' />
+            <BlockComponent blockName='Branding' />
           }
           <SidebarLinks routes={this.props.sidebar.routes}/>
           <div>
@@ -49,7 +49,7 @@ class Sidebar extends Component<Props & Configuration> {
             </button>
           </div>
           <div className={classes.sidebarChip}>
-            <BlockComponent block='Chip'/>
+            <BlockComponent blockName='Chip'/>
           </div>
 
         </div>

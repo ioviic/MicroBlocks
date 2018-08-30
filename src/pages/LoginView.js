@@ -10,7 +10,7 @@ class LoginView extends React.Component {
     return (
       <Grid container>
         <Grid item md={12}>
-          <BlockComponent block='Login'/>
+          <BlockComponent blockName='Login'/>
         </Grid>
       </Grid>
     );

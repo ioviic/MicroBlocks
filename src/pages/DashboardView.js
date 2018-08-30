@@ -10,7 +10,7 @@ class DashboardView extends React.Component {
 
     return (
       <div>
-        <BlockComponent block='App' />
+        <BlockComponent blockName='App' />
       </div>
     );
   }
