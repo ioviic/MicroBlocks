@@ -7,7 +7,7 @@ import BrandingConfig from './BrandingConfig';
 import { connect } from 'react-redux';
 import type { State } from '../../../stateManagement/types/state';
 
-import { withStyles } from 'material-ui/styles/index';
+import { withStyles } from '@material-ui/core/styles';
 
 // import locale from './localizations/translations';
 // import { FormattedMessage } from 'react-intl';

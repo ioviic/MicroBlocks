@@ -5,10 +5,10 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
-import { withStyles } from 'material-ui/styles/index';
+import { withStyles } from '@material-ui/core/styles';
 import LoginView from './LoginView';
-import DraftsIcon from 'material-ui-icons/Drafts';
-import {Grid} from 'material-ui';
+import DraftsIcon from '@material-ui/icons/Drafts';
+import {Grid} from '@material-ui/core';
 import DashboardView from './DashboardView';
 
 const drawerWidth = 240;

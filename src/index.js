@@ -12,10 +12,7 @@ import {
 } from 'react-router-dom';
 
 import {AppApi} from './app/blocks/app/api'
-import { defineServiceName } from './api/Api';
-// console.log(AppApi.meta);
-//defineServiceName("hopa",AppApi);
-//console.log(new AppApi('jjj'));
+
 
 const hist = createBrowserHistory();
 const indexRoutes = [
@@ -25,12 +22,27 @@ const indexRoutes = [
 let SDK = run();
 
 let serviceApi = new AppApi(SDK.store);
+// serviceApi.currentApp().subscribe((e)=>{
+//   console.log("HAHA");
+//   console.log(e)});
 serviceApi.appIncrement().then(result =>{
     console.log("Success")
   }
 ).catch(err =>{
   console.log("Fail")
 });
+serviceApi.appIncrement().then(result =>{
+    console.log("Success")
+  }
+).catch(err =>{
+  console.log("Fail")
+});
+
+SDK.getBlock('App')
+  .then((block) =>{
+    console.log(block)
+  });
+
 
 console.log( SDK.getInitialState());
 

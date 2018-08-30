@@ -20,7 +20,7 @@ export class SDK {
         this.blocks = this.blocksInfo.map((item) =>{
             const promise = item.com.then((w) => {
                 const component = w.default;
-                return new Block(item.name, component, item.configurations, JSON.parse(item.messages), this.store);
+                return new Block(item.name, component, item.configurations, JSON.parse(item.messages), this.store, item.api);
             });
             return new BlockPromise(item.name, promise);
         });
@@ -42,7 +42,6 @@ export class SDK {
     }
 
     getBlock(blockName: string): Promise<any> {
-
       const block = this.blocks.find( (item) => {
         return item.name === blockName;
       });

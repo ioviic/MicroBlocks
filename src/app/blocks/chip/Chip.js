@@ -11,9 +11,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Redirect } from 'react-router-dom';
 
-import { Avatar, ButtonBase, Menu, MenuItem } from 'material-ui';
+import { Avatar, ButtonBase, Menu, MenuItem } from '@material-ui/core';
 
-import { withStyles } from 'material-ui/styles/index';
+import { withStyles } from '@material-ui/core/styles';
 import { ChipStyles as styles } from '../../customization/styles/Chip';
 
 type Props = {

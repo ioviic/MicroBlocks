@@ -12,13 +12,15 @@ export class Block {
     configurations: any;
     translations: any;
     store: any;
+    api: any;
 
-    constructor(name: string, element: ComponentType<any>, configuration: any, translations: any, store: any) {
+    constructor(name: string, element: ComponentType<any>, configuration: any, translations: any, store: any, api:any) {
         this.name = name;
         this.block = element;
         this.configurations = configuration;
         this.translations = translations;
         this.store = store;
+        this.api = api;
     }
 
     show(selector: string) {

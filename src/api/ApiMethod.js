@@ -18,7 +18,6 @@ export default function ApiMethod(type: 'Promise' | 'Observable') {
               return resolve(result);
             } catch (e) {
               return reject(new Error(`Something went wrong on calling Api Method`))
-              throw e;
             }
           });
         }else if ('Observable'){
