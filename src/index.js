@@ -25,24 +25,18 @@ let serviceApi = new AppApi(SDK.store);
 // serviceApi.currentApp().subscribe((e)=>{
 //   console.log("HAHA");
 //   console.log(e)});
-serviceApi.appIncrement().then(result =>{
-    console.log("Success")
-  }
-).catch(err =>{
-  console.log("Fail")
-});
-serviceApi.appIncrement().then(result =>{
-    console.log("Success")
-  }
-).catch(err =>{
-  console.log("Fail")
-});
-
-SDK.getBlock('App')
-  .then((block) =>{
-    console.log(block)
-  });
-
+// serviceApi.appIncrement().then(result =>{
+//     console.log("Success")
+//   }
+// ).catch(err =>{
+//   console.log("Fail")
+// });
+// serviceApi.appIncrement().then(result =>{
+//     console.log("Success")
+//   }
+// ).catch(err =>{
+//   console.log("Fail")
+// });
 
 console.log( SDK.getInitialState());
 

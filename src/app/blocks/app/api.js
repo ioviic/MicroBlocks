@@ -50,3 +50,8 @@ export class AppApi {
 
 }
 
+
+export const createApi = (store) => {
+  return new AppApi(store);
+};
+
