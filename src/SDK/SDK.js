@@ -54,7 +54,6 @@ export class SDK {
     getInitialState(){
         return configureStore().getState();
     }
-
 }
 
 export default SDK;
