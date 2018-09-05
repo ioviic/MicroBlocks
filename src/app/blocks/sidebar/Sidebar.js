@@ -1,31 +1,31 @@
 //@flow
-import React, { Component } from "react";
-import SidebarLinks from "./SidebarLinks";
-import { BlockComponent } from "../../../SDK";
+import React, { Component } from 'react';
+import SidebarLinks from './SidebarLinks';
+import { BlockComponent } from '../../../SDK';
 
-import type { State } from "../../../stateManagement/types/state";
-import { toggleHeader } from "./actions";
+import type { State } from '../../../stateManagement/types/state';
+import { toggleHeader } from './actions';
 
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-import SidebarConfig from "./SidebarConfig";
-import injectConfigs from "../../../configurations/ConfigurationHOC";
+import SidebarConfig from './SidebarConfig';
+import injectConfigs from '../../../configurations/ConfigurationHOC';
 
-import { Drawer } from "@material-ui/core";
-import image from "../../customization/sidebar-2.jpg";
-import { withStyles } from "@material-ui/core/styles";
-import { SideBarStyles as styles } from "../../customization/styles/Sidebar";
+import { Drawer } from '@material-ui/core';
+import image from '../../customization/sidebar-2.jpg';
+import { withStyles } from '@material-ui/core/styles';
+import { SideBarStyles as styles } from '../../customization/styles/Sidebar';
 
 type Props = {
   sidebar: *,
   classes: any,
-  toggleHeader: () => mixed
+  toggleHeader: () => mixed,
 };
 
 type Configuration = {
   configuration: SidebarConfig
-};
+}
 
 class Sidebar extends Component<Props & Configuration> {
   render() {
@@ -35,29 +35,27 @@ class Sidebar extends Component<Props & Configuration> {
       <Drawer
         variant="permanent"
         classes={{ paper: classes.drawerPaper }}
-        anchor={"left"}
-      >
+        anchor={'left'}>
+
         <div className={classes.wrapper}>
           {/*Extract this/header into different Block*/}
-          {this.props.sidebar.showHeader && (
-            <BlockComponent blockName="Branding" />
-          )}
-          <SidebarLinks routes={this.props.sidebar.routes} />
+          {this.props.sidebar.showHeader &&
+            <BlockComponent blockName='Branding' />
+          }
+          <SidebarLinks routes={this.props.sidebar.routes}/>
           <div>
             <button key="increment" onClick={() => this.props.toggleHeader()}>
               Toggle Header
             </button>
           </div>
           <div className={classes.sidebarChip}>
-            <BlockComponent blockName="Chip" />
+            <BlockComponent blockName='Chip'/>
           </div>
+
         </div>
-        {image !== undefined && (
-          <div
-            className={classes.background}
-            style={{ backgroundImage: "url(" + image + ")" }}
-          />
-        )}
+
+        {image !== undefined && <div className={classes.background} style={{backgroundImage: "url("+image+")"}} />}
+
       </Drawer>
     );
   }
@@ -74,7 +72,4 @@ const mapDispatchToProps = (dispatch: *) =>
     dispatch
   );
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(injectConfigs(withStyles(styles)(Sidebar)));
+export default connect(mapStateToProps, mapDispatchToProps)(injectConfigs(withStyles(styles)(Sidebar)));
