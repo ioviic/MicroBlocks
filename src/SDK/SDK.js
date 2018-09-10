@@ -20,7 +20,14 @@ export class SDK {
         this.blocks = this.blocksInfo.map((item) =>{
             const promise = item.com.then((w) => {
                 const component = w.default;
-                return new Block(item.name, component, item.configurations, JSON.parse(item.messages), this.store, item.api);
+                if(item.api){
+                    return item.api.then(api=>{
+                        const service = api.createApi(this.store);
+                        return new Block(item.name, component, item.configurations, JSON.parse(item.messages), this.store, service)
+                    })
+                }else{
+                    return new Block(item.name, component, item.configurations, JSON.parse(item.messages), this.store, null)
+                }
             });
             return new BlockPromise(item.name, promise);
         });

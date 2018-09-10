@@ -29,9 +29,6 @@ export class BlockComponent extends Component<Props, State>{
   {
     SDK.getBlock(this.props.blockName)
       .then((block) =>{
-        block.api && block.api.then((Api)=>{
-          block.setService(Api)
-        });
         this.setState({component: block.wrapperHOC(), loading: false})
       });
   };
