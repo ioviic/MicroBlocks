@@ -42,7 +42,7 @@ class Sidebar extends Component<Props & Configuration, SidebarState> {
     this.props.toggleSidebar()
   };
 
-  dockSidebar = () => {
+  toggleSidebar = () => {
     this.setState({ dock: !this.state.dock });
   };
 
@@ -54,11 +54,11 @@ class Sidebar extends Component<Props & Configuration, SidebarState> {
       <Hidden smDown>
         <Drawer
           variant="permanent"
-          classes={{ paper: classes.drawerPaper + (this.state.dock ? " " + classes.drawerPaperClose:"")}}
+          classes={{ paper: classes.drawerPaper + (this.state.dock ? " " + classes.drawerPaperClose:"") + (this.props.sidebar.showSidebar ? " "+ classes.drawerPaperOpen : "")}}
           anchor={'left'}
-          open={false}
-          onMouseEnter={this.dockSidebar}
-          onMouseLeave={this.dockSidebar}
+          open
+          onMouseOver={this.toggleSidebar}
+          onMouseOut={this.toggleSidebar}
           >
 
           <div className={classes.wrapper}>
@@ -68,7 +68,7 @@ class Sidebar extends Component<Props & Configuration, SidebarState> {
             }
             <SidebarLinks routes={this.props.sidebar.routes}/>
             <div>
-              <button key="increment" onClick={this.dockSidebar}>
+              <button key="increment" onClick={this.toggleSidebar}>
                 Toggle Header
               </button>
             </div>

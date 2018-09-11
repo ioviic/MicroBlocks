@@ -15,12 +15,14 @@ type State = {
   routes: Array<*>;
   showHeader: boolean;
   showSidebar: boolean;
+  pinSidebar: boolean;
 };
 
 const initialState : State =  {
   routes: appRoutes,
   showHeader: true,
-  showSidebar: false
+  showSidebar: false,
+  pinSidebar: false,
 } ;
 
 export default createReducer(initialState, {
@@ -30,4 +32,8 @@ export default createReducer(initialState, {
     SIDEBAR_TOGGLE: (state: State, action: SidebarAction): State => {
         return  {...state, showSidebar : action.payload};
       },
+    SIDEBAR_PIN: (state: State, action: SidebarAction): State => {
+        return  {...state, showSidebar : action.payload, pinSidebar: action.payload};
+      },
+
 });

@@ -9,4 +9,10 @@ export type SidebarToggleAction = {
   payload: boolean;
 }
 
-export type SidebarAction = SidebarShowHeaderAction | SidebarToggleAction ;
+export type SidebarPinAction = {
+  type: 'SIDEBAR_PIN';
+  payload: boolean;
+}
+
+
+export type SidebarAction = SidebarShowHeaderAction | SidebarToggleAction | SidebarPinAction ;

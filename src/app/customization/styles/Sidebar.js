@@ -15,6 +15,9 @@ export const SideBarStyles = theme => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
   },
+  drawerPaperOpen: {
+    width: '240px !important',
+  },
   drawerPaperClose: {
     overflowX: 'hidden',
     // width: '20px !important',

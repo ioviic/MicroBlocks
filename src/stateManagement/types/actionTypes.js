@@ -12,3 +12,4 @@ export type ActionType =
     | 'USER_LOGGED_OUT'
     | 'SIDEBAR_SHOW_HEADER'
     | 'SIDEBAR_TOGGLE'
+    | 'SIDEBAR_PIN'
