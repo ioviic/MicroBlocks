@@ -6,9 +6,9 @@ import BarConfig from './BarConfig';
 import type { State } from '../../../stateManagement/types/state';
 import { BlockComponent } from '../../../SDK';
 
-import { AppBar, Toolbar, Typography, IconButton } from 'material-ui';
-import MenuIcon from 'material-ui-icons/Menu';
-import { withStyles } from 'material-ui/styles/index';
+import { AppBar, Toolbar, Typography, IconButton } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
+import { withStyles } from '@material-ui/core/styles/index';
 import { BarStyles as styles } from '../../customization/styles/Bar';
 import { toggleSidebar } from '../sidebar/actions';
 
@@ -52,7 +52,7 @@ export class Bar extends Component<Props & Configuration> {
             {/*Title*/}
           </Typography>
           <div className={classes.barChip}>
-            <BlockComponent block='Chip' />
+            <BlockComponent blockName='Chip' />
           </div>
         </Toolbar>
       </AppBar>

@@ -98,7 +98,6 @@ module.exports = function grabBlocks() {
     grabBlocksInfo(blocksDirectory);
     grabBlockConfig();
     grabBlockTranslations();
-
     return 'module.exports=['+
         blocksInfo.map((block) => '{' +
             "name:'" + block.name + "'," +
@@ -108,6 +107,7 @@ module.exports = function grabBlocks() {
             "messages: '"+JSON.stringify(block.translations)+"'," +
             "configurations:'"+JSON.stringify(block.configurations)+"'," +
             'com:System.import(' + block.com + '),' +
+            (block.api ? 'api:System.import('+loaderUtils.stringifyRequest($this,'./'+block.dir+'/'+block.api)+'),' : 'api: ""') +
             '}')
             .join(',\n') + '];';
 };

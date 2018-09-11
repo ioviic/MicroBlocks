@@ -4,8 +4,8 @@ import StandardCard from '../../components/StandardCard';
 import injectConfigs from '../../../configurations/ConfigurationHOC';
 import {
   withStyles,FormControl, InputLabel, Input, Button, Grid
-} from 'material-ui';
-import { Clear } from 'material-ui-icons';
+} from '@material-ui/core';
+import { Clear } from '@material-ui/icons';
 // $FlowFixMe
 import styles from '../../customization/styles/Login.js';
 import Validator from 'validator';

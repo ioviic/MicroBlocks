@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 
-import {withStyles, Table, TableBody, TableCell, TableHead, TableRow } from 'material-ui';
+import {withStyles, Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
 
 import { TableStyles as styles } from '../customization/styles/Components.js';
 

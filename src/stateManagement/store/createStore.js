@@ -8,5 +8,8 @@ import type { Store } from '../types/store';
 const enhancer = compose(applyMiddleware(thunk));
 
 export default function configureStore(): Store {
-    return createStore(rootReducer,enhancer);
+    return createStore(rootReducer,
+      window.__REDUX_DEVTOOLS_EXTENSION__ &&
+      window.__REDUX_DEVTOOLS_EXTENSION__(),
+      enhancer);
 }

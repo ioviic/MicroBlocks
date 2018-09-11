@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import {
   withStyles, Card, CardHeader, CardContent, CardActions
-} from 'material-ui';
+} from '@material-ui/core';
 
 import { StandardCardStyles as styles } from '../customization/styles/Components.js';
 
