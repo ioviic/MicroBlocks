@@ -2,7 +2,7 @@
 import Api from '../../../api/Api'
 import ApiMethod from '../../../api/ApiMethod'
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import 'rxjs/add/operator/distinctUntilChanged';
 
 import {increment} from "./actions"
@@ -41,15 +41,12 @@ export class AppApi {
     this.store.dispatch(increment())
   }
 
-
-
   @ApiMethod('Observable')
   currentApp(): Observable<string> {
     return toObservable(this.store, selectIsLoggedIn).distinctUntilChanged();
   }
 
 }
-
 
 export const createApi = (store) => {
   return new AppApi(store);

@@ -1,5 +1,5 @@
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export default function ApiMethod(type: 'Promise' | 'Observable') {
   return function (target: any, propertyKey: string, descriptor: any) {
