@@ -18,7 +18,7 @@ import type { State } from '../../../stateManagement/types/state';
 import StandardCard from '../../components/StandardCard';
 import TableList   from '../../components/TableList';
 import GridElement   from '../../components/GridElement';
-import { Grid } from 'material-ui';
+import { Grid } from '@material-ui/core';
 
 type Props = {
     app: number,

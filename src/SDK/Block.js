@@ -12,18 +12,30 @@ export class Block {
     configurations: any;
     translations: any;
     store: any;
+    api: any;
+    service: any;
 
-    constructor(name: string, element: ComponentType<any>, configuration: any, translations: any, store: any) {
+    constructor(name: string, element: ComponentType<any>, configuration: any, translations: any, store: any, api:any) {
         this.name = name;
         this.block = element;
         this.configurations = configuration;
         this.translations = translations;
         this.store = store;
+        this.api = api;
+        this.service = {};
     }
 
     show(selector: string) {
         const node = document.querySelector(selector);
         node && ReactDOM.render(this.wrapperHOC(), node);
+    }
+
+    setService(Api: any){
+      this.service = new Api.createApi(this.store);
+    }
+
+    service(){
+      return this.service;
     }
 
     wrapperHOC = (): Element<any> => {

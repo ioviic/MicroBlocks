@@ -12,9 +12,9 @@ import { connect } from 'react-redux';
 import SidebarConfig from './SidebarConfig';
 import injectConfigs from '../../../configurations/ConfigurationHOC';
 
-import { Drawer } from 'material-ui';
+import { Drawer } from '@material-ui/core';
 import image from '../../customization/sidebar-2.jpg';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { SideBarStyles as styles } from '../../customization/styles/Sidebar';
 
 type Props = {
@@ -40,7 +40,7 @@ class Sidebar extends Component<Props & Configuration> {
         <div className={classes.wrapper}>
           {/*Extract this/header into different Block*/}
           {this.props.sidebar.showHeader &&
-            <BlockComponent block='Branding' />
+            <BlockComponent blockName='Branding' />
           }
           <SidebarLinks routes={this.props.sidebar.routes}/>
           <div>
@@ -49,7 +49,7 @@ class Sidebar extends Component<Props & Configuration> {
             </button>
           </div>
           <div className={classes.sidebarChip}>
-            <BlockComponent block='Chip'/>
+            <BlockComponent blockName='Chip'/>
           </div>
 
         </div>

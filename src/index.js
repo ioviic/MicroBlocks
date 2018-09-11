@@ -11,12 +11,33 @@ import {
   Switch
 } from 'react-router-dom';
 
+// import {AppApi} from './app/blocks/app/api'
+
+
 const hist = createBrowserHistory();
 const indexRoutes = [
   { path: "/", component: HomePage}
 ];
 
 let SDK = run();
+
+// let serviceApi = new AppApi(SDK.store);
+// serviceApi.currentApp().subscribe((e)=>{
+//   console.log("HAHA");
+//   console.log(e)});
+// serviceApi.appIncrement().then(result =>{
+//     console.log("Success")
+//   }
+// ).catch(err =>{
+//   console.log("Fail")
+// });
+// serviceApi.appIncrement().then(result =>{
+//     console.log("Success")
+//   }
+// ).catch(err =>{
+//   console.log("Fail")
+// });
+
 console.log( SDK.getInitialState());
 
 ReactDOM.render(

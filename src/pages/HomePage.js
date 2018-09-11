@@ -5,10 +5,10 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
-import { withStyles } from 'material-ui/styles/index';
+import { withStyles } from '@material-ui/core/styles';
 import LoginView from './LoginView';
-import DraftsIcon from 'material-ui-icons/Drafts';
-import {Grid} from 'material-ui';
+import DraftsIcon from '@material-ui/icons/Drafts';
+import {Grid} from '@material-ui/core';
 import DashboardView from './DashboardView';
 
 const drawerWidth = 240;
@@ -56,10 +56,10 @@ class HomePage extends React.Component {
     const { classes } = this.props;
     return (
     <div className={classes.pageWrapper}>
-      <BlockComponent block='Sidebar'/>
+      <BlockComponent blockName='Sidebar'/>
       <div className={classes.mainPanel} ref='mainPanel'>
         <Grid container>
-          <BlockComponent block='Bar'/>
+          <BlockComponent blockName='Bar'/>
           {/*<div className={classes.container}>*/}
             <Grid item xs={12}>
             {switchRoutes}

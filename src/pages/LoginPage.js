@@ -5,7 +5,7 @@ import { BlockComponent } from '../SDK';
 
 const LoginPage = () => (
   <div>
-    <BlockComponent block='Login' />
+    <BlockComponent blockName='Login' />
     <Link to={"/"}>Home</Link>
   </div>
 );

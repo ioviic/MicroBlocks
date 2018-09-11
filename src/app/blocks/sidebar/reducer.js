@@ -1,7 +1,7 @@
 // @flow
 import createReducer from '../../../stateManagement/createReducer';
 import type { SidebarAction } from './actionTypes';
-import DraftsIcon from 'material-ui-icons/Drafts';
+import DraftsIcon from '@material-ui/icons/Drafts';
 const appRoutes = [
   { path: "/login", sidebarName: "Login", icon: DraftsIcon },
   { path: "/dashboard", sidebarName: "Dashboard", icon: DraftsIcon },

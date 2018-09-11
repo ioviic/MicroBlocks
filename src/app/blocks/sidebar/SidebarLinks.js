@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { List, ListItem, ListItemText, ListItemIcon} from 'material-ui';
+import { List, ListItem, ListItemText, ListItemIcon} from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
-import { withStyles } from 'material-ui/styles/index';
+import { withStyles } from '@material-ui/core/styles';
 
 import { SideBarLinksStyles as styles} from '../../customization/styles/Sidebar';
 

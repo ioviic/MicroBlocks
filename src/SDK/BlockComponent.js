@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { SDK } from './starter';
 
 type Props = {
-  block: string
+  blockName: string
 };
 
 type State = {
@@ -27,7 +27,7 @@ export class BlockComponent extends Component<Props, State>{
 
   componentDidMount()
   {
-    SDK.getBlock(this.props.block)
+    SDK.getBlock(this.props.blockName)
       .then((block) =>{
         this.setState({component: block.wrapperHOC(), loading: false})
       });
