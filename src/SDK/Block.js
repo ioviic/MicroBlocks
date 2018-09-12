@@ -30,22 +30,14 @@ export class Block {
         node && ReactDOM.render(this.wrapperHOC(), node);
     }
 
-    setService(Api: any){
-      this.service = new Api.createApi(this.store);
-    }
-
-    service(){
-      return this.service;
-    }
-
-    wrapperHOC = (): Element<any> => {
+    wrapperHOC = (props): Element<any> => {
       const Block = this.block;
 
       return (
         <ConfigurationProvider configuration = { JSON.parse(this.configurations) }>
           <Provider store={ this.store }>
             <IntlProvider locale={'en'} messages={this.translations['en']}>
-              <Block />
+              <Block {...props} />
             </IntlProvider>
           </Provider>
         </ConfigurationProvider>

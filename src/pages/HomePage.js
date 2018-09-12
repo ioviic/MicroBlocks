@@ -50,6 +50,14 @@ const appRoutes = [
   { redirect: true, path: "/", to: "/login", navbarName: "Redirect" }
 ];
 
+// TODO use only one array of routes
+const sidebarRoutes = [
+  { path: "/login", sidebarName: "Login", icon: DraftsIcon },
+  { path: "/dashboard", sidebarName: "Dashboard", icon: DraftsIcon },
+  { redirect: true, path: "/", to: "/login" }
+];
+
+
 const switchRoutes = (<Switch>
   {
     appRoutes.map((prop,key) => {
@@ -94,7 +102,7 @@ class HomePage extends React.Component<Props, State> {
     const { classes } = this.props;
     return (
     <div className={classes.pageWrapper}>
-      <BlockComponent blockName='Sidebar'/>
+      <BlockComponent blockName='Sidebar' routes={sidebarRoutes} />
       <div className={classes.mainPanel +(this.state.big ? "":" " + classes.mainPanelBig)} ref='mainPanel'>
         <Grid container>
           <BlockComponent blockName='Bar'/>

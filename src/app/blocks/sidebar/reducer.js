@@ -2,23 +2,12 @@
 import createReducer from '../../../stateManagement/createReducer';
 import type { SidebarAction } from './actionTypes';
 
-//Get rid of this move this in different more meaningful place
-import DraftsIcon from '@material-ui/icons/Drafts';
-
-const appRoutes = [
-  { path: "/login", sidebarName: "Login", icon: DraftsIcon },
-  { path: "/dashboard", sidebarName: "Dashboard", icon: DraftsIcon },
-  { redirect: true, path: "/", to: "/login" }
-];
-
 type State = {
-  routes: Array<*>;
   showHeader: boolean;
   showSidebar: boolean;
 };
 
 const initialState : State =  {
-  routes: appRoutes,
   showHeader: true,
   showSidebar: false
 } ;

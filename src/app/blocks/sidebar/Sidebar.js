@@ -23,6 +23,7 @@ type Props = {
   classes: any,
   toggleHeader: () => mixed,
   toggleSidebar: () => mixed,
+  routes: any
 };
 
 type Configuration = {
@@ -79,7 +80,7 @@ class Sidebar extends Component<Props & Configuration, SidebarState> {
             {this.props.sidebar.showHeader &&
             <BlockComponent blockName='Branding' />
             }
-            <SidebarLinks routes={this.props.sidebar.routes}/>
+            <SidebarLinks routes={this.props.routes}/>
             <div>
               <button key="increment" onClick={this.toggleSidebar}>
                 Toggle Header
