@@ -1,12 +1,8 @@
-//
-// export type IncrementAction = {
-//   type: 'INCREMENT_COUNTER';
-//   payload: number;
-// }
-//
-// export type DecrementAction = {
-//   type: 'DECREMENT_COUNTER';
-//   payload: number;
-// }
-//
-// export type AppAction = DecrementAction | IncrementAction ;
+
+export type BarPinSidebarAction = {
+  type: 'BAR_PIN_SIDEBAR';
+  payload: boolean;
+}
+
+
+export type BarAction = BarPinSidebarAction ;

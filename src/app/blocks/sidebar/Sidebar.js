@@ -16,6 +16,7 @@ import { Drawer, Hidden } from '@material-ui/core';
 import image from '../../customization/sidebar-2.jpg';
 import { withStyles } from '@material-ui/core/styles';
 import { SideBarStyles as styles } from '../../customization/styles/Sidebar';
+import {SDK} from "../../../SDK/starter";
 
 type Props = {
   sidebar: *,
@@ -29,21 +30,33 @@ type Configuration = {
 }
 
 type SidebarState = {
-  dock: boolean;
+  show: boolean;
+  pinSidebar: boolean;
 }
 
 class Sidebar extends Component<Props & Configuration, SidebarState> {
 
   state:SidebarState = {
-    dock: true
+    show: true,
+    pinSidebar:false
   };
+
+  componentDidMount() {
+    SDK.getBlock("Bar").then(block =>
+      block.api
+        .pinSidebar()
+        .subscribe(res => {
+            this.setState({pinSidebar: res})
+          }
+        ))
+  }
 
   handleDrawerToggle = () => {
     this.props.toggleSidebar()
   };
 
   toggleSidebar = () => {
-    this.setState({ dock: !this.state.dock });
+    this.setState({ show: !this.state.show });
   };
 
   render() {
@@ -54,7 +67,7 @@ class Sidebar extends Component<Props & Configuration, SidebarState> {
       <Hidden smDown>
         <Drawer
           variant="permanent"
-          classes={{ paper: classes.drawerPaper + (this.state.dock ? " " + classes.drawerPaperClose:"") + (this.props.sidebar.showSidebar ? " "+ classes.drawerPaperOpen : "")}}
+          classes={{ paper: classes.drawerPaper + (this.state.show ? " " + classes.drawerPaperClose:"") + (this.state.pinSidebar ? " "+ classes.drawerPaperOpen : "")}}
           anchor={'left'}
           open
           onMouseOver={this.toggleSidebar}

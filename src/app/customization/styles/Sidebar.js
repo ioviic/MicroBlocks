@@ -9,7 +9,7 @@ export const SideBarStyles = theme => ({
     position: 'fixed',
     height: '100%',
     width: drawerWidth,
-    zIndex: 1,
+    zIndex: 2,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -20,7 +20,6 @@ export const SideBarStyles = theme => ({
   },
   drawerPaperClose: {
     overflowX: 'hidden',
-    // width: '20px !important',
     width: theme.spacing.unit * 9,
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing.unit * 10,

@@ -1,16 +1,18 @@
 // @flow
-// import createReducer from '../../../stateManagement/createReducer';
-// import type { AppAction } from './actionTypes';
-//
-// type State = number;
-//
-// const initialState = 0;
-//
-// export default createReducer(initialState, {
-//     INCREMENT_COUNTER: (state: State, action: AppAction) => {
-//         return state + action.payload;
-//     },
-//     DECREMENT_COUNTER: (state: State, action: AppAction) => {
-//         return state - action.payload;
-//     }
-// });
+import createReducer from '../../../stateManagement/createReducer';
+import type { SidebarAction } from './actionTypes';
+
+type State = {
+  pinSidebar: boolean;
+};
+
+const initialState : State =  {
+  pinSidebar: false,
+} ;
+
+export default createReducer(initialState, {
+  SIDEBAR_PIN: (state: State, action: SidebarAction): State => {
+    return  {...state, pinSidebar: action.payload};
+  },
+
+});

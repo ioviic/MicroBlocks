@@ -2,8 +2,9 @@
 import type { AppAction } from '../../app/blocks/app/actionTypes';
 import type { LoginAction } from '../../app/blocks/login/actionTypes';
 import type { SidebarAction } from '../../app/blocks/sidebar/actionTypes';
+import type { BarAction } from '../../app/blocks/bar/actionTypes'
 
-export type Action = LoginAction | AppAction | SidebarAction;
+export type Action = LoginAction | AppAction | SidebarAction | BarAction;
 
 export type ActionType =
     | 'INCREMENT_COUNTER'
@@ -12,4 +13,4 @@ export type ActionType =
     | 'USER_LOGGED_OUT'
     | 'SIDEBAR_SHOW_HEADER'
     | 'SIDEBAR_TOGGLE'
-    | 'SIDEBAR_PIN'
+    | 'BAR_PIN_SIDEBAR'

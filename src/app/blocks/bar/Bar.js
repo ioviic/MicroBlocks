@@ -10,7 +10,8 @@ import { AppBar, Toolbar, Typography, IconButton, Hidden } from '@material-ui/co
 import MenuIcon from '@material-ui/icons/Menu';
 import { withStyles } from '@material-ui/core/styles/index';
 import { BarStyles as styles } from '../../customization/styles/Bar';
-import { toggleSidebar, dockSidebar } from '../sidebar/actions';
+import { toggleSidebar } from '../sidebar/actions';
+import { dockSidebar } from '../bar/actions';
 
 // import locale from './localizations/translations';
 // import { FormattedMessage } from 'react-intl';
@@ -34,7 +35,12 @@ export class Bar extends Component<Props & Configuration> {
   render() {
     const { classes } = this.props;
     return (
-      <AppBar position="static" color="default">
+      <AppBar
+        position="static"
+        color="default"
+        classes={{
+          root: classes.root
+        }}>
         <Toolbar>
           <Hidden smDown>
             <IconButton

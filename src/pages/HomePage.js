@@ -10,6 +10,7 @@ import LoginView from './LoginView';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import {Grid} from '@material-ui/core';
 import DashboardView from './DashboardView';
+import { SDK } from '../SDK/starter';
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -26,7 +27,7 @@ const styles = theme => ({
     width: '100%',
     overflow: 'auto',
     position: 'relative',
-    float: 'left',
+    float: 'right',
     maxHeight: '100%',
   },
   mainPanelBig:{
@@ -36,7 +37,6 @@ const styles = theme => ({
     width: '100%',
     overflow: 'auto',
     position: 'relative',
-    float: 'right',
     maxHeight: '100%',
   },
   container:{
@@ -64,13 +64,38 @@ const switchRoutes = (<Switch>
   }
 </Switch>);
 
-class HomePage extends React.Component {
+type Props = {
+  classes: any
+};
+
+type State = {
+  big: boolean
+}
+
+
+class HomePage extends React.Component<Props, State> {
+
+  constructor(props){
+    super(props)
+    this.state = {big: false}
+  }
+
+  componentDidMount() {
+    SDK.getBlock("Bar").then(block =>
+      block.api
+        .pinSidebar()
+        .subscribe(res => {
+            this.setState({big: res})
+          }
+        ))
+  }
+
   render() {
     const { classes } = this.props;
     return (
     <div className={classes.pageWrapper}>
       <BlockComponent blockName='Sidebar'/>
-      <div className={classes.mainPanel +' '+ classes.mainPanelBig} ref='mainPanel'>
+      <div className={classes.mainPanel +(this.state.big ? "":" " + classes.mainPanelBig)} ref='mainPanel'>
         <Grid container>
           <BlockComponent blockName='Bar'/>
           {/*<div className={classes.container}>*/}
