@@ -9,7 +9,21 @@ export const SideBarStyles = theme => ({
     position: 'fixed',
     height: '100%',
     width: drawerWidth,
-    zIndex: 1,
+    zIndex: 2,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  drawerPaperOpen: {
+    width: '240px !important',
+  },
+  drawerPaperClose: {
+    overflowX: 'hidden',
+    width: theme.spacing.unit * 9,
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing.unit * 10,
+    },
   },
   wrapper:{
     zIndex: 4,
@@ -59,7 +73,7 @@ export const SideBarLinksStyles = theme => ({
     OTransition: 'all 300ms linear',
     MsTransition: 'all 300ms linear',
     transition: 'all 300ms linear',
-    padding: '10px 15px',
+    padding: '10px 13px',
     borderRadius: '3px',
     width:'auto',
     '&:hover': {

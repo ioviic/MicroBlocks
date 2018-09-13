@@ -23,7 +23,7 @@ class TableList extends Component<Props> {
               headerTitles.map((prop,key) => {
                 return (
                   <TableCell
-                    className={classes.headerCell}
+                    className={classes.headerCell +' '+ classes.tableCell }
                     key={key}>
                     {prop}
                   </TableCell>

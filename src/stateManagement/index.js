@@ -6,9 +6,10 @@ import signup from '../app/blocks/signup/reducer';
 import chip from '../app/blocks/chip/reducer';
 import sidebar from '../app/blocks/sidebar/reducer';
 import branding from '../app/blocks/branding/reducer';
+import bar from '../app/blocks/bar/reducer';
 
 const reducers = {
-    app, login, signup, sidebar, chip, branding
+    app, login, signup, sidebar, chip, branding, bar
 };
 
 export type Reducers = typeof reducers;

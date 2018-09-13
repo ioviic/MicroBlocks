@@ -15,7 +15,7 @@ export let userLoggedIn = (user: UserState): LoginAction => {
         payload: user
     };
 };
-export let userLoggedOut = (): LoginAction => {
+export let userLoggedOut = () => {
   return {
     type: 'USER_LOGGED_OUT'
   };

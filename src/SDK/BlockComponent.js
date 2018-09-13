@@ -19,7 +19,7 @@ function Loading(){
   return <h1>Loading</h1>;
 }
 
-export class BlockComponent extends Component<Props, State>{
+export class BlockComponent extends Component<Props & any, State>{
   state = {
     loading: true,
     component: <Loading/>
@@ -29,7 +29,7 @@ export class BlockComponent extends Component<Props, State>{
   {
     SDK.getBlock(this.props.blockName)
       .then((block) =>{
-        this.setState({component: block.wrapperHOC(), loading: false})
+        this.setState({component: block.wrapperHOC(this.props), loading: false})
       });
   };
 

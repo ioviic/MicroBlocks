@@ -4,7 +4,7 @@ import SidebarLinks from './SidebarLinks';
 import { BlockComponent } from '../../../SDK';
 
 import type { State } from '../../../stateManagement/types/state';
-import { toggleHeader } from './actions';
+import { toggleHeader, toggleSidebar } from './actions';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -12,51 +12,120 @@ import { connect } from 'react-redux';
 import SidebarConfig from './SidebarConfig';
 import injectConfigs from '../../../configurations/ConfigurationHOC';
 
-import { Drawer } from '@material-ui/core';
+import { Drawer, Hidden } from '@material-ui/core';
 import image from '../../customization/sidebar-2.jpg';
 import { withStyles } from '@material-ui/core/styles';
 import { SideBarStyles as styles } from '../../customization/styles/Sidebar';
+import {SDK} from "../../../SDK/starter";
 
 type Props = {
   sidebar: *,
   classes: any,
   toggleHeader: () => mixed,
+  toggleSidebar: () => mixed,
+  routes: any
 };
 
 type Configuration = {
   configuration: SidebarConfig
 }
 
-class Sidebar extends Component<Props & Configuration> {
+type SidebarState = {
+  show: boolean;
+  pinSidebar: boolean;
+}
+
+class Sidebar extends Component<Props & Configuration, SidebarState> {
+
+  state:SidebarState = {
+    show: true,
+    pinSidebar:false
+  };
+
+  componentDidMount() {
+    SDK.getBlock("Bar").then(block =>
+      block.api
+        .pinSidebar()
+        .subscribe(res => {
+            this.setState({pinSidebar: res})
+          }
+        ))
+  }
+
+  handleDrawerToggle = () => {
+    this.props.toggleSidebar()
+  };
+
+  toggleSidebar = () => {
+    this.setState({ show: !this.state.show });
+  };
+
   render() {
     const { classes } = this.props;
 
     return (
-      <Drawer
-        variant="permanent"
-        classes={{ paper: classes.drawerPaper }}
-        anchor={'left'}>
+      <div>
+      <Hidden smDown>
+        <Drawer
+          variant="permanent"
+          classes={{ paper: classes.drawerPaper + (this.state.show ? " " + classes.drawerPaperClose:"") + (this.state.pinSidebar ? " "+ classes.drawerPaperOpen : "")}}
+          anchor={'left'}
+          open
+          onMouseOver={this.toggleSidebar}
+          onMouseOut={this.toggleSidebar}
+          >
 
-        <div className={classes.wrapper}>
-          {/*Extract this/header into different Block*/}
-          {this.props.sidebar.showHeader &&
+          <div className={classes.wrapper}>
+            {/*Extract this/header into different Block*/}
+            {this.props.sidebar.showHeader &&
             <BlockComponent blockName='Branding' />
-          }
-          <SidebarLinks routes={this.props.sidebar.routes}/>
-          <div>
-            <button key="increment" onClick={() => this.props.toggleHeader()}>
-              Toggle Header
-            </button>
+            }
+            <SidebarLinks routes={this.props.routes}/>
+            <div>
+              <button key="increment" onClick={this.toggleSidebar}>
+                Toggle Header
+              </button>
+            </div>
+            <div className={classes.sidebarChip}>
+              <BlockComponent blockName='Chip'/>
+            </div>
           </div>
-          <div className={classes.sidebarChip}>
-            <BlockComponent blockName='Chip'/>
-          </div>
 
-        </div>
+          {image !== undefined && <div className={classes.background} style={{backgroundImage: "url("+image+")"}} />}
 
-        {image !== undefined && <div className={classes.background} style={{backgroundImage: "url("+image+")"}} />}
+        </Drawer>
+      </Hidden>
+        <Hidden mdUp>
+          <Drawer
+            variant="temporary"
+            classes={{ paper: classes.drawerPaper }}
+            anchor={'left'}
+            open={this.props.sidebar.showSidebar}
+            onClose={this.handleDrawerToggle}
+          >
 
-      </Drawer>
+            <div className={classes.wrapper}>
+              {/*Extract this/header into different Block*/}
+              {this.props.sidebar.showHeader &&
+              <BlockComponent blockName='Branding' />
+              }
+              <SidebarLinks routes={this.props.sidebar.routes}/>
+              <div>
+                <button key="increment" onClick={() => this.props.toggleHeader()}>
+                  Toggle Header
+                </button>
+              </div>
+              <div className={classes.sidebarChip}>
+                <BlockComponent blockName='Chip'/>
+              </div>
+
+            </div>
+
+            {image !== undefined && <div className={classes.background} style={{backgroundImage: "url("+image+")"}} />}
+
+          </Drawer>
+        </Hidden>
+      </div>
     );
   }
 }
@@ -67,7 +136,8 @@ const mapStateToProps = ({ sidebar }: State) => ({
 const mapDispatchToProps = (dispatch: *) =>
   bindActionCreators(
     {
-      toggleHeader
+      toggleHeader,
+      toggleSidebar
     },
     dispatch
   );
