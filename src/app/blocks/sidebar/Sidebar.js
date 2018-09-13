@@ -78,7 +78,7 @@ class Sidebar extends Component<Props & Configuration, SidebarState> {
           <div className={classes.wrapper}>
             {/*Extract this/header into different Block*/}
             {this.props.sidebar.showHeader &&
-            <BlockComponent blockName='Branding' />
+              <BlockComponent blockName='Branding' />
             }
             <SidebarLinks routes={this.props.routes}/>
             <div>

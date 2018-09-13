@@ -5,28 +5,27 @@ export const BrandingStyles = theme => ({
     zIndex: '4',
     '&:after':{
       content: '""',
-      position: 'absolute',
       bottom: '0',
-
+      float: 'left',
       height: '1px',
-      right: '15px',
-      width: 'calc(100% - 30px)',
+      width: '100%',
       backgroundColor: 'rgba(180, 180, 180, 0.3)',
     }
   },
-  brandtext:{
+  brandText:{
     display: "inline-block"
   },
   text:{},
   subtext:{},
   logoLink: {
+    width: '240px',
     textTransform: 'uppercase',
     padding: '5px 0',
     display: 'block',
     fontSize: '18px',
     textAlign: 'left',
     fontWeight: '400',
-    lineHeight: '30px',
+    lineHeight: '70px',
     textDecoration: 'none',
     backgroundColor: 'transparent',
     '&,&:hover': {
@@ -34,15 +33,16 @@ export const BrandingStyles = theme => ({
     }
   },
   logoImage: {
-    width: '30px',
+    width: '70px',
+    height: '70px',
     display: 'inline-block',
-    maxHeight: '30px',
-    marginLeft: '10px',
-    marginRight: '15px',
+    left: '-10px',
+    position: 'relative',
+    float: 'left'
   },
   img: {
-    width: '35px',
-    top: '22px',
+    width: 'inherit',
+    height: 'inherit',
     position: 'absolute',
     verticalAlign: 'middle',
     border: '0',
