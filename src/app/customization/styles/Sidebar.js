@@ -9,6 +9,7 @@ export const SideBarStyles = theme => ({
     position: 'fixed',
     height: '100%',
     width: drawerWidth,
+    overflow: 'hidden',
     zIndex: 2,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,

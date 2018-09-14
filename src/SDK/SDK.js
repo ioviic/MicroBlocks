@@ -3,6 +3,7 @@ import Block from './Block';
 import BlockPromise from './BlockPromise';
 import { addLocales } from './locale';
 import configureStore from '../stateManagement/store/createStore';
+import "core-js/es6";
 
 export class SDK {
     blocks: BlockPromise[];
