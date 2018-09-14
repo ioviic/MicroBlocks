@@ -21,8 +21,8 @@ import { bindActionCreators } from 'redux';
 type Props = {
     app: number,
     classes: any,
-  toggleSidebar: () => mixed,
-  dockSidebar: () => mixed,
+    toggleSidebar: () => mixed,
+    dockSidebar: () => mixed,
 
 };
 

@@ -13,9 +13,6 @@ const initialState : State =  {
 } ;
 
 export default createReducer(initialState, {
-    SIDEBAR_SHOW_HEADER: (state: State, action: SidebarAction): State => {
-      return  {...state, showHeader : action.payload};
-    },
     SIDEBAR_TOGGLE: (state: State, action: SidebarAction): State => {
         return  {...state, showSidebar : action.payload};
       },

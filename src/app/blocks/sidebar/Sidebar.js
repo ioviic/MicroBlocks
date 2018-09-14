@@ -4,7 +4,7 @@ import SidebarLinks from './SidebarLinks';
 import { BlockComponent } from '../../../SDK';
 
 import type { State } from '../../../stateManagement/types/state';
-import { toggleHeader, toggleSidebar } from './actions';
+import {toggleSidebar } from './actions';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -21,7 +21,6 @@ import {SDK} from "../../../SDK/starter";
 type Props = {
   sidebar: *,
   classes: any,
-  toggleHeader: () => mixed,
   toggleSidebar: () => mixed,
   routes: any
 };
@@ -81,11 +80,6 @@ class Sidebar extends Component<Props & Configuration, SidebarState> {
               <BlockComponent blockName='Branding' />
             }
             <SidebarLinks routes={this.props.routes}/>
-            <div>
-              <button key="increment" onClick={this.toggleSidebar}>
-                Toggle Header
-              </button>
-            </div>
             <div className={classes.sidebarChip}>
               <BlockComponent blockName='Chip'/>
             </div>
@@ -136,7 +130,6 @@ const mapStateToProps = ({ sidebar }: State) => ({
 const mapDispatchToProps = (dispatch: *) =>
   bindActionCreators(
     {
-      toggleHeader,
       toggleSidebar
     },
     dispatch
