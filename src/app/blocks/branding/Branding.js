@@ -35,7 +35,7 @@ export class Branding extends Component<Props & Configuration> {
           <div className={classes.logoImage}>
             <img src={logo} alt="logo" className={classes.img}/>
           </div>
-          <div className={classes.brandtext}>
+          <div className={classes.brandText}>
             {this.props.configuration.BrandText &&
               <span className={classes.text}>{this.props.configuration.BrandText}</span>}
 

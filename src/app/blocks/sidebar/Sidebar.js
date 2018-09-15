@@ -4,7 +4,7 @@ import SidebarLinks from './SidebarLinks';
 import { BlockComponent } from '../../../SDK';
 
 import type { State } from '../../../stateManagement/types/state';
-import { toggleHeader, toggleSidebar } from './actions';
+import {toggleSidebar } from './actions';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -21,7 +21,6 @@ import {SDK} from "../../../SDK/starter";
 type Props = {
   sidebar: *,
   classes: any,
-  toggleHeader: () => mixed,
   toggleSidebar: () => mixed,
   routes: any
 };
@@ -78,14 +77,9 @@ class Sidebar extends Component<Props & Configuration, SidebarState> {
           <div className={classes.wrapper}>
             {/*Extract this/header into different Block*/}
             {this.props.sidebar.showHeader &&
-            <BlockComponent blockName='Branding' />
+              <BlockComponent blockName='Branding' />
             }
             <SidebarLinks routes={this.props.routes}/>
-            <div>
-              <button key="increment" onClick={this.toggleSidebar}>
-                Toggle Header
-              </button>
-            </div>
             <div className={classes.sidebarChip}>
               <BlockComponent blockName='Chip'/>
             </div>
@@ -109,7 +103,7 @@ class Sidebar extends Component<Props & Configuration, SidebarState> {
               {this.props.sidebar.showHeader &&
               <BlockComponent blockName='Branding' />
               }
-              <SidebarLinks routes={this.props.sidebar.routes}/>
+              <SidebarLinks routes={this.props.routes}/>
               <div>
                 <button key="increment" onClick={() => this.props.toggleHeader()}>
                   Toggle Header
@@ -136,7 +130,6 @@ const mapStateToProps = ({ sidebar }: State) => ({
 const mapDispatchToProps = (dispatch: *) =>
   bindActionCreators(
     {
-      toggleHeader,
       toggleSidebar
     },
     dispatch
