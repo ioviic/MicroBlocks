@@ -10,8 +10,7 @@ import { AppBar, Toolbar, Typography, IconButton, Hidden } from '@material-ui/co
 import MenuIcon from '@material-ui/icons/Menu';
 import { withStyles } from '@material-ui/core/styles/index';
 import { BarStyles as styles } from '../../customization/styles/Bar';
-import { toggleSidebar } from '../sidebar/actions';
-import { dockSidebar } from '../bar/actions';
+import { dockSidebar, openSidebar } from '../bar/actions';
 
 // import locale from './localizations/translations';
 // import { FormattedMessage } from 'react-intl';
@@ -21,7 +20,7 @@ import { bindActionCreators } from 'redux';
 type Props = {
     app: number,
     classes: any,
-    toggleSidebar: () => mixed,
+    openSidebar : () => mixed,
     dockSidebar: () => mixed,
 
 };
@@ -54,7 +53,7 @@ export class Bar extends Component<Props & Configuration> {
           <Hidden mdUp>
             <IconButton
               className={classes.menuButton}
-              onClick={() => this.props.toggleSidebar()}
+              onClick={() => this.props.openSidebar()}
               color="inherit"
               aria-label="Menu">
               <MenuIcon />
@@ -79,7 +78,7 @@ const mapStateToProps = ({ app }: State) => ({
 const mapDispatchToProps = (dispatch: *) =>
     bindActionCreators(
         {
-          toggleSidebar, dockSidebar
+          openSidebar, dockSidebar
         },
         dispatch
     );
