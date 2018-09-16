@@ -8,11 +8,7 @@ const styles = theme => ({ });
 class LoginView extends React.Component {
   render() {
     return (
-      <Grid container>
-        <Grid item md={12}>
           <BlockComponent blockName='Login'/>
-        </Grid>
-      </Grid>
     );
   }
 }

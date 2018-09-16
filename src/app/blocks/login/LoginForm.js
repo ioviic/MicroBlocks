@@ -12,6 +12,7 @@ import Validator from 'validator';
 import InlineError from './InlineError';
 import type { Configuration } from './Login';
 import type { FormData } from './actions';
+import GridElement   from '../../components/GridElement';
 
 type LoginState = {
   data: FormData;
@@ -68,6 +69,7 @@ class LoginForm extends Component<Props & Configuration, LoginState> {
     const { classes } = this.props;
     return (
       <Grid container className={classes.login}>
+        <GridElement md={12} >
         <StandardCard
           title={'Login'}
           subHeader={'Please insert you mail and password'}
@@ -131,6 +133,7 @@ class LoginForm extends Component<Props & Configuration, LoginState> {
           }
           actions={null}
         />
+        </GridElement>
       </Grid>);
   }
 }
