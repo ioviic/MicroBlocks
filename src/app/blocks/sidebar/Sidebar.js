@@ -104,7 +104,7 @@ class Sidebar extends Component<Props & Configuration, SidebarState> {
           >
             <div className={classes.wrapper}>
               <BlockComponent blockName='Branding' />
-              <SidebarLinks routes={this.props.routes}/>
+              <SidebarLinks routes={this.props.routes} closeMethod={this.toggleSidebar}/>
               <div className={classes.sidebarChip}>
                 <BlockComponent blockName='Chip'/>
               </div>

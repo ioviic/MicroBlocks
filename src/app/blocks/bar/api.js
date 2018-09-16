@@ -43,7 +43,7 @@ export class BarApi {
 
   @ApiMethod('Observable')
   sidebarOpen(): Observable<string> {
-    return toObservable(this.store, selectSidebarOpen).distinctUntilChanged();
+    return toObservable(this.store, selectSidebarOpen);
   }
 }
 

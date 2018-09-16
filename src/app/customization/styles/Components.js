@@ -7,7 +7,8 @@ export const StandardCardStyles = theme => ({
     borderRadius: '3px',
     color: 'rgba(0, 0, 0, 0.87)',
     background: '#fff',
-    marginTop:'26px'
+    marginTop:'26px',
+    overflow: 'initial'
   },
   plain: {
     background: 'transparent',
