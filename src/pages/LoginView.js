@@ -1,6 +1,5 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Grid } from '@material-ui/core';
 import { BlockComponent } from '../SDK';
 
 const styles = theme => ({ });
