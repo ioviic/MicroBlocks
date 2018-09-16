@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/distinctUntilChanged';
 
 export const selectPinSidebar = storeState => storeState.bar.pinSidebar;
+export const selectSidebarOpen = storeState => storeState.bar.sidebarOpen;
 
 const whenDefineNext = (observer, value) => {
   if (value !== undefined) {
@@ -38,6 +39,11 @@ export class BarApi {
   @ApiMethod('Observable')
   pinSidebar(): Observable<string> {
     return toObservable(this.store, selectPinSidebar).distinctUntilChanged();
+  }
+
+  @ApiMethod('Observable')
+  sidebarOpen(): Observable<string> {
+    return toObservable(this.store, selectSidebarOpen).distinctUntilChanged();
   }
 }
 

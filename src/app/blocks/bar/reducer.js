@@ -1,18 +1,23 @@
 // @flow
 import createReducer from '../../../stateManagement/createReducer';
-import type { SidebarAction } from './actionTypes';
+import type { BarAction } from './actionTypes';
 
 type State = {
   pinSidebar: boolean;
+  sidebarOpen: boolean;
 };
 
 const initialState : State =  {
   pinSidebar: false,
+  sidebarOpen: false,
 } ;
 
 export default createReducer(initialState, {
-  SIDEBAR_PIN: (state: State, action: SidebarAction): State => {
+  BAR_PIN_SIDEBAR: (state: State, action: BarAction): State => {
     return  {...state, pinSidebar: action.payload};
+  },
+  BAR_SIDEBAR_OPEN: (state: State, action: BarAction): State => {
+    return  {...state, sidebarOpen: action.payload};
   },
 
 });

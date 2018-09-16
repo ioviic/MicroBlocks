@@ -37,22 +37,30 @@ type SidebarState = {
 class Sidebar extends Component<Props & Configuration, SidebarState> {
 
   state:SidebarState = {
-    show: true,
+    show: false,
     pinSidebar:false
   };
 
   componentDidMount() {
-    SDK.getBlock("Bar").then(block =>
+    SDK.getBlock("Bar").then(block =>{
       block.api
         .pinSidebar()
         .subscribe(res => {
             this.setState({pinSidebar: res})
           }
-        ))
+        );
+
+      block.api
+        .sidebarOpen()
+        .subscribe(res => {
+            this.setState({show: res})
+          }
+        )
+    });
   }
 
   handleDrawerToggle = () => {
-    this.props.toggleSidebar()
+    this.setState({show: false})
   };
 
   toggleSidebar = () => {
@@ -67,7 +75,7 @@ class Sidebar extends Component<Props & Configuration, SidebarState> {
       <Hidden smDown>
         <Drawer
           variant="permanent"
-          classes={{ paper: classes.drawerPaper + (this.state.show ? " " + classes.drawerPaperClose:"") + (this.state.pinSidebar ? " "+ classes.drawerPaperOpen : "")}}
+          classes={{ paper: classes.drawerPaper + (!this.state.show ? " " + classes.drawerPaperClose:"") + (this.state.pinSidebar ? " "+ classes.drawerPaperOpen : "")}}
           anchor={'left'}
           open
           onMouseOver={this.toggleSidebar}
@@ -75,10 +83,7 @@ class Sidebar extends Component<Props & Configuration, SidebarState> {
           >
 
           <div className={classes.wrapper}>
-            {/*Extract this/header into different Block*/}
-            {this.props.sidebar.showHeader &&
-              <BlockComponent blockName='Branding' />
-            }
+            <BlockComponent blockName='Branding' />
             <SidebarLinks routes={this.props.routes}/>
             <div className={classes.sidebarChip}>
               <BlockComponent blockName='Chip'/>
@@ -94,21 +99,12 @@ class Sidebar extends Component<Props & Configuration, SidebarState> {
             variant="temporary"
             classes={{ paper: classes.drawerPaper }}
             anchor={'left'}
-            open={this.props.sidebar.showSidebar}
+            open={this.state.show}
             onClose={this.handleDrawerToggle}
           >
-
             <div className={classes.wrapper}>
-              {/*Extract this/header into different Block*/}
-              {this.props.sidebar.showHeader &&
               <BlockComponent blockName='Branding' />
-              }
               <SidebarLinks routes={this.props.routes}/>
-              <div>
-                <button key="increment" onClick={() => this.props.toggleHeader()}>
-                  Toggle Header
-                </button>
-              </div>
               <div className={classes.sidebarChip}>
                 <BlockComponent blockName='Chip'/>
               </div>
