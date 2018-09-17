@@ -22,7 +22,7 @@ class SidebarLinks extends Component<Props> {
           routes.map((prop,key) => {
             if(prop.redirect) return null;
             return (
-              <NavLink to={prop.path} className={classes.itemLink} activeClassName={classes.active} onClick={()=>this.props.closeMethod()} key={key}>
+              <NavLink to={prop.path} className={classes.itemLink} activeClassName={classes.active} key={key}>
                 <ListItem button className={classes.item}>
                   <ListItemIcon className={classes.itemIcon}>
                     <prop.icon />
