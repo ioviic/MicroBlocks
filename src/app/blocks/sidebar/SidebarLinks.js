@@ -8,11 +8,12 @@ import { SideBarLinksStyles as styles} from '../../customization/styles/Sidebar'
 type Props = {
   routes: [],
   classes: any,
-  closeMethod: () => mixed,
+  closeMethod: () => mixed
 };
 
 class SidebarLinks extends Component<Props> {
   render() {
+
     const { classes, routes } = this.props;
 
     return (
@@ -21,7 +22,7 @@ class SidebarLinks extends Component<Props> {
           routes.map((prop,key) => {
             if(prop.redirect) return null;
             return (
-              <NavLink to={prop.path} className={classes.itemLink} onClick={()=>this.props.closeMethod()} activeClassName="active" key={key}>
+              <NavLink to={prop.path} className={classes.itemLink} activeClassName={classes.active} onClick={()=>this.props.closeMethod()} key={key}>
                 <ListItem button className={classes.item}>
                   <ListItemIcon className={classes.itemIcon}>
                     <prop.icon />
