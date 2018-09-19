@@ -60,11 +60,11 @@ export const SideBarStyles = theme => ({
 });
 
 export const SideBarLinksStyles = theme => ({
-  active:{
-    '& $item':{
-      backgroundColor: '#00acc1',
-      boxShadow: '0 12px 20px -10px rgba(0,188,212,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(0,188,212,.2)',}
-  },
+  // active:{
+  //   '& $item':{
+  //     backgroundColor: '#00acc1',
+  //     boxShadow: '0 12px 20px -10px rgba(0,188,212,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(0,188,212,.2)',}
+  // },
   itemLink:{
     padding: '10px 15px',
     display: 'block',
