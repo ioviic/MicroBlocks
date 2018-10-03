@@ -11,6 +11,7 @@ import DraftsIcon from '@material-ui/icons/Drafts';
 import {Grid} from '@material-ui/core';
 import DashboardView from './DashboardView';
 import { SDK } from '../SDK/starter';
+import { isLoggedIn } from '../app/blocks/login/api';
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -45,9 +46,9 @@ const styles = theme => ({
 });
 
 const appRoutes = [
-  { path: "/login", sidebarName: "List", navbarName: "Table List", icon: DraftsIcon , component: LoginView },
-  { path: "/dashboard", sidebarName: "List2", navbarName: "Table List", icon: DraftsIcon , component: DashboardView },
-  { redirect: true, path: "/", to: "/login", navbarName: "Redirect" }
+  { path: "/login", sidebarName: "List", loginRedirect: "/dashboard", icon: DraftsIcon , component: LoginView },
+  { path: "/dashboard", sidebarName: "List2", loginRedirect: "", icon: DraftsIcon , component: DashboardView },
+  { redirect: true, path: "/", to: "/login", loginRedirect: ""}
 ];
 
 // TODO use only one array of routes
@@ -58,13 +59,20 @@ const sidebarRoutes = [
 ];
 
 
-const switchRoutes = (<Switch>
+const switchRoutes=(isLoggedIn) => (<Switch>
   {
     appRoutes.map((prop,key) => {
+
       if(prop.redirect)
         return (
           <Redirect from={prop.path} to={prop.to} key={key}/>
         );
+
+      if(!!prop.loginRedirect && isLoggedIn)
+        return (
+          <Redirect from={prop.path} to={prop.loginRedirect} key={key}/>
+        );
+
       return (
         <Route path={prop.path} component={prop.component} key={key}/>
       );
@@ -77,15 +85,16 @@ type Props = {
 };
 
 type State = {
-  big: boolean
+  big: boolean,
+  isLoggedIn: boolean
 }
 
 
 class HomePage extends React.Component<Props, State> {
 
   constructor(props){
-    super(props)
-    this.state = {big: false}
+    super(props);
+    this.state = {big: false, isLoggedIn: false}
   }
 
   componentDidMount() {
@@ -95,26 +104,35 @@ class HomePage extends React.Component<Props, State> {
         .subscribe(res => {
             this.setState({big: res})
           }
-        ))
+        ));
+
+    SDK.getBlock("Login").then(block =>{
+      block.api
+        .isLoggedIn()
+        .subscribe(res => {
+            console.log(res)
+          }
+        )
+    })
   }
 
   render() {
     const { classes } = this.props;
-    return (
-    <div className={classes.pageWrapper}>
-      <BlockComponent blockName='Sidebar' routes={sidebarRoutes} />
-      <div className={classes.mainPanel +(this.state.big ? "":" " + classes.mainPanelBig)} ref='mainPanel'>
-        <Grid container>
-          <BlockComponent blockName='Bar'/>
-          {/*<div className={classes.container}>*/}
-            <Grid item xs={12}>
-            {switchRoutes}
+      return (
+        <div className={classes.pageWrapper}>
+          <BlockComponent blockName='Sidebar' routes={sidebarRoutes} />
+          <div className={classes.mainPanel +(this.state.big ? "":" " + classes.mainPanelBig)} ref='mainPanel'>
+            <Grid container>
+              <BlockComponent blockName='Bar'/>
+              {/*<div className={classes.container}>*/}
+              <Grid item xs={12}>
+                {switchRoutes(this.state.isLoggedIn)}
+              </Grid>
+              {/*</div>*/}
             </Grid>
-          {/*</div>*/}
-        </Grid>
-      </div>
-    </div>
-    )
+          </div>
+        </div>
+      )
   }
 }
 
