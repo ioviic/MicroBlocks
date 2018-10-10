@@ -9,7 +9,6 @@ import { logoutAction } from '../login/actions';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Redirect } from 'react-router-dom';
 
 import { Avatar, ButtonBase, Menu, MenuItem } from '@material-ui/core';
 
@@ -28,13 +27,11 @@ type Configuration = {
 
 type ChipState = {
   anchorEl: *;
-  redirect: boolean;
 }
 
 export class Chip extends Component<Props & Configuration, ChipState> {
   state:ChipState = {
     anchorEl: null,
-    redirect: false
   };
 
   handleClick = (event: any) => {
@@ -43,7 +40,7 @@ export class Chip extends Component<Props & Configuration, ChipState> {
 
   handleLogoutClick = () => {
     this.props.logoutAction();
-    this.setState({ anchorEl: null, redirect: true});
+    this.setState({ anchorEl: null});
   };
 
   handleClose = () => {
@@ -52,7 +49,7 @@ export class Chip extends Component<Props & Configuration, ChipState> {
 
   render() {
     const { classes } = this.props;
-    const { anchorEl, redirect } = this.state;
+    const { anchorEl } = this.state;
     return (
       <div>
       {this.props.login.token &&
@@ -79,12 +76,9 @@ export class Chip extends Component<Props & Configuration, ChipState> {
             }}
           getContentAnchorEl={null}>
 
-          {/*<MenuItem onClick={this.handleClose}>Profile</MenuItem>*/}
-          {/*<MenuItem onClick={this.handleClose}>My account</MenuItem>*/}
           <MenuItem onClick={this.handleLogoutClick}>Logout</MenuItem>
         </Menu>
       </div>}
-      {!this.props.login.token && redirect && <Redirect to='/login'/>}
       </div>
     );
   }

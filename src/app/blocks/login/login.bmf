@@ -4,4 +4,5 @@ module.exports = {
     type: "Block",
     name: "Login",
     path: path.join(__dirname, "Login"),
+    api: "api"
 };
