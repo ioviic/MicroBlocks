@@ -11,7 +11,6 @@ import DraftsIcon from '@material-ui/icons/Drafts';
 import {Grid} from '@material-ui/core';
 import DashboardView from './DashboardView';
 import { SDK } from '../SDK/starter';
-import { isLoggedIn } from '../app/blocks/login/api';
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -58,23 +57,40 @@ const sidebarRoutes = [
   { redirect: true, path: "/", to: "/login" }
 ];
 
+const UserRoute = ({component:Component, ...rest})=>(
+  <Route {...rest}
+         render={props=>{
+           debugger;
+           return rest.isLoggedIn ? <Component {...props}/> : <Redirect to="/login" />}
+         }
+           />
+);
+
+const GuestRoute = ({component:Component, ...rest})=>(
+  <Route {...rest}
+         render={props=>
+         {debugger;
+           return !rest.isLoggedIn ? <Component {...props}/> : <Redirect to="/dashboard" />}}
+           />
+);
 
 const switchRoutes=(isLoggedIn) => (<Switch>
   {
     appRoutes.map((prop,key) => {
 
-      if(prop.redirect)
+      if(prop.redirect){
         return (
-          <Redirect from={prop.path} to={prop.to} key={key}/>
+          <Redirect from={prop.path} to={isLoggedIn ? prop.loginRedirect : prop.to} key={key}/>
         );
+      }
 
-      if(!!prop.loginRedirect && isLoggedIn)
+      if(!!prop.loginRedirect )
         return (
-          <Redirect from={prop.path} to={prop.loginRedirect} key={key}/>
+          <GuestRoute path={prop.path} isLoggedIn={isLoggedIn} component={prop.component} key={key}/>
         );
 
       return (
-        <Route path={prop.path} component={prop.component} key={key}/>
+        <UserRoute path={prop.path} isLoggedIn={isLoggedIn} component={prop.component} key={key}/>
       );
     })
   }
@@ -110,7 +126,7 @@ class HomePage extends React.Component<Props, State> {
       block.api
         .isLoggedIn()
         .subscribe(res => {
-            console.log(res)
+            this.setState({isLoggedIn: res})
           }
         )
     })
