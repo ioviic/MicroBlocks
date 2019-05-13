@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+
+// TODO should get rid of it
 export default {
     user:{
     login: credentials =>
