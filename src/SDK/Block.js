@@ -30,7 +30,7 @@ export class Block {
         node && ReactDOM.render(this.wrapperHOC(), node);
     }
 
-    wrapperHOC = (props): Element<any> => {
+    wrapperHOC = (props: any): Element<any> => {
       const Block = this.block;
 
       return (
